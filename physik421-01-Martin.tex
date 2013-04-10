@@ -1,0 +1,83 @@
+% Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+%
+\input{header.tex}
+
+\usepackage{tikz}
+
+\newcommand{\themodul}{physik421}
+\newcommand{\thegruppe}{Gruppe 4 -- Franz Niecknig}
+\newcommand{\theuebung}{1}
+
+\ifoot{\footnotesize{Martin Ueding}}
+\ihead{\themodul{} -- Übung \theuebung}
+\ofoot{\footnotesize{\thegruppe}}
+
+\def\thesection{H \arabic{section}}
+\def\thesubsection{\thesection\alph{subsection}}
+
+\title{\themodul{} -- Übung \theuebung \\ \vspace{0.5cm} \large{\thegruppe}}
+
+\author{
+	Martin Ueding \\ \small{\href{mailto:mu@uni-bonn.de}{mu@uni-bonn.de}}
+}
+
+\hypersetup{
+	pdftitle={\themodul {} - Übung \theuebung},
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l|c|c}
+		Aufgabe
+		& \ref 1
+		& $\sum$   \\
+		\hline
+		Punkte
+		& \punkte / 20
+		& \punkte / 20
+	\end{tabular}
+\end{table}
+
+\section{Dirac'sche Deltadistribution}
+\label 1
+
+\subsection{Stufenfunktion}
+
+\begin{align*}
+	G_a[\phi]
+	&= \int_{-\infty}^\infty \dif x \, \theta(x - a) \phi(x) \\
+	G_a'[\phi]
+	&= \dod{}a \int_{-\infty}^\infty \dif x \, \theta(x - a) \phi(x) \\
+	&= - \int_{-\infty}^\infty \dif x \, \theta'(x - a) \phi(x) \\
+	&= \int_{-\infty}^\infty \dif x \,
+	\lim_{h \to 0} \frac{\theta(x + h - a) - \theta(x - a)}h \phi(x) \\
+	\intertext{%
+		Diese Ableitung ist für $x \neq a$ gleich 0. Wenn $x \in \intcc{a-h/2,
+		a+h/2}$ liegt, dann ist der Bruch gerade $1/h$. Das Integral geht dann
+		allerdings nur über einen Bereich, der $h$ breit ist. $\phi$ war als
+		Schwartzfunktion, also aus $C^\infty$ gegeben. Daher kann sie in einem
+		verschwindend kleinen Intervall durch ihre nullte Näherung an der
+		Stelle $a$ ersetzt werden.
+	}
+	&= - h \frac 1h \phi(a) \\
+	&= - \phi(a)
+\end{align*}
+
+Und dies ist gerade die Definition der Deltadistribution.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    Ende                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\IfFileExists{\bibliographyfile}{
+	%\bibliography{\bibliographyfile}
+	%\bibliographystyle{plain}
+%}{}
+
+\end{document}
+
+% vim: spell spelllang=de
