@@ -69,6 +69,42 @@
 
 Und dies ist gerade die Definition der Deltadistribution.
 
+\subsection{Fouriertransformatierte von $g_\epsilon$}
+
+\fehlt
+
+\subsection{Beweis}
+
+\fehlt
+
+\subsection{Inverse Fouriertransformation}
+
+\fehlt
+
+\subsection{Distribution $D_k$}
+
+Gegeben ist die Distribution $D_k$ mit:
+\begin{align*}
+	D_k[\phi](k) &= \int_{\infty}^\infty \dif x \, \exp\del{\ii kx} \phi(x)
+	\intertext{%
+		Auf diese Distribution wenden wir nun die Fouriertransformation an:
+	}
+	\fourier\sbr{D_k[\phi]}(\omega)
+	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif k \, \exp\del{-\ii k \omega} \int_{\infty}^\infty \dif x \, \exp\del{\ii kx} \phi(x) \\
+	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif k \int_{\infty}^\infty \dif x \, \exp\del{\ii k(x-\omega)} \phi(x) \\
+	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif x \int_{\infty}^\infty \dif k \, \exp\del{\ii k(x-\omega)} \phi(x) \\
+	\intertext{%
+		Das innere Integral über $k$ kann nur konvergieren, wenn $x-\omega=0$
+		gilt. In diesem Falle ist der Wert $\infty$. Für alle anderen Werte von
+		$x-\omega$ ist das Integral 0. Dies ist $\delta(x-\omega)$.
+	}
+	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif x \, \delta(x-\omega) \phi(x) \\
+	&= \frac1{\sqrt{2\piup}} \delta_\omega[\phi]
+\end{align*}
+
+Der Faktor $(2\piup)^{-3/2}$, der zu viel ist, ist eventuell durch eine leicht
+andere Definition der Fouriertransformation entstanden.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
