@@ -79,7 +79,22 @@ Und dies ist gerade die Definition der Deltadistribution.
 
 \subsection{Inverse Fouriertransformation}
 
-\fehlt
+Die inverse Fouriertransformation ist wie die normale Fouriertransformation und
+eine Parität $\mathcal P$, also $\fourier^{-1} = \fourier \circ
+\mathop{\mathcal P}$. Wenn wir dies annehmen, können wir vereinfachen:
+\begin{align*}
+	\frac1{2\piup} \lim_{\epsilon\to0} \fourier\sbr{g_\epsilon \fourier\sbr\psi}(-k)
+	&= \psi(k) \\
+	\frac1{2\piup} \lim_{\epsilon\to0} \fourier\sbr{g_\epsilon \fourier\sbr\psi} \circ \mathcal P
+	&= \psi \\
+	\lim_{\epsilon\to0} \fourier^{-1}\sbr{g_\epsilon \fourier\sbr\psi} \circ \mathcal P
+	&= \psi \\
+	\fourier^{-1}\sbr{\lim_{\epsilon\to0} g_\epsilon \fourier\sbr\psi}
+	&= \psi \\
+	\fourier^{-1}\sbr{\fourier\sbr\psi}
+	&= \psi \\
+	\psi &= \psi
+\end{align*}
 
 \subsection{Distribution $D_k$}
 
