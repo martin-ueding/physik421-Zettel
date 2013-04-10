@@ -92,13 +92,13 @@ Gegeben ist die Distribution $D_k$ mit:
 	\fourier\sbr{D_k[\phi]}(\omega)
 	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif k \, \exp\del{-\ii k \omega} \int_{\infty}^\infty \dif x \, \exp\del{\ii kx} \phi(x) \\
 	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif k \int_{\infty}^\infty \dif x \, \exp\del{\ii k(x-\omega)} \phi(x) \\
-	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif x \int_{\infty}^\infty \dif k \, \exp\del{\ii k(x-\omega)} \phi(x) \\
+	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif x \, \phi(x) \int_{\infty}^\infty \dif k \, \exp\del{\ii k(x-\omega)} \\
 	\intertext{%
-		Das innere Integral über $k$ kann nur konvergieren, wenn $x-\omega=0$
-		gilt. In diesem Falle ist der Wert $\infty$. Für alle anderen Werte von
-		$x-\omega$ ist das Integral 0. Dies ist $\delta(x-\omega)$.
+		Das hintere Integral über $k$ nimmt für den Fall $x-\omega=0$ den Wert
+		$\infty$ an. Für alle anderen Werte von $x-\omega$ ist das Integral
+		undefiniert oder 0. Dies entspricht $\delta(x-\omega)$.
 	}
-	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif x \, \delta(x-\omega) \phi(x) \\
+	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif x \, \phi(x) \delta(x-\omega) \\
 	&= \frac1{\sqrt{2\piup}} \delta_\omega[\phi]
 \end{align*}
 
