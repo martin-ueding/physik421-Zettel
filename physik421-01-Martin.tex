@@ -75,10 +75,41 @@ Und dies ist gerade die Definition der Deltadistribution.
 
 \subsection{Fouriertransformatierte von $g_\epsilon$}
 
-Es soll gezeigt werden, dass die Fouriertransformatierte von $g_\epsilon(x)$ im
+Es soll gezeigt werden, dass die Fouriertransformierte von $g_\epsilon(x)$ im
 Limes $\epsilon \to 0$ der Deltadistribution entspricht.
 
-\fehlt
+Dazu bilde ich die zuerst Fouriertransformierte von $g_\epsilon$.
+\begin{align*}
+	\fourier\sbr{g_\epsilon}(\omega)
+	&= \frac{1}{\sqrt{2\piup}} \int_{-\infty}^\infty \dif x \, \exp\del{-\half \epsilon^2 x^2 - \ii \omega x} \\
+	&= \frac{1}{\sqrt{2\piup}} \int_{-\infty}^\infty \dif x \, \exp\del{-\del{\half \epsilon^2 x^2 + \ii \omega x}} \\
+	\intertext{%
+		Ich vervollständige das Quadrat in der Exponentialfunktion.
+	}
+	&= \frac{1}{\sqrt{2\piup}} \int_{-\infty}^\infty \dif x \, \exp\del{-\del{\frac1{\sqrt{2}} \epsilon x + \ii \frac\omega\epsilon}^2 - \frac{\omega^2}{\epsilon^2}} \\
+	&= \frac{1}{\sqrt{2\piup}} \exp\del{-\frac{\omega^2}{\epsilon^2}} \int_{-\infty}^\infty \dif x \, \exp\del{-\del{\frac1{\sqrt{2}} \epsilon x + \ii \frac\omega\epsilon}^2} \\
+	\intertext{%
+		An dieser Stelle substituiere ich $z := \epsilon x/ \sqrt{2} + \ii
+		\omega/\epsilon$. Das Integral erhält dann den Wert $\sqrt{\piup}$.
+		Durch $\dif z / \dif x$ erhalte ich noch einen Faktor
+		$\sqrt{2}\epsilon$.
+	}
+	&= \frac{1}{\sqrt{\piup} \epsilon} \exp\del{-\frac{\omega^2}{\epsilon^2}} \\
+\end{align*}
+
+Die Funktionenschar habe ich in Abbildung \ref{fig:Fourier} geplottet.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{Fouriertransformierte.pdf}
+	\caption{$\fourier\sbr{g_\epsilon}(\omega)$ für $\epsilon = \num{0.1}, \num{0.2}, \ldots, \num{1.1}$}
+	\label{fig:Fourier}
+\end{figure}
+
+Zur Probe habe ich das Integral über diese Funktion mit Mathematica rechnen
+lassen, es kommt unabhängig von $\epsilon$ 1 heraus. Damit ist die eine
+Bedingung erfüllt, im Grenzwert sind auch alle Funktionswerte für $x \neq 0$
+gerade 0.
 
 \subsection{Beweis}
 
