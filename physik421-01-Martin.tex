@@ -81,21 +81,27 @@ Limes $\epsilon \to 0$ der Deltadistribution entspricht.
 Dazu bilde ich die zuerst Fouriertransformierte von $g_\epsilon$.
 \begin{align*}
 	\fourier\sbr{g_\epsilon}(\omega)
-	&= \frac{1}{\sqrt{2\piup}} \int_{-\infty}^\infty \dif x \, \exp\del{-\half \epsilon^2 x^2 - \ii \omega x} \\
-	&= \frac{1}{\sqrt{2\piup}} \int_{-\infty}^\infty \dif x \, \exp\del{-\del{\half \epsilon^2 x^2 + \ii \omega x}} \\
+	&= \int_{-\infty}^\infty \dif x \, \exp\del{-\half \epsilon^2 x^2 - \ii \omega x} \\
+	&= \int_{-\infty}^\infty \dif x \, \exp\del{-\del{\half \epsilon^2 x^2 + \ii \omega x}} \\
 	\intertext{%
 		Ich vervollständige das Quadrat in der Exponentialfunktion.
 	}
-	&= \frac{1}{\sqrt{2\piup}} \int_{-\infty}^\infty \dif x \, \exp\del{-\del{\frac1{\sqrt{2}} \epsilon x + \ii \frac\omega\epsilon}^2 - \frac{\omega^2}{\epsilon^2}} \\
-	&= \frac{1}{\sqrt{2\piup}} \exp\del{-\frac{\omega^2}{\epsilon^2}} \int_{-\infty}^\infty \dif x \, \exp\del{-\del{\frac1{\sqrt{2}} \epsilon x + \ii \frac\omega\epsilon}^2} \\
+	&= \int_{-\infty}^\infty \dif x \, \exp\del{-\del{\frac1{\sqrt{2}} \epsilon x + \ii \frac\omega\epsilon}^2 - \frac{\omega^2}{\epsilon^2}} \\
+	&= \exp\del{-\frac{\omega^2}{\epsilon^2}} \int_{-\infty}^\infty \dif x \, \exp\del{-\del{\frac1{\sqrt{2}} \epsilon x + \ii \frac\omega\epsilon}^2} \\
 	\intertext{%
 		An dieser Stelle substituiere ich $z := \epsilon x/ \sqrt{2} + \ii
 		\omega/\epsilon$. Das Integral erhält dann den Wert $\sqrt{\piup}$.
 		Durch $\dif z / \dif x$ erhalte ich noch einen Faktor
-		$\sqrt{2}\epsilon$.
+		$\sqrt{2}/\epsilon$.
 	}
-	&= \frac{1}{\sqrt{\piup} \epsilon} \exp\del{-\frac{\omega^2}{\epsilon^2}}
+	&= \frac{\sqrt{2\piup}}{\epsilon} \exp\del{-\frac{\omega^2}{\epsilon^2}}
 \end{align*}
+
+Eigentlich sollte allerings folgendes herauskommen, damit nachher aus 1 herauskommt:
+\[
+	\fourier\sbr{g_\epsilon}(\omega)
+	= \frac{1}{\sqrt{\piup} \epsilon} \exp\del{-\frac{\omega^2}{\epsilon^2}}
+\]
 
 Die Funktionenschar habe ich in Abbildung \ref{fig:Fourier} geplottet.
 
@@ -152,8 +158,9 @@ Dazu beginne ich mit der linken Seite:
 Es soll die inverse Fouriertransformation hergeleitet werden.
 
 Die inverse Fouriertransformation ist wie die normale Fouriertransformation und
-eine Parität $\mathcal P$, also $\fourier^{-1} = \fourier \circ
-\mathop{\mathcal P}$. Wenn wir dies annehmen, können wir vereinfachen:
+eine Parität $\mathcal P$ sowie einen Faktor $2 \piup$, also $\fourier^{-1} =
+\fourier \circ \mathop{\mathcal P} \ 2 \piup$. Wenn wir dies annehmen, können
+wir vereinfachen:
 \begin{align*}
 	\frac1{2\piup} \lim_{\epsilon\to0} \fourier\sbr{g_\epsilon \fourier\sbr\psi}(-k)
 	&= \psi(k) \\
@@ -172,6 +179,11 @@ eine Parität $\mathcal P$, also $\fourier^{-1} = \fourier \circ
 	\psi &= \psi
 \end{align*}
 
+Somit müsste die obige Annahme gelten und es gilt:
+\[
+	\fourier^{-1} = \frac{1}{2 \piup} \fourier \circ \mathop{\mathcal P} 
+\]
+
 \subsection{Distribution $D_k$}
 
 Es soll gezeigt werden, dass $\fourier\sbr{D_k} = 2 \piup \delta(x-k)$.
@@ -183,20 +195,19 @@ Gegeben ist die Distribution $D_k$ mit:
 		Auf diese Distribution wenden wir nun die Fouriertransformation an:
 	}
 	\fourier\sbr{D_k[\phi]}(\omega)
-	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif k \, \exp\del{-\ii k \omega} \int_{\infty}^\infty \dif x \, \exp\del{\ii kx} \phi(x) \\
-	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif k \int_{\infty}^\infty \dif x \, \exp\del{\ii k(x-\omega)} \phi(x) \\
-	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif x \, \phi(x) \int_{\infty}^\infty \dif k \, \exp\del{\ii k(x-\omega)} \\
+	&= \int_{\infty}^\infty \dif k \, \exp\del{-\ii k \omega} \int_{\infty}^\infty \dif x \, \exp\del{\ii kx} \phi(x) \\
+	&= \int_{\infty}^\infty \dif k \int_{\infty}^\infty \dif x \, \exp\del{\ii k(x-\omega)} \phi(x) \\
+	&= \int_{\infty}^\infty \dif x \, \phi(x) \int_{\infty}^\infty \dif k \, \exp\del{\ii k(x-\omega)} \\
 	\intertext{%
 		Das hintere Integral über $k$ nimmt für den Fall $x-\omega=0$ den Wert
 		$\infty$ an. Für alle anderen Werte von $x-\omega$ ist das Integral
 		undefiniert oder 0. Dies entspricht $\delta(x-\omega)$.
 	}
-	&= \frac1{\sqrt{2\piup}} \int_{\infty}^\infty \dif x \, \phi(x) \delta(x-\omega) \\
-	&= \frac1{\sqrt{2\piup}} \delta_\omega[\phi]
+	&= \int_{\infty}^\infty \dif x \, \phi(x) \delta(x-\omega) \\
+	&= \delta_\omega[\phi]
 \end{align*}
 
-Der Faktor $(2\piup)^{-3/2}$, der zu viel ist, ist eventuell durch eine leicht
-andere Definition der Fouriertransformation entstanden.
+Es fehlt allerdings noch ein Faktor $2\piup$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
