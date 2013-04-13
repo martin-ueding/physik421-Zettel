@@ -94,7 +94,7 @@ Dazu bilde ich die zuerst Fouriertransformierte von $g_\epsilon$.
 		Durch $\dif z / \dif x$ erhalte ich noch einen Faktor
 		$\sqrt{2}\epsilon$.
 	}
-	&= \frac{1}{\sqrt{\piup} \epsilon} \exp\del{-\frac{\omega^2}{\epsilon^2}} \\
+	&= \frac{1}{\sqrt{\piup} \epsilon} \exp\del{-\frac{\omega^2}{\epsilon^2}}
 \end{align*}
 
 Die Funktionenschar habe ich in Abbildung \ref{fig:Fourier} geplottet.
@@ -107,21 +107,45 @@ Die Funktionenschar habe ich in Abbildung \ref{fig:Fourier} geplottet.
 \end{figure}
 
 Zur Probe habe ich das Integral über diese Funktion mit Mathematica rechnen
-lassen, es kommt unabhängig von $\epsilon$ 1 heraus. Damit ist die eine
+lassen, es kommt unabhängig von $\epsilon$ gerade 1 heraus. Damit ist die eine
 Bedingung erfüllt, im Grenzwert sind auch alle Funktionswerte für $x \neq 0$
 gerade 0.
 
 \subsection{Beweis}
 
-\begin{problem}
-	Es soll folgende Identität gezeigt werden:
-	\[
-		\frac1{2\piup} \lim_{\epsilon\to0} \fourier\sbr{g_\epsilon \fourier\sbr\psi}(-k)
-		= \psi(k)
-	\]
-\end{problem}
+Es soll folgende Identität gezeigt werden:
+\[
+	\frac1{2\piup} \lim_{\epsilon\to0} \fourier\sbr{g_\epsilon \fourier\sbr\psi}(-k)
+	= \psi(k)
+\]
 
-\fehlt
+Dazu beginne ich mit der linken Seite:
+\begin{align*}
+	& \frac1{2\piup} \lim_{\epsilon\to0} \fourier\sbr{g_\epsilon \fourier\sbr\psi}(-k) \\
+	&= \frac1{2\piup} \lim_{\epsilon\to0} \int \dif b \, \exp\del{-\ii b (-k)} g_\epsilon(b) \int \dif a \, \exp\del{-\ii a b} \psi(a) \\
+	&= \frac1{2\piup} \lim_{\epsilon\to0} \int \dif a \int \dif b \, \exp\del{\ii bk-\ii ab} g_\epsilon(b) \psi(a) \\
+	\intertext{%
+		Einsetzen von $g_\epsilon$:
+	}
+	&= \frac1{2\piup} \lim_{\epsilon\to0} \int \dif a \int \dif b \, \exp\del{\ii bk-\ii ab -\half \epsilon^2 b^2}  \psi(a) \\
+	\intertext{%
+		Quadratische Ergänzung in der Exponentialfunktion:
+	}
+	&= \frac1{2\piup} \lim_{\epsilon\to0} \int \dif a \int \dif b \, \exp\del{-\del{\del{\frac{1}{\sqrt{2}} \epsilon b - \frac{\ii(k-a)}{\epsilon \sqrt{2}}}^2 + \frac{(k-a)^2}{2\epsilon^2}}}  \psi(a) \\
+	&= \frac1{2\piup} \lim_{\epsilon\to0} \int \dif a \exp\del{-\frac{(k-a)^2}{2\epsilon^2}} \int \dif b \, \exp\del{-\del{\del{\frac{1}{\sqrt{2}} \epsilon b - \frac{\ii(k-a)}{\epsilon \sqrt{2}}}^2}} \psi(a) \\
+	\intertext{%
+		Im Integral über $\dif b$ führe ich eine neue Koordinate ein: $c :=
+		\frac{1}{\sqrt{2}} \epsilon b - \frac{\ii(k-a)}{\epsilon \sqrt{2}}$.
+		Die Ableitung $\od cb$ ist $\epsilon/\sqrt 2$. Das verbleibende
+		Integral hat dann den Wer $\sqrt \piup$.
+	}
+	&= \sqrt{2\piup} \lim_{\epsilon\to0} \frac{1}{\epsilon} \int \dif a \exp\del{-\frac{(k-a)^2}{2\epsilon^2}} \psi(a) \\
+	\intertext{%
+		Dies ist die $\delta$-Distribution aus der vorherigen Aufgabe, diesmal mit $\delta(k-a)$. Somit ist dies:
+	}
+	&= \int \dif a \, \delta(k-a) \psi(a) \\
+	&= \psi(k)
+\end{align*}
 
 \subsection{Inverse Fouriertransformation}
 
@@ -135,10 +159,14 @@ eine Parität $\mathcal P$, also $\fourier^{-1} = \fourier \circ
 	&= \psi(k) \\
 	\frac1{2\piup} \lim_{\epsilon\to0} \fourier\sbr{g_\epsilon \fourier\sbr\psi} \circ \mathcal P
 	&= \psi \\
-	\lim_{\epsilon\to0} \fourier^{-1}\sbr{g_\epsilon \fourier\sbr\psi} \circ \mathcal P
+	\lim_{\epsilon\to0} \fourier^{-1}\sbr{g_\epsilon \fourier\sbr\psi}
 	&= \psi \\
 	\fourier^{-1}\sbr{\lim_{\epsilon\to0} g_\epsilon \fourier\sbr\psi}
 	&= \psi \\
+	\intertext{%
+		Im Limes $\epsilon \to 0$ wird die Funktion $g_\epsilon$ zur Identität
+		und fällt somit weg.
+	}
 	\fourier^{-1}\sbr{\fourier\sbr\psi}
 	&= \psi \\
 	\psi &= \psi
