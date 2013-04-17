@@ -73,6 +73,32 @@
 
 \subsection{Minimum des Skalarproduktes}
 
+Gegeben ist:
+\[
+	\psi_\alpha(x, t) = \alpha \del{x - \bracket x} \phi(x, t) + \frac\ii\hbar \del{\hat p - \bracket p} \phi(x, t)
+\]
+
+Das Skalarprodukt ist:
+\begin{align*}
+	\braket{\psi_\alpha}{\psi_\alpha}
+	&= \del{
+		\alpha \alpha^* \del{x - \bracket x} \del{x - \bracket x}^*
+		+ \frac{1}{\hbar^2} \del{\hat p - \bracket p} \del{\hat p - \bracket p}^*
+	}
+	\phi(x, t) \phi^*(x, t)
+	\intertext{%
+		Da $\phi$ eine rein imaginäre Exponentialfunktion ist, ist $\phi \phi^*
+		= 1$.
+	}
+	&= \alpha \alpha^* \del{x - \bracket x} \del{x - \bracket x}^*
+	+ \frac{1}{\hbar^2} \del{\hat p - \bracket p} \del{\hat p - \bracket p}^*
+\end{align*}
+
+\textcolor{darkred}{
+	Hier habe ich allerdings missachtet, dass dies alles Operatoren sind, die
+	nicht kommutieren. Muss also noch mal machen.
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                Kommutatoren                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
