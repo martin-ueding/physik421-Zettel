@@ -6,7 +6,7 @@
 
 \newcommand{\themodul}{physik421}
 \newcommand{\thegruppe}{Gruppe 4 -- Franz Niecknig}
-\newcommand{\theuebung}{1}
+\newcommand{\theuebung}{2}
 
 \ifoot{\footnotesize{Martin Ueding}}
 \ihead{\themodul{} -- Übung \theuebung}
@@ -14,6 +14,8 @@
 
 \def\thesection{H \arabic{section}}
 \def\thesubsection{\thesection\alph{subsection}}
+
+\setcounter{section}{1}
 
 \title{\themodul{} -- Übung \theuebung \\ \vspace{0.5cm} \large{\thegruppe}}
 
@@ -31,183 +33,76 @@
 
 \begin{table}[h]
 	\centering
-	\begin{tabular}{l|c|c}
+	\begin{tabular}{l|c|c|c|c}
 		Aufgabe
 		& \ref 1
+		& \ref 2
 		& $\sum$   \\
 		\hline
 		Punkte
-		& \punkte / 20
+		& \punkte / 14
+		& \punkte / 6
 		& \punkte / 20
 	\end{tabular}
 \end{table}
 
-\section{Dirac'sche Deltadistribution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             Unschärferelation                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Unschärferelation}
 \label 1
 
-\subsection{Stufenfunktion}
+\subsection{Relation}
 
-Es soll gezeigt werden, dass die Ableitung von $G_a$ der Deltadistribution
-$\delta_a$ entspricht.
-
-Wir beginnen mit der Definition von $G_a$:
 \begin{align*}
-	G_a[\phi]
-	&= \int_{-\infty}^\infty \dif x \, \theta(x - a) \phi(x) \\
-	G_a'[\phi]
-	&= \dod{}a \int_{-\infty}^\infty \dif x \, \theta(x - a) \phi(x) \\
-	&= - \int_{-\infty}^\infty \dif x \, \theta'(x - a) \phi(x) \\
-	&= \int_{-\infty}^\infty \dif x \,
-	\lim_{h \to 0} \frac{\theta(x + h - a) - \theta(x - a)}h \phi(x) \\
+	\bracket{\del{y - \bracket{y}}^2}
+	&= \bracket{y^2 - 2 y \bracket y + \bracket y^2} \\
 	\intertext{%
-		Diese Ableitung ist für $x \neq a$ gleich 0. Wenn $x \in \intcc{a-h/2,
-		a+h/2}$ liegt, dann ist der Bruch gerade $1/h$. Das Integral geht dann
-		allerdings nur über einen Bereich, der $h$ breit ist. $\phi$ war als
-		Schwartzfunktion, also aus $C^\infty$ gegeben. Daher kann sie in einem
-		verschwindend kleinen Intervall durch ihre nullte Näherung an der
-		Stelle $a$ ersetzt werden.
+		Benutze Linearität.
 	}
-	&= - h \frac 1h \phi(a) \\
-	&= - \phi(a)
+	&= \bracket{y^2} - \bracket{2 y \bracket y} + \bracket{\bracket y^2} \\
+	\intertext{%
+		Mittelung ist idempotent.
+	}
+	&= \bracket{y^2} - 2 \bracket y \bracket y + \bracket y^2 \\
+	&= \bracket{y^2} - \bracket y^2 \\
 \end{align*}
 
-Und dies ist gerade die Definition der Deltadistribution.
+\subsection{Erwartungswerte und Integral}
 
-\subsection{Fouriertransformierte von $g_\epsilon$}
+\subsection{Minimum des Skalarproduktes}
 
-Es soll gezeigt werden, dass die Fouriertransformierte von $g_\epsilon(x)$ im
-Limes $\epsilon \to 0$ der Deltadistribution entspricht.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                Kommutatoren                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Dazu bilde ich die zuerst Fouriertransformierte von $g_\epsilon$.
+\section{Kommutatoren}
+\label 2
+
+Gegeben sind die folgenden Operatoren:
+\begin{gather*}
+	\hat A \psi(x) = x \partial_x \phi(x) \\
+	\hat B \psi(x) = \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'}
+\end{gather*}
+
+\subsection{Kommutator bestimmen}
+
 \begin{align*}
-	\fourier\sbr{g_\epsilon}(\omega)
-	&= \int_{-\infty}^\infty \dif x \, \exp\del{-\half \epsilon^2 x^2 - \ii \omega x} \\
-	&= \int_{-\infty}^\infty \dif x \, \exp\del{-\del{\half \epsilon^2 x^2 + \ii \omega x}} \\
+	\hat A \hat B \psi(x)
+	&= x \partial_x \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'} \\
 	\intertext{%
-		Ich vervollständige das Quadrat in der Exponentialfunktion.
+		Hier wende ich die Formel für die Ableitung von Integralen an: $\od{}x
+		\int_{g(x)}^{h(x)} \dif y \, f(y) = h'(x) f\del{h(x)} - g'(x)
+		f\del{g(x)}$.
 	}
-	&= \int_{-\infty}^\infty \dif x \, \exp\del{-\del{\frac1{\sqrt{2}} \epsilon x + \ii \frac\omega\epsilon}^2 - \frac{\omega^2}{\epsilon^2}} \\
-	&= \exp\del{-\frac{\omega^2}{\epsilon^2}} \int_{-\infty}^\infty \dif x \, \exp\del{-\del{\frac1{\sqrt{2}} \epsilon x + \ii \frac\omega\epsilon}^2} \\
-	\intertext{%
-		An dieser Stelle substituiere ich $z := \epsilon x/ \sqrt{2} + \ii
-		\omega/\epsilon$. Das Integral erhält dann den Wert $\sqrt{\piup}$.
-		Durch $\dif z / \dif x$ erhalte ich noch einen Faktor
-		$\sqrt{2}/\epsilon$.
-	}
-	&= \frac{\sqrt{2\piup}}{\epsilon} \exp\del{-\frac{\omega^2}{\epsilon^2}}
+	&= x^2 \psi(x) \\
+	\hat B \hat A \psi(x)
+	&=
+	\int_{-\infty}^x \dif{x'} \, x'^2 \partial_{x'} \psi\del{x'}
 \end{align*}
 
-Eigentlich sollte allerdings folgendes herauskommen, damit nachher aus 1 herauskommt:
-\[
-	\fourier\sbr{g_\epsilon}(\omega)
-	= \frac{1}{\sqrt{\piup} \epsilon} \exp\del{-\frac{\omega^2}{\epsilon^2}}
-\]
-
-Die Funktionenschar habe ich in Abbildung \ref{fig:Fourier} geplottet.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{Fouriertransformierte.pdf}
-	\caption{$\fourier\sbr{g_\epsilon}(\omega)$ für $\epsilon = \num{0.1}, \num{0.2}, \ldots, \num{1.1}$}
-	\label{fig:Fourier}
-\end{figure}
-
-Zur Probe habe ich das Integral über diese Funktion mit Mathematica rechnen
-lassen, es kommt unabhängig von $\epsilon$ gerade 1 heraus. Damit ist die eine
-Bedingung erfüllt, im Grenzwert sind auch alle Funktionswerte für $x \neq 0$
-gerade 0.
-
-\subsection{Beweis}
-
-Es soll folgende Identität gezeigt werden:
-\[
-	\frac1{2\piup} \lim_{\epsilon\to0} \fourier\sbr{g_\epsilon \fourier\sbr\psi}(-k)
-	= \psi(k)
-\]
-
-Dazu beginne ich mit der linken Seite:
-\begin{align*}
-	& \frac1{2\piup} \lim_{\epsilon\to0} \fourier\sbr{g_\epsilon \fourier\sbr\psi}(-k) \\
-	&= \frac1{2\piup} \lim_{\epsilon\to0} \int \dif b \, \exp\del{-\ii b (-k)} g_\epsilon(b) \int \dif a \, \exp\del{-\ii a b} \psi(a) \\
-	&= \frac1{2\piup} \lim_{\epsilon\to0} \int \dif a \int \dif b \, \exp\del{\ii bk-\ii ab} g_\epsilon(b) \psi(a) \\
-	\intertext{%
-		Einsetzen von $g_\epsilon$:
-	}
-	&= \frac1{2\piup} \lim_{\epsilon\to0} \int \dif a \int \dif b \, \exp\del{\ii bk-\ii ab -\half \epsilon^2 b^2}  \psi(a) \\
-	\intertext{%
-		Quadratische Ergänzung in der Exponentialfunktion:
-	}
-	&= \frac1{2\piup} \lim_{\epsilon\to0} \int \dif a \int \dif b \, \exp\del{-\del{\del{\frac{1}{\sqrt{2}} \epsilon b - \frac{\ii(k-a)}{\epsilon \sqrt{2}}}^2 + \frac{(k-a)^2}{2\epsilon^2}}}  \psi(a) \\
-	&= \frac1{2\piup} \lim_{\epsilon\to0} \int \dif a \exp\del{-\frac{(k-a)^2}{2\epsilon^2}} \int \dif b \, \exp\del{-\del{\del{\frac{1}{\sqrt{2}} \epsilon b - \frac{\ii(k-a)}{\epsilon \sqrt{2}}}^2}} \psi(a) \\
-	\intertext{%
-		Im Integral über $\dif b$ führe ich eine neue Koordinate ein: $c :=
-		\frac{1}{\sqrt{2}} \epsilon b - \frac{\ii(k-a)}{\epsilon \sqrt{2}}$.
-		Die Ableitung $\od cb$ ist $\epsilon/\sqrt 2$. Das verbleibende
-		Integral hat dann den Wer $\sqrt \piup$.
-	}
-	&= \sqrt{2\piup} \lim_{\epsilon\to0} \frac{1}{\epsilon} \int \dif a \exp\del{-\frac{(k-a)^2}{2\epsilon^2}} \psi(a) \\
-	\intertext{%
-		Dies ist die $\delta$-Distribution aus der vorherigen Aufgabe, diesmal mit $\delta(k-a)$. Somit ist dies:
-	}
-	&= \int \dif a \, \delta(k-a) \psi(a) \\
-	&= \psi(k)
-\end{align*}
-
-\subsection{Inverse Fouriertransformation}
-
-Es soll die inverse Fouriertransformation hergeleitet werden.
-
-Die inverse Fouriertransformation ist wie die normale Fouriertransformation und
-eine Parität $\mathcal P$ sowie einen Faktor $2 \piup$, also $\fourier^{-1} =
-\fourier \circ \mathop{\mathcal P} \ 2 \piup$. Wenn wir dies annehmen, können
-wir vereinfachen:
-\begin{align*}
-	\frac1{2\piup} \lim_{\epsilon\to0} \fourier\sbr{g_\epsilon \fourier\sbr\psi}(-k)
-	&= \psi(k) \\
-	\frac1{2\piup} \lim_{\epsilon\to0} \fourier\sbr{g_\epsilon \fourier\sbr\psi} \circ \mathcal P
-	&= \psi \\
-	\lim_{\epsilon\to0} \fourier^{-1}\sbr{g_\epsilon \fourier\sbr\psi}
-	&= \psi \\
-	\fourier^{-1}\sbr{\lim_{\epsilon\to0} g_\epsilon \fourier\sbr\psi}
-	&= \psi \\
-	\intertext{%
-		Im Limes $\epsilon \to 0$ wird die Funktion $g_\epsilon$ zur Identität
-		und fällt somit weg.
-	}
-	\fourier^{-1}\sbr{\fourier\sbr\psi}
-	&= \psi \\
-	\psi &= \psi
-\end{align*}
-
-Somit müsste die obige Annahme gelten und es gilt:
-\[
-	\fourier^{-1} = \frac{1}{2 \piup} \fourier \circ \mathop{\mathcal P} 
-\]
-
-\subsection{Distribution $D_k$}
-
-Es soll gezeigt werden, dass $\fourier\sbr{D_k} = 2 \piup \delta(x-k)$.
-
-Gegeben ist die Distribution $D_k$ mit:
-\begin{align*}
-	D_k[\phi](k) &= \int_{\infty}^\infty \dif x \, \exp\del{\ii kx} \phi(x)
-	\intertext{%
-		Auf diese Distribution wenden wir nun die Fouriertransformation an:
-	}
-	\fourier\sbr{D_k[\phi]}(\omega)
-	&= \int_{\infty}^\infty \dif k \, \exp\del{-\ii k \omega} \int_{\infty}^\infty \dif x \, \exp\del{\ii kx} \phi(x) \\
-	&= \int_{\infty}^\infty \dif k \int_{\infty}^\infty \dif x \, \exp\del{\ii k(x-\omega)} \phi(x) \\
-	&= \int_{\infty}^\infty \dif x \, \phi(x) \int_{\infty}^\infty \dif k \, \exp\del{\ii k(x-\omega)} \\
-	\intertext{%
-		Das hintere Integral über $k$ nimmt für den Fall $x-\omega=0$ den Wert
-		$\infty$ an. Für alle anderen Werte von $x-\omega$ ist das Integral
-		undefiniert oder 0. Dies entspricht $\delta(x-\omega)$.
-	}
-	&= \int_{\infty}^\infty \dif x \, \phi(x) \delta(x-\omega) \\
-	&= \delta_\omega[\phi]
-\end{align*}
-
-Es fehlt allerdings noch ein Faktor $2\piup$.
+\subsection{Lösung des Eigenwertproblems}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
@@ -215,7 +110,6 @@ Es fehlt allerdings noch ein Faktor $2\piup$.
 
 %\IfFileExists{\bibliographyfile}{
 	%\bibliography{\bibliographyfile}
-	%\bibliographystyle{plain}
 %}{}
 
 \end{document}
