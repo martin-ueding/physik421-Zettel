@@ -71,6 +71,10 @@
 
 \subsection{Erwartungswerte und Integral}
 
+\begin{align*}
+	- \ii \hbar \partial_x \psi(x, t) &= 
+\end{align*}
+
 \subsection{Minimum des Skalarproduktes}
 
 Gegeben ist:
@@ -129,6 +133,18 @@ Gegeben sind die folgenden Operatoren:
 \end{align*}
 
 \subsection{Lösung des Eigenwertproblems}
+
+\begin{align*}
+	\hat B \psi(x) &= \lambda \psi(x) \\
+	\int_{-\infty}^x \dif{x'} \, x' \psi\del{x'} &= \lambda \psi(x) \\
+	x \psi(x) &= \lambda \dod\psi x(x) \\
+	\dif x \, x &= \lambda \frac{\dif \psi}{\psi} \\
+	\int \dif x \, x &= \lambda \int \frac{\dif \psi}{\psi} \\
+	\half x^2 + C &= \lambda \ln\del{\psi(x)} \\
+	\exp\del{\frac{1}{2\lambda} x^2 + C} &= \psi(x) \\
+\end{align*}
+
+Als Einschränkung muss $\lambda \neq 0$ gelten.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
