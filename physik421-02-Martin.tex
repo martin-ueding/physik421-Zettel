@@ -79,26 +79,30 @@ z}$ aufhält, ist:
 
 Der Erwartungswert für die Position ist das Integral über alle $x$:
 \[
-	\bracket x = \int_a^b \dif x \, \abs{\psi(x, t)}^2 x
+	\bracket x = \int\dif x \, \abs{\psi(x, t)}^2 x
 \]
 
 Der Mittelwert des Ortsquadrates ist analog, nur das $x$ durch $x^2$
 ausgetauscht wird:
 \[
-	\bracket{x^2} = \int_a^b \dif x \, \abs{\psi(x, t)}^2 x^2
+	\bracket{x^2} = \int\dif x \, \abs{\psi(x, t)}^2 x^2
 \]
 
 Die Abweichung $(\Deltaup x)^2$ kann ich auch schreiben als:
 \cite{wikipedia-quantum_operators}
 \begin{align*}
-	\braproket{\psi}{\hat x^2}{\psi} - \braproket{\psi}{\hat x}{\psi}^2
-	&= \psi^\dagger x^2 \psi - \del{\psi^\dagger x \psi}^2 \\
-	&= \abs{\psi}^2 x^2 - \abs\psi^4 x^2 \\
+	(\Deltaup x)^2
+	&= \int \dif x \, \del{\braproket{\psi}{\hat x^2}{\psi} - \braproket{\psi}{\hat x}{\psi}^2} \\
+	&= \int \dif x \, \del{\psi^\dagger x^2 \psi - \del{\psi^\dagger x \psi}^2} \\
+	&= \int \dif x \, \del{\abs{\psi}^2 - \abs\psi^4} x^2
 \end{align*}
 
+Für die Abweichung des Impulses gehe ich analog vor. Der Operator $\hat p$ ist
+$- \ii \hbar \partial_h$.
 \begin{align*}
-	\braproket{\psi}{\hat p^2}{\psi} - \braproket{\psi}{\hat p}{\psi}^2
-	&= -\ii \hbar \psi^\dagger \partial_x \psi' - \hbar^2 \del{\psi^\dagger \psi'}^2 \\
+	(\Deltaup p)^2
+	&= \int \dif x \, \del{\braproket{\psi}{\hat p^2}{\psi} - \braproket{\psi}{\hat p}{\psi}^2} \\
+	&= - \hbar^2 \int \dif x \, \del{\psi^\dagger \psi' - \del{\psi^\dagger \psi'}^2} \\
 \end{align*}
 
 \fehlt
