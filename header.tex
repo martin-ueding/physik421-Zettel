@@ -30,9 +30,9 @@
 %                          Margins and other spacing                          %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[activate]{pdfcprot}
 \usepackage[parfill]{parskip}
 \usepackage{setspace}
+\usepackage[activate]{microtype}
 
 \setlength{\columnsep}{2cm}
 
@@ -40,11 +40,11 @@
 %                                    Color                                    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{color}
+\usepackage[usenames, dvipsnames]{xcolor}
 
-\definecolor{darkblue}{rgb}{0,0,.5}
-\definecolor{darkgreen}{rgb}{0,.5,0}
-\definecolor{darkred}{rgb}{.7,0,0}
+\colorlet{darkred}{red!70!black}
+\colorlet{darkblue}{blue!70!black}
+\colorlet{darkgreen}{green!70!black}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         Font and font like settings                         %
@@ -87,7 +87,7 @@
 	breaklinks=false,
 	citecolor=darkgreen,
 	colorlinks=true,
-	linkcolor=black,
+	linkcolor=darkblue,
 	menucolor=black,
 	pdfauthor={Martin Ueding},
 	urlcolor=darkblue,
@@ -161,7 +161,8 @@
 \newcommand{\emesswert}{\del{\messwert \pm \messwert}}
 \newcommand{\fehlt}{\textcolor{darkred}{Hier fehlen noch Inhalte.}}
 \newcommand{\messwert}{\textcolor{blue}{\square}}
-\newcommand{\punkte}{\textcolor{white}{xxxxx}}
+\newcommand{\punkte}{\phantom{xxxxx}}
+\newcommand{\punktevon}[1]{\begin{flushright}/ #1\end{flushright}}
 
 % Separator for equations on a single line.
 \newcommand{\eqnsep}{,\quad}
