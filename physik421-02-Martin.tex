@@ -148,14 +148,17 @@ Gegeben sind die folgenden Operatoren:
 	}
 	&= x^2 \psi(x) \\
 	\hat B \hat A \psi(x)
-	&=
-	\int_{-\infty}^x \dif{x'} \, x'^2 \partial_{x'} \psi\del{x'}
+	&= \int_{-\infty}^x \dif{x'} \, x'^2 \partial_{x'} \psi\del{x'} \\
+	&= \eval{x'^2 \psi\del{x'}}_{-\infty}^x - 2 \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'} \\
+	&= x^2 \psi\del{x} - 2 \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'}
 \end{align*}
 
-Ich weiß an dieser Stelle allerdings nicht, wie ich das $\psi$ ausklammern
-kann, so dass der eine Kommutator stehen bleibt.
+\[
+	\sbr{\hat A, \hat B}
+	=
+	- 2 \hat B
+\]
 
-\fehlt
 
 \subsection{Lösung des Eigenwertproblems}
 
