@@ -103,7 +103,7 @@ $- \ii \hbar \partial_h$.
 \begin{align*}
 	(\Deltaup p)^2
 	&= \braproket{\psi}{\hat p^2}{\psi} - \braproket{\psi}{\hat p}{\psi}^2 \\
-	&= - \hbar^2 \int \dif x \, \del{\psi^\dagger \psi' - \del{\psi^\dagger \psi'}^2}
+	&= - \hbar^2 \int \dif x \, \del{\psi^\dagger \dpd{}x \psi - \del{\psi^\dagger \dpd{}x \psi}^2}
 \end{align*}
 
 \fehlt
@@ -144,7 +144,7 @@ Gegeben sind die folgenden Operatoren:
 	&= x \partial_x \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'} \\
 	\intertext{%
 		Hier wende ich die Formel für die Ableitung von Integralen an: $\od{}x
-		\int_{g(x)}^{h(x)} \dif y \, f(y) = h'(x) f\del{h(x)} - g'(x)
+		\int_{g(x)}^{h(x)} \dif y \, f(y) = \dpd hx(x) f\del{h(x)} - \dpd gx(x)
 		f\del{g(x)}$.
 	}
 	&= x^2 \psi(x) \\
