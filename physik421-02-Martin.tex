@@ -94,8 +94,8 @@ Die Abweichung $(\Deltaup x)^2$ kann ich auch schreiben als:
 \begin{align*}
 	(\Deltaup x)^2
 	&= \braproket{\psi}{\hat x^2}{\psi} - \braproket{\psi}{\hat x}{\psi}^2 \\
-	&= \int \dif x \, \del{\psi^\dagger x^2 \psi - \del{\psi^\dagger x \psi}^2} \\
-	&= \int \dif x \, \del{\abs{\psi}^2 - \abs\psi^4} x^2
+	&= \int \dif x \, \del{\psi^\dagger(x, t) x^2 \psi(x, t) - \del{\psi^\dagger(x, t) x \psi(x, t)}^2} \\
+	&= \int \dif x \, \del{\abs{\psi(x, t)}^2 - \abs{\psi(x, t)}^4} x^2
 \end{align*}
 
 Für die Abweichung des Impulses gehe ich analog vor. Der Operator $\hat p$ ist
@@ -103,7 +103,7 @@ $- \ii \hbar \partial_h$.
 \begin{align*}
 	(\Deltaup p)^2
 	&= \braproket{\psi}{\hat p^2}{\psi} - \braproket{\psi}{\hat p}{\psi}^2 \\
-	&= - \hbar^2 \int \dif x \, \del{\psi^\dagger \dpd{}x \psi - \del{\psi^\dagger \dpd{}x \psi}^2}
+	&= - \hbar^2 \int \dif x \, \del{\psi^\dagger(x, t) \dpd{}x \psi(x, t) - \del{\psi^\dagger(x, t) \dpd{}x \psi(x, t)}^2}
 \end{align*}
 
 \fehlt
