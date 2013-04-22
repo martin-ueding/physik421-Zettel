@@ -44,7 +44,7 @@
 
 \colorlet{darkred}{red!70!black}
 \colorlet{darkblue}{blue!70!black}
-\colorlet{darkgreen}{green!70!black}
+\colorlet{darkgreen}{green!40!black}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         Font and font like settings                         %
@@ -154,8 +154,8 @@
 \newcommand{\e}[1]{\cdot 10^{#1}}
 
 % Mathematician's notation for the inner (scalar, dot) product.
-\newcommand{\inner}[2]{\bracket{#1, #2}}
 \newcommand{\bracket}[1]{\left\langle #1 \right\rangle}
+\newcommand{\inner}[2]{\bracket{#1, #2}}
 
 % Placeholders.
 \newcommand{\emesswert}{\del{\messwert \pm \messwert}}
@@ -173,8 +173,6 @@
 \newcommand{\braket}[2]{\left\langle #1 \left. \vphantom{#1 #2} \right| #2 \right\rangle}
 \newcommand{\braproket}[3]{\left\langle #1 \left. \vphantom{#1 #2 #3} \right| #2 \left. \vphantom{#1 #2 #3} \right| #3 \right\rangle}
 
-\DeclareMathOperator{\hamilton}{\mathcal H}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                  Headings                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -189,14 +187,11 @@
 \usepackage{scrpage2}
 
 \pagestyle{scrheadings}
-
 \automark{section}
-
 \cfoot{\footnotesize{Seite \thepage\ / \pageref{LastPage}}}
 \chead{}
 \ihead{}
 \ohead{\rightmark}
-
 \setheadsepline{.4pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
