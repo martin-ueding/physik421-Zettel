@@ -108,7 +108,9 @@ $- \ii \hbar \partial_h$.
 
 \fehlt
 
-\subsection{Minimum des Skalarproduktes}
+\subsection{Skalarprodukt und dessen Minimum}
+
+\paragraph{Skalarprodukt herleiten}
 
 Gegeben ist:
 \[
@@ -123,6 +125,30 @@ Das Skalarprodukt ist:
 \end{align*}
 
 \fehlt
+
+\paragraph{Minimum bestimmen}
+
+\begin{align*}
+	\braket{\psi_\alpha}{\psi_\alpha}
+	&= \alpha^2 \del{\Deltaup x}^2 - \alpha + \frac{1}{\hbar^2} \del{\Delta p}^2 \\
+	\intertext{%
+		Quadratische Ergänzung in $\alpha$:
+	}
+	&= \del{\alpha \Deltaup x - \frac{1}{2\Deltaup x}}^2 + \frac{1}{\hbar^2} \del{\Delta p}^2 - \frac{1}{4 (\Deltaup x)^2} \\
+	\intertext{%
+		Das Minimum ist erreicht, wenn der quadratische Term 0 ist. Also setze
+		$\alpha := \frac{1}{2(\Deltaup x)}$. Da es sich hier um ein
+		Skalarprodukt handelt, das per Definition positiv-definit sein muss,
+		muss der Ausdruck großer gleich 0 sein.
+	}
+	&= \frac{1}{\hbar^2} \del{\Delta p}^2 - \frac{1}{4 (\Deltaup x)^2} \geq 0
+\end{align*}
+
+Diesen Ausdruck stelle ich um und ziehe die Wurzel. Heraus kommt die gesuchte
+Relation:
+\[
+	\Deltaup x \Deltaup p \geq \half \hbar
+\]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                Kommutatoren                                 %
