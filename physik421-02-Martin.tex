@@ -120,8 +120,8 @@ Gegeben ist:
 Das Skalarprodukt ist:
 \begin{align*}
 	\braket{\psi_\alpha}{\psi_\alpha}
-	&= \psi_\alpha^\dagger \psi_\alpha^{} \\
-	&= \del{\alpha \del{x - \bracket x} \phi(x, t) + \frac\ii\hbar \del{\hat p - \bracket p} \phi(x, t)}^\dagger \del{\alpha \del{x - \bracket x} \phi(x, t) + \frac\ii\hbar \del{\hat p - \bracket p} \phi(x, t)}
+	&= \int_{-\infty}^\infty \dif x \, \psi_\alpha^\dagger \psi_\alpha^{} \\
+	&=  \int_{-\infty}^\infty \dif x \, \abs{\alpha \del{x - \bracket x} \phi(x, t) + \frac\ii\hbar \del{\hat p - \bracket p} \phi(x, t)}^2
 \end{align*}
 
 \fehlt
