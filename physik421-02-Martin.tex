@@ -84,7 +84,7 @@ z}$ aufhält, ist:
 
 Der Erwartungswert für die Position ist das Integral über alle $x$:
 \[
-	\bracket x = \int\dif x \, \abs{\psi(x, t)}^2 x
+	\bracket{\hat x} = \int\dif x \, \abs{\psi(x, t)}^2 x
 \]
 
 Der Mittelwert des Ortsquadrates ist analog, nur das $x$ durch $x^2$
@@ -118,30 +118,30 @@ $- \ii \hbar \partial_h$.
 
 Gegeben ist:
 \[
-	\psi_\alpha(x, t) = \alpha \del{x - \bracket x} \phi(x, t) + \frac\ii\hbar \del{\hat p - \bracket p} \phi(x, t)
+	\psi_\alpha(x, t) = \alpha \del{x - \bracket{\hat x}} \phi(x, t) + \frac\ii\hbar \del{\hat p - \bracket p} \phi(x, t)
 \]
 
 Das Skalarprodukt ist:
 \begin{align*}
 	\braket{\psi_\alpha}{\psi_\alpha}
 	&= \int_{-\infty}^\infty \dif x \, \psi_\alpha^\dagger \psi_\alpha^{} \\
-	&= \int_{-\infty}^\infty \dif x \, \abs{\alpha \del{x - \bracket x} \phi(x, t) + \frac\ii\hbar \del{\hat p - \bracket p} \phi(x, t)}^2 \\
+	&= \int_{-\infty}^\infty \dif x \, \abs{\alpha \del{x - \bracket{\hat x}} \phi(x, t) + \frac\ii\hbar \del{\hat p - \bracket p} \phi(x, t)}^2 \\
 	&= \int_{-\infty}^\infty \dif x \, \bigg(
 	\underbrace{
 		\alpha^2
-		\del{x - \bracket x}^\dagger \phi^\dagger(x, t)
-		\del{x - \bracket x} \phi(x, t)
+		\del{x - \bracket{\hat x}}^\dagger \phi^\dagger(x, t)
+		\del{x - \bracket{\hat x}} \phi(x, t)
 	}_{S_1} \\
 	&\quad
 	\underbrace{
 	- \frac{\ii \alpha}\hbar
 	\del{\hat p - \bracket{\hat p}}^\dagger \phi^\dagger(x, t)
-	\del{x - \bracket x} \phi(x, t)
+	\del{x - \bracket{\hat x}} \phi(x, t)
 	}_{S_2} \\
 	&\quad
 	\underbrace{
 	+ \frac{\ii \alpha}\hbar
-	\del{x - \bracket x}^\dagger \phi^\dagger(x, t)
+	\del{x - \bracket{\hat x}}^\dagger \phi^\dagger(x, t)
 	\del{\hat p - \bracket{\hat p}} \phi(x, t)
 	}_{S_3} \\
 	&\quad
@@ -159,9 +159,9 @@ Betrachte die Summanden einzeln.
 
 \begin{align*}
 	S_1
-	&= \int_{-\infty}^\infty \dif x \, \alpha^2 \del{x - \bracket x}^\dagger \phi^\dagger(x, t) \del{x - \bracket x} \phi(x, t) \\
-	&= \alpha^2 \int_{-\infty}^\infty \dif x \, \del{x - \bracket x}^2  \abs{\phi(x, t)}^2 \\
-	&= \alpha^2 \braproket\phi{\del{x - \bracket x}^2}\phi \\
+	&= \int_{-\infty}^\infty \dif x \, \alpha^2 \del{x - \bracket{\hat x}}^\dagger \phi^\dagger(x, t) \del{x - \bracket{\hat x}} \phi(x, t) \\
+	&= \alpha^2 \int_{-\infty}^\infty \dif x \, \del{x - \bracket{\hat x}}^2  \abs{\phi(x, t)}^2 \\
+	&= \alpha^2 \braproket\phi{\del{x - \bracket{\hat x}}^2}\phi \\
 	&= \alpha^2 (\Deltaup x)^2
 \end{align*}
 
@@ -170,21 +170,21 @@ Betrachte die Summanden einzeln.
 \begin{align*}
 	S_2 + S_3
 	&= \int_{-\infty}^\infty \dif x \, \bigg(
-	- \frac{\ii \alpha}{\hbar} \del{\hat p^\dagger - \bracket{\hat p}} \phi^\dagger(x, t) \del{x - \bracket x} \phi(x, t) \\
-	&\quad + \frac{\ii \alpha}{\hbar} \del{x - \bracket x}^\dagger \phi^\dagger(x, t) \del{\hat p - \bracket{\hat p}} \phi(x, t)
+	- \frac{\ii \alpha}{\hbar} \del{\hat p^\dagger - \bracket{\hat p}} \phi^\dagger(x, t) \del{x - \bracket{\hat x}} \phi(x, t) \\
+	&\quad + \frac{\ii \alpha}{\hbar} \del{x - \bracket{\hat x}}^\dagger \phi^\dagger(x, t) \del{\hat p - \bracket{\hat p}} \phi(x, t)
 	\bigg) \\
 	&= \frac{\ii \alpha}{\hbar} \int_{-\infty}^\infty \dif x \, \bigg(
-	\ii \hbar \dpd{}x \phi^\dagger(x, t) x \phi(x, t) + \ii \hbar \dpd{}x \phi^\dagger(x, t) \bracket x \phi(x, t) + \bracket{\hat p} \phi^\dagger(x, t) x \phi(x, t) \\
+	\ii \hbar \dpd{}x \phi^\dagger(x, t) x \phi(x, t) + \ii \hbar \dpd{}x \phi^\dagger(x, t) \bracket{\hat x} \phi(x, t) + \bracket{\hat p} \phi^\dagger(x, t) x \phi(x, t) \\
 	&\quad - \cancel{\bracket{\hat p} \bracket{x} \phi^\dagger(x, t) \phi(x, t)}
 	%
 	- x \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi(x, t) - x \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t) \\
-	&\quad + \bracket x \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi(x, t) + \cancel{\bracket x \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t)}
+	&\quad + \bracket{\hat x} \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi(x, t) + \cancel{\bracket{\hat x} \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t)}
 	\bigg) \\
 	&= \frac{\ii \alpha}{\hbar} \int_{-\infty}^\infty \dif x \, \bigg(
-	- \ii \hbar \phi^\dagger(x, t) \phi(x, t) + \bracket x \bracket{\hat p} + \bracket x \bracket{\hat p} + \ii \hbar \phi^\dagger(x, t) \phi(x, t) - \bracket x \bracket{\hat p}
+	- \ii \hbar \phi^\dagger(x, t) \phi(x, t) + \bracket{\hat x} \bracket{\hat p} + \bracket{\hat x} \bracket{\hat p} + \ii \hbar \phi^\dagger(x, t) \phi(x, t) - \bracket{\hat x} \bracket{\hat p}
 	\bigg) \\
-	&= - \alpha + \frac{\ii \alpha}{\hbar} \bracket x \bracket{\hat p} + \alpha \\
-	&= \frac{\ii \alpha}{\hbar} \bracket x \bracket{\hat p}
+	&= - \alpha + \frac{\ii \alpha}{\hbar} \bracket{\hat x} \bracket{\hat p} + \alpha \\
+	&= \frac{\ii \alpha}{\hbar} \bracket{\hat x} \bracket{\hat p}
 \end{align*}
 
 Hier sollte eigentlich gerade $-\alpha$ herauskommen, damit es weiter unten
