@@ -110,7 +110,7 @@ $- \ii \hbar \partial_h$.
 
 \subsection{Skalarprodukt und dessen Minimum}
 
-\paragraph{Skalarprodukt herleiten}
+\subsubsection{Skalarprodukt herleiten}
 
 Gegeben ist:
 \[
@@ -127,31 +127,85 @@ Das Skalarprodukt ist:
 		\alpha^2
 		\del{x - \bracket x}^\dagger \psi^\dagger(x, t)
 		\del{x - \bracket x} \psi(x, t)
-	}_{1} \\
+	}_{S_1} \\
 	&\quad
 	\underbrace{
 	- \frac{\ii \alpha}\hbar
 	\del{\hat p - \bracket{\hat p}}^\dagger \psi^\dagger(x, t)
 	\del{x - \bracket x} \psi(x, t)
-	}_{2} \\
+	}_{S_2} \\
 	&\quad
 	\underbrace{
 	+ \frac{\ii \alpha}\hbar
 	\del{x - \bracket x}^\dagger \psi^\dagger(x, t)
 	\del{\hat p - \bracket{\hat p}} \psi(x, t)
-	}_{3} \\
+	}_{S_3} \\
 	&\quad
 	\underbrace{
 	+ \frac{1}{\hbar^2}
 	\del{\hat p - \bracket{\hat p}}^\dagger \psi^\dagger(x, t)
 	\del{\hat p - \bracket{\hat p}} \psi(x, t)
-	}_{4}
+	}_{S_4}
 	\bigg) \\
 \end{align*}
 
+Betrachte die Summanden einzeln.
+
+\paragraph{Summand $S_1$}
+
+\begin{align*}
+	S_1
+	&= \int_{-\infty}^\infty \dif x \, \alpha^2 \del{x - \bracket x}^\dagger \psi^\dagger(x, t) \del{x - \bracket x} \psi(x, t) \\
+	&= \alpha^2 \int_{-\infty}^\infty \dif x \, \del{x - \bracket x}^2  \abs{\psi(x, t)}^2 \\
+	&= \alpha^2 \braproket\psi{\del{x - \bracket x}^2}\psi \\
+	&= \alpha^2 (\Deltaup x)^2 \\
+\end{align*}
+
+\paragraph{Summand $S_2$}
+
 \fehlt
 
-\paragraph{Minimum bestimmen}
+\paragraph{Summand $S_3$}
+
+\fehlt
+
+\paragraph{Summand $S_4$}
+
+\begin{align*}
+	S_4
+	&= \int_{-\infty}^\infty \dif x \, \frac{1}{\hbar^2} \del{\hat p - \bracket{\hat p}}^\dagger \psi^\dagger(x, t) \del{\hat p - \bracket{\hat p}} \psi(x, t) \\
+	&= \int_{-\infty}^\infty \dif x \, \frac{1}{\hbar^2} \Bigg(
+	\underbrace{
+		\ii \hbar \dpd{}x \psi^\dagger(x, t) \del{- \ii \hbar \dpd{}x} \psi
+}_{S_{4a}}
+	\underbrace{
+	+
+	\bracket{\hat p} \psi^\dagger(x, t) \ii \hbar \dpd{}x \psi
+}_{S_{4b}} \\
+&\quad \underbrace{
+	-
+	\ii \hbar \dpd{}x \psi^\dagger(x, t) \bracket{\hat p}
+}_{S_{4c}}
+	+ \underbrace{\bracket{\hat p}^2 \psi^\dagger(x, t) \psi(x, t)}_{\bracket{\hat p}^2}
+	\Bigg) \\
+\end{align*}
+
+Betrachte Summanden $S_{4a}$ und führe eine partielle Integration aus, um den
+Impulsoperator auf die zweite Funktion umzuwälzen:
+\begin{align*}
+	S_{4a}
+	&= \int_{-\infty}^\infty \dif x \, \frac{1}{\hbar^2} \ii \hbar \dpd{}x \psi^\dagger(x, t) \del{- \ii \hbar \dpd{}x} \psi \\
+	&= \frac{1}{\hbar^2} \int_{-\infty}^\infty \dif x \, \psi^\dagger(x, t) \del{- \ii \hbar \dpd{}x}^2 \psi \\
+	&= \frac{1}{\hbar^2} \bracket{\hat p^2} \\
+\end{align*}
+
+Betrachte den Summanden $S_{4b}$:
+\begin{align*}
+	S_{4b}
+	&= \frac{1}{\hbar^2} \int_{-\infty}^\infty \dif x \, \bracket{\hat p} \psi^\dagger(x, t) \ii \hbar \dpd{}x \psi \\
+\end{align*}
+
+\subsubsection{Minimum bestimmen}
 
 \begin{align*}
 	\braket{\psi_\alpha}{\psi_\alpha}
