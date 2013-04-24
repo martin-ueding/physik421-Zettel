@@ -105,7 +105,7 @@ Wobei anscheinend $\braproket{\psi}{\hat O}{\psi}$ einfach als $\bracket{\hat
 O}$ geschrieben wird.
 
 Für die Abweichung des Impulses gehe ich analog vor. Der Operator $\hat p$ ist
-$- \ii \hbar \partial_h$.
+$- \ii \hbar \pd{}x$.
 \begin{align*}
 	(\Deltaup p)^2
 	&= \braproket{\psi}{\hat p^2}{\psi} - \braproket{\psi}{\hat p}{\psi}^2 \\
@@ -283,7 +283,7 @@ Relation:
 
 Gegeben sind die folgenden Operatoren:
 \begin{gather*}
-	\hat A \psi(x) = x \partial_x \phi(x) \\
+	\hat A \psi(x) = x \dpd{}x \phi(x) \\
 	\hat B \psi(x) = \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'}
 \end{gather*}
 
@@ -291,7 +291,7 @@ Gegeben sind die folgenden Operatoren:
 
 \begin{align*}
 	\hat A \hat B \psi(x)
-	&= x \partial_x \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'} \\
+	&= x \dpd{}x \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'} \\
 	\intertext{%
 		Hier wende ich die Formel für die Ableitung von Integralen an: $\od{}x
 		\int_{g(x)}^{h(x)} \dif y \, f(y) = \dpd hx(x) f\del{h(x)} - \dpd gx(x)
@@ -299,7 +299,7 @@ Gegeben sind die folgenden Operatoren:
 	}
 	&= x^2 \psi(x) \\
 	\hat B \hat A \psi(x)
-	&= \int_{-\infty}^x \dif{x'} \, x'^2 \partial_{x'} \psi\del{x'} \\
+	&= \int_{-\infty}^x \dif{x'} \, x'^2 \dpd{}{x'} \psi\del{x'} \\
 	&= \eval{x'^2 \psi\del{x'}}_{-\infty}^x - 2 \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'} \\
 	&= x^2 \psi\del{x} - 2 \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'}
 \end{align*}
