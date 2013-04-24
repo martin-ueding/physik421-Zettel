@@ -170,23 +170,25 @@ Betrachte die Summanden einzeln.
 \begin{align*}
 	S_2 + S_3
 	&= \int_{-\infty}^\infty \dif x \, \bigg(
-	- \frac{\ii \alpha}{\hbar} \del{\hat p^\dagger - \bracket{\hat p}} \phi^\dagger(x, t) \del{x - \bracket x} \psi(x, t) \\
+	- \frac{\ii \alpha}{\hbar} \del{\hat p^\dagger - \bracket{\hat p}} \phi^\dagger(x, t) \del{x - \bracket x} \phi(x, t) \\
 	&\quad + \frac{\ii \alpha}{\hbar} \del{x - \bracket x}^\dagger \phi^\dagger(x, t) \del{\hat p - \bracket{\hat p}} \phi(x, t)
 	\bigg) \\
-	&= -\frac{\ii \alpha}{\hbar} \int_{-\infty}^\infty \dif x \, \bigg(
-	\ii \hbar \dpd{}x \psi^\dagger(x, t) x \phi(x, t) - \ii \hbar \dpd{}x \phi^\dagger(x, t) \bracket x \phi(x, t) - \bracket{\hat p} \phi^\dagger(x, t) x \phi(x, t) \\
-	&\quad + \cancel{\bracket{\hat p} \bracket{x} \phi^\dagger(x, t) \phi(x, t)}
+	&= \frac{\ii \alpha}{\hbar} \int_{-\infty}^\infty \dif x \, \bigg(
+	\ii \hbar \dpd{}x \phi^\dagger(x, t) x \phi(x, t) + \ii \hbar \dpd{}x \phi^\dagger(x, t) \bracket x \phi(x, t) + \bracket{\hat p} \phi^\dagger(x, t) x \phi(x, t) \\
+	&\quad - \cancel{\bracket{\hat p} \bracket{x} \phi^\dagger(x, t) \phi(x, t)}
 	%
-	+ x \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi(x, t) + x \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t) \\
-	&\quad - \bracket x \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi(x, t) - \cancel{\bracket x \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t)}
+	- x \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi(x, t) - x \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t) \\
+	&\quad + \bracket x \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi(x, t) + \cancel{\bracket x \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t)}
 	\bigg) \\
-	&= -\frac{\ii \alpha}{\hbar} \int_{-\infty}^\infty \dif x \, \bigg(
-	- \ii \hbar \phi^\dagger(x, t) \phi(x, t) + \bracket x \bracket{\hat p} - \bracket x \bracket{\hat p} + \ii \hbar \phi^\dagger(x, t) \phi(x, t) + \bracket x \bracket{\hat p}
+	&= \frac{\ii \alpha}{\hbar} \int_{-\infty}^\infty \dif x \, \bigg(
+	- \ii \hbar \phi^\dagger(x, t) \phi(x, t) + \bracket x \bracket{\hat p} + \bracket x \bracket{\hat p} + \ii \hbar \phi^\dagger(x, t) \phi(x, t) - \bracket x \bracket{\hat p}
 	\bigg) \\
-	&= - \alpha - \frac{\ii \alpha}{\hbar} \bracket x \bracket{\hat p} + \alpha
+	&= - \alpha + \frac{\ii \alpha}{\hbar} \bracket x \bracket{\hat p} + \alpha \\
+	&= \frac{\ii \alpha}{\hbar} \bracket x \bracket{\hat p}
 \end{align*}
 
-\fehlt
+Hier sollte eigentlich gerade $-\alpha$ herauskommen, damit es weiter unten
+passt.
 
 \paragraph{Summand $S_4$}
 
