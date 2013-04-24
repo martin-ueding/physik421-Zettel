@@ -2,6 +2,7 @@
 %
 \input{header.tex}
 
+\usepackage{cancel}
 \usepackage{tikz}
 
 \newcommand{\themodul}{physik421}
@@ -123,28 +124,28 @@ Das Skalarprodukt ist:
 	&= \int_{-\infty}^\infty \dif x \, \bigg(
 	\underbrace{
 		\alpha^2
-		\del{x - \bracket x}^\dagger \psi^\dagger(x, t)
-		\del{x - \bracket x} \psi(x, t)
+		\del{x - \bracket x}^\dagger \phi^\dagger(x, t)
+		\del{x - \bracket x} \phi(x, t)
 	}_{S_1} \\
 	&\quad
 	\underbrace{
 	- \frac{\ii \alpha}\hbar
-	\del{\hat p - \bracket{\hat p}}^\dagger \psi^\dagger(x, t)
-	\del{x - \bracket x} \psi(x, t)
+	\del{\hat p - \bracket{\hat p}}^\dagger \phi^\dagger(x, t)
+	\del{x - \bracket x} \phi(x, t)
 	}_{S_2} \\
 	&\quad
 	\underbrace{
 	+ \frac{\ii \alpha}\hbar
-	\del{x - \bracket x}^\dagger \psi^\dagger(x, t)
-	\del{\hat p - \bracket{\hat p}} \psi(x, t)
+	\del{x - \bracket x}^\dagger \phi^\dagger(x, t)
+	\del{\hat p - \bracket{\hat p}} \phi(x, t)
 	}_{S_3} \\
 	&\quad
 	\underbrace{
 	+ \frac{1}{\hbar^2}
-	\del{\hat p - \bracket{\hat p}}^\dagger \psi^\dagger(x, t)
-	\del{\hat p - \bracket{\hat p}} \psi(x, t)
+	\del{\hat p - \bracket{\hat p}}^\dagger \phi^\dagger(x, t)
+	\del{\hat p - \bracket{\hat p}} \phi(x, t)
 	}_{S_4}
-	\bigg) \\
+	\bigg)
 \end{align*}
 
 Betrachte die Summanden einzeln.
@@ -153,17 +154,32 @@ Betrachte die Summanden einzeln.
 
 \begin{align*}
 	S_1
-	&= \int_{-\infty}^\infty \dif x \, \alpha^2 \del{x - \bracket x}^\dagger \psi^\dagger(x, t) \del{x - \bracket x} \psi(x, t) \\
-	&= \alpha^2 \int_{-\infty}^\infty \dif x \, \del{x - \bracket x}^2  \abs{\psi(x, t)}^2 \\
-	&= \alpha^2 \braproket\psi{\del{x - \bracket x}^2}\psi \\
-	&= \alpha^2 (\Deltaup x)^2 \\
+	&= \int_{-\infty}^\infty \dif x \, \alpha^2 \del{x - \bracket x}^\dagger \phi^\dagger(x, t) \del{x - \bracket x} \phi(x, t) \\
+	&= \alpha^2 \int_{-\infty}^\infty \dif x \, \del{x - \bracket x}^2  \abs{\phi(x, t)}^2 \\
+	&= \alpha^2 \braproket\phi{\del{x - \bracket x}^2}\phi \\
+	&= \alpha^2 (\Deltaup x)^2
 \end{align*}
 
-\paragraph{Summand $S_2$}
+\paragraph{Summanden $S_2$ und $S_3$}
 
-\fehlt
-
-\paragraph{Summand $S_3$}
+\begin{align*}
+	S_2 + S_3
+	&= \int_{-\infty}^\infty \dif x \, \bigg(
+	- \frac{\ii \alpha}{\hbar} \del{\hat p^\dagger - \bracket{\hat p}} \phi^\dagger(x, t) \del{x - \bracket x} \psi(x, t) \\
+	&\quad + \frac{\ii \alpha}{\hbar} \del{x - \bracket x}^\dagger \phi^\dagger(x, t) \del{\hat p - \bracket{\hat p}} \phi(x, t)
+	\bigg) \\
+	&= -\frac{\ii \alpha}{\hbar} \int_{-\infty}^\infty \dif x \, \bigg(
+	\ii \hbar \dpd{}x \psi^\dagger(x, t) x \phi(x, t) - \ii \hbar \dpd{}x \phi^\dagger(x, t) \bracket x \phi(x, t) - \bracket{\hat p} \phi^\dagger(x, t) x \phi(x, t) \\
+	&\quad + \cancel{\bracket{\hat p} \bracket{x} \phi^\dagger(x, t) \phi(x, t)}
+	%
+	+ x \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi(x, t) + x \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t) \\
+	&\quad - \bracket x \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi(x, t) - \cancel{\bracket x \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t)}
+	\bigg) \\
+	&= -\frac{\ii \alpha}{\hbar} \int_{-\infty}^\infty \dif x \, \bigg(
+	- \ii \hbar \phi^\dagger(x, t) \phi(x, t) + \bracket x \bracket{\hat p} - \bracket x \bracket{\hat p} + \ii \hbar \phi^\dagger(x, t) \phi(x, t) + \bracket x \bracket{\hat p}
+	\bigg) \\
+	&= - \alpha - \frac{\ii \alpha}{\hbar} \bracket x \bracket{\hat p} + \alpha
+\end{align*}
 
 \fehlt
 
@@ -171,38 +187,61 @@ Betrachte die Summanden einzeln.
 
 \begin{align*}
 	S_4
-	&= \int_{-\infty}^\infty \dif x \, \frac{1}{\hbar^2} \del{\hat p - \bracket{\hat p}}^\dagger \psi^\dagger(x, t) \del{\hat p - \bracket{\hat p}} \psi(x, t) \\
+	&= \int_{-\infty}^\infty \dif x \, \frac{1}{\hbar^2} \del{\hat p - \bracket{\hat p}}^\dagger \phi^\dagger(x, t) \del{\hat p - \bracket{\hat p}} \phi(x, t) \\
 	&= \int_{-\infty}^\infty \dif x \, \frac{1}{\hbar^2} \Bigg(
 	\underbrace{
-		\ii \hbar \dpd{}x \psi^\dagger(x, t) \del{- \ii \hbar \dpd{}x} \psi
+		\ii \hbar \dpd{}x \phi^\dagger(x, t) \del{- \ii \hbar \dpd{}x} \phi(x, t)
 }_{S_{4a}}
 	\underbrace{
 	+
-	\bracket{\hat p} \psi^\dagger(x, t) \ii \hbar \dpd{}x \psi
+	\bracket{\hat p} \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi(x, t)
 }_{S_{4b}} \\
 &\quad \underbrace{
 	-
-	\ii \hbar \dpd{}x \psi^\dagger(x, t) \bracket{\hat p}
+	\ii \hbar \dpd{}x \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t)
 }_{S_{4c}}
-	+ \underbrace{\bracket{\hat p}^2 \psi^\dagger(x, t) \psi(x, t)}_{\bracket{\hat p}^2}
-	\Bigg) \\
+	+ \underbrace{\bracket{\hat p}^2 \phi^\dagger(x, t) \phi(x, t)}_{\bracket{\hat p}^2}
+	\Bigg)
 \end{align*}
 
 Betrachte Summanden $S_{4a}$ und führe eine partielle Integration aus, um den
 Impulsoperator auf die zweite Funktion umzuwälzen:
 \begin{align*}
 	S_{4a}
-	&= \int_{-\infty}^\infty \dif x \, \frac{1}{\hbar^2} \ii \hbar \dpd{}x \psi^\dagger(x, t) \del{- \ii \hbar \dpd{}x} \psi \\
-	&= \frac{1}{\hbar^2} \int_{-\infty}^\infty \dif x \, \psi^\dagger(x, t) \del{- \ii \hbar \dpd{}x}^2 \psi \\
-	&= \frac{1}{\hbar^2} \bracket{\hat p^2} \\
+	&= \int_{-\infty}^\infty \dif x \, \frac{1}{\hbar^2} \ii \hbar \dpd{}x \phi^\dagger(x, t) \del{- \ii \hbar \dpd{}x} \phi \\
+	&= \frac{1}{\hbar^2} \int_{-\infty}^\infty \dif x \, \phi^\dagger(x, t) \del{- \ii \hbar \dpd{}x}^2 \phi \\
+	&= \frac{1}{\hbar^2} \bracket{\hat p^2}
 \end{align*}
 
 Betrachte den Summanden $S_{4b}$:
 \begin{align*}
 	S_{4b}
-	&= \frac{1}{\hbar^2} \int_{-\infty}^\infty \dif x \, \bracket{\hat p} \psi^\dagger(x, t) \ii \hbar \dpd{}x \psi \\
-	&= \frac{1}{\hbar^2} \bracket{\hat p} \int_{-\infty}^\infty \dif x \, \psi^\dagger(x, t) \ii \hbar \dpd{}x \psi \\
+	&= \frac{1}{\hbar^2} \int_{-\infty}^\infty \dif x \, \bracket{\hat p} \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi \\
+	&= \frac{1}{\hbar^2} \bracket{\hat p} \int_{-\infty}^\infty \dif x \, \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi \\
+	&= - \frac{1}{\hbar^2} \bracket{\hat p} \braproket\phi{\hat p}\phi \\
+	&= - \frac{1}{\hbar^2} \bracket{\hat p}^2
 \end{align*}
+
+Betrachte den Summanden $S_{4c}$:
+\begin{align*}
+	S_{4c}
+	&= - \frac{1}{\hbar^2} \int_{-\infty}^\infty \dif x \, \ii \hbar \dpd{}x \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t) \\
+	&= - \frac{1}{\hbar^2} \bracket{\hat p} \int_{-\infty}^\infty \dif x \, \phi^\dagger(x, t) \del{- \ii \hbar \dpd{}x} \phi(x, t) \\
+	&= - \frac{1}{\hbar^2} \bracket{\hat p}^2
+\end{align*}
+
+Zusammen ist der Summand $S_4$ also:
+\[
+	S_4 = \frac{1}{\hbar^2} (\Deltaup p)^2 
+\]
+
+\paragraph{Summanden zusammen}
+
+Mit allen Summanden zusammen:
+\[
+	\braket{\psi_\alpha}{\psi_\alpha}
+	= \alpha^2 \del{\Deltaup x}^2 - \alpha + \frac{1}{\hbar^2} \del{\Delta p}^2
+\]
 
 \subsubsection{Minimum bestimmen}
 
