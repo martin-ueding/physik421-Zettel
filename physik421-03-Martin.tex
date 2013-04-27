@@ -73,26 +73,24 @@ Sowie außerhalb der Barriere:
 
 Und innerhalb:
 \[
-	\varphi(x) = c_4 \exp\del{\frac{\sqrt{2(E-V_0)m}}\hbar x}
-	+ c_5 \exp\del{-\frac{\sqrt{2(E-V_0)m}}\hbar x}
+	\varphi(x) = c_4 \exp\del{\frac{\sqrt{2(V_0-E)m}}\hbar x}
+	+ c_5 \exp\del{-\frac{\sqrt{2(V_0-E)m}}\hbar x}
 \]
 
 \subsection{Energien außerhalb des Intervalls}
 
-Für Energien zwischen 0 und $V_0$ („kleine Energien“) ist außen eine Schwingung
-und innen auch.
-
-Wenn die Energie negativ ist, kommt es außen zu exponentiellem Abfall und innen
-zu Schwingungen. Für große Energien kommt es außen zu Schwingungen und innen zu
-exponentiellem Abfall.
-
 \begin{tabular}{lll}
 	Energie & außen & innen \\
 	\hline
-	negativ & Abfall & Schwingung \\
-	klein & Schwingung & Schwingung \\
-	groß & Schwingung & Abfall
+	negativ & Abfall & Abfall \\
+	klein & Schwingung & Abfall \\
+	groß & Schwingung & Schwingung
 \end{tabular}
+
+Dies entspricht meiner Vorstellung: Ein komplett freies Teichen (große Energie)
+geht durch die Barriere durch. Ein Teilchen mit kleiner Energie ist außerhalb
+der Barriere frei, kann allerdings nicht beliebig tief in die Barriere
+eindringen.
 
 \subsection{Lösungen}
 
@@ -105,8 +103,8 @@ exponentiellem Abfall.
 
 	\item[Bereich (B)]
 		\[
-			\varphi(x) = \beta_+ \exp\del{\frac{\sqrt{2(E-V_0)m}}\hbar x}
-			+ \beta_- \exp\del{-\frac{\sqrt{2(E-V_0)m}}\hbar x}
+			\varphi(x) = \beta_+ \exp\del{\frac{\sqrt{2(V_0-E)m}}\hbar x}
+			+ \beta_- \exp\del{-\frac{\sqrt{2(V_0-E)m}}\hbar x}
 		\]
 
 	\item[Bereich (C)]
@@ -115,6 +113,14 @@ exponentiellem Abfall.
 			+ \gamma_- \exp\del{-\ii \frac{\sqrt{2Em}}\hbar x}
 		\]
 \end{description}
+
+Die Wellenzahlen $k$ sind letztlich der Vorfaktor im Argument der
+Exponentialfunktion:
+\[
+	k_\text{außen}(E) = \pm \frac{\sqrt{2Em}}\hbar
+	\eqnsep
+	k_\text{innen}(E) = \pm \ii \frac{\sqrt{2(V_0-E)m}}\hbar
+\]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
