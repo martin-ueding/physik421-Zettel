@@ -54,6 +54,68 @@
 \section{Tunneleffekt}
 \label 1
 
+Zuerst vollziehe ich die Separation nach:
+\begin{align*}
+	\ii \hbar \dpd{}t \vartheta(t) \varphi(t) &= \del{-\frac{\hbar^2}{2m} \dpd[2]{}x + V(x)} \vartheta(t) \varphi(t) \\
+	\ii \hbar \frac{\dot\vartheta(t)}{\vartheta(t)} &= -\frac{\hbar^2}{2m} \frac{\varphi''(x)}{\varphi(x)} + V(x) =: E
+\end{align*}
+
+Dies kann ich zerlegen in:
+\[
+	\vartheta(t) = c_1 \exp\del{-\frac E\hbar t}
+\]
+
+Sowie außerhalb der Barriere:
+\[
+	\varphi(x) = c_2 \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
+	+ c_3 \exp\del{-\ii \frac{\sqrt{2Em}}\hbar x}
+\]
+
+Und innerhalb:
+\[
+	\varphi(x) = c_4 \exp\del{\frac{\sqrt{2(E-V_0)m}}\hbar x}
+	+ c_5 \exp\del{-\frac{\sqrt{2(E-V_0)m}}\hbar x}
+\]
+
+\subsection{Energien außerhalb des Intervalls}
+
+Für Energien zwischen 0 und $V_0$ („kleine Energien“) ist außen eine Schwingung
+und innen auch.
+
+Wenn die Energie negativ ist, kommt es außen zu exponentiellem Abfall und innen
+zu Schwingungen. Für große Energien kommt es außen zu Schwingungen und innen zu
+exponentiellem Abfall.
+
+\begin{tabular}{lll}
+	Energie & außen & innen \\
+	\hline
+	negativ & Abfall & Schwingung \\
+	klein & Schwingung & Schwingung \\
+	groß & Schwingung & Abfall
+\end{tabular}
+
+\subsection{Lösungen}
+
+\begin{description}
+	\item[Bereich (A)]
+		\[
+			\varphi(x) = \alpha_+ \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
+			+ \alpha_- \exp\del{-\ii \frac{\sqrt{2Em}}\hbar x}
+		\]
+
+	\item[Bereich (B)]
+		\[
+			\varphi(x) = \beta_+ \exp\del{\frac{\sqrt{2(E-V_0)m}}\hbar x}
+			+ \beta_- \exp\del{-\frac{\sqrt{2(E-V_0)m}}\hbar x}
+		\]
+
+	\item[Bereich (C)]
+		\[
+			\varphi(x) = \gamma_+ \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
+			+ \gamma_- \exp\del{-\ii \frac{\sqrt{2Em}}\hbar x}
+		\]
+\end{description}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
