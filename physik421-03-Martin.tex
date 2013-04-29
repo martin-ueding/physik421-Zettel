@@ -96,22 +96,26 @@ eindringen.
 
 \subsection{Lösungen}
 
+\newcommand{\phiA}{\varphi_E^\text{(A)}}
+\newcommand{\phiB}{\varphi_E^\text{(B)}}
+\newcommand{\phiC}{\varphi_E^\text{(C)}}
+
 \begin{description}
 	\item[Bereich (A)]
 		\[
-			\varphi_E(x) = \alpha_+ \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
+			\phiA(x) = \alpha_+ \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
 			+ \alpha_- \exp\del{-\ii \frac{\sqrt{2Em}}\hbar x}
 		\]
 
 	\item[Bereich (B)]
 		\[
-			\varphi_E(x) = \beta_+ \exp\del{\frac{\sqrt{2(V_0-E)m}}\hbar x}
+			\phiB(x) = \beta_+ \exp\del{\frac{\sqrt{2(V_0-E)m}}\hbar x}
 			+ \beta_- \exp\del{-\frac{\sqrt{2(V_0-E)m}}\hbar x}
 		\]
 
 	\item[Bereich (C)]
 		\[
-			\varphi_E(x) = \gamma_+ \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
+			\phiC(x) = \gamma_+ \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
 			+ \gamma_- \exp\del{-\ii \frac{\sqrt{2Em}}\hbar x}
 		\]
 \end{description}
@@ -139,22 +143,31 @@ $\varphi_E$ mit den $k$ kompakter:
 \begin{description}
 	\item[Bereich (A)]
 		\[
-			\varphi_E(x) = \alpha_+ \exp\del{\ii k_\text{a} x}
+			\phiA(x) = \alpha_+ \exp\del{\ii k_\text{a} x}
 			+ \alpha_- \exp\del{-\ii k_\text{a} x}
 		\]
 
 	\item[Bereich (B)]
 		\[
-			\varphi_E(x) = \beta_+ \exp\del{\ii k_\text{i} x}
+			\phiB(x) = \beta_+ \exp\del{\ii k_\text{i} x}
 			+ \beta_- \exp\del{-\ii k_\text{i} x}
 		\]
 
 	\item[Bereich (C)]
 		\[
-			\varphi_E(x) = \gamma_+ \exp\del{\ii k_\text{a} x}
+			\phiC(x) = \gamma_+ \exp\del{\ii k_\text{a} x}
 			+ \gamma_- \exp\del{-\ii k_\text{a} x}
 		\]
 \end{description}
+
+An den Übergangsstellen $\pm L/2$ muss die Wellenfunktion $\varphi_E$ stetig
+sein und gleiche Steigung haben. Es muss also gelten:
+\begin{gather*}
+	\phiA\del{-\frac L2} = \phiB\del{-\frac L2} \\
+	\phiB\del{\frac L2} = \phiC\del{\frac L2} \\
+	\dod{}x \phiA\del{-\frac L2} = \dod{}x \phiB\del{-\frac L2} \\
+	\dod{}x \phiB\del{\frac L2} = \dod{}x \phiC\del{\frac L2} \\
+\end{gather*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
