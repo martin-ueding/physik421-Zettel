@@ -58,8 +58,8 @@
 
 Zuerst vollziehe ich die Separation nach:
 \begin{align*}
-	\ii \hbar \dpd{}t \vartheta(t) \varphi(t) &= \del{-\frac{\hbar^2}{2m} \dpd[2]{}x + V(x)} \vartheta(t) \varphi(t) \\
-	\ii \hbar \frac{\dot\vartheta(t)}{\vartheta(t)} &= -\frac{\hbar^2}{2m} \frac{\varphi''(x)}{\varphi(x)} + V(x) =: E
+	\ii \hbar \dpd{}t \vartheta(t) \varphi_E(t) &= \del{-\frac{\hbar^2}{2m} \dpd[2]{}x + V(x)} \vartheta(t) \varphi_E(t) \\
+	\ii \hbar \frac{\dot\vartheta(t)}{\vartheta(t)} &= -\frac{\hbar^2}{2m} \frac{\varphi_E''(x)}{\varphi_E(x)} + V(x) =: E
 \end{align*}
 
 Dies kann ich zerlegen in:
@@ -69,13 +69,13 @@ Dies kann ich zerlegen in:
 
 Sowie außerhalb der Barriere:
 \[
-	\varphi(x) = c_2 \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
+	\varphi_E(x) = c_2 \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
 	+ c_3 \exp\del{-\ii \frac{\sqrt{2Em}}\hbar x}
 \]
 
 Und innerhalb:
 \[
-	\varphi(x) = c_4 \exp\del{\frac{\sqrt{2(V_0-E)m}}\hbar x}
+	\varphi_E(x) = c_4 \exp\del{\frac{\sqrt{2(V_0-E)m}}\hbar x}
 	+ c_5 \exp\del{-\frac{\sqrt{2(V_0-E)m}}\hbar x}
 \]
 
@@ -99,19 +99,19 @@ eindringen.
 \begin{description}
 	\item[Bereich (A)]
 		\[
-			\varphi(x) = \alpha_+ \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
+			\varphi_E(x) = \alpha_+ \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
 			+ \alpha_- \exp\del{-\ii \frac{\sqrt{2Em}}\hbar x}
 		\]
 
 	\item[Bereich (B)]
 		\[
-			\varphi(x) = \beta_+ \exp\del{\frac{\sqrt{2(V_0-E)m}}\hbar x}
+			\varphi_E(x) = \beta_+ \exp\del{\frac{\sqrt{2(V_0-E)m}}\hbar x}
 			+ \beta_- \exp\del{-\frac{\sqrt{2(V_0-E)m}}\hbar x}
 		\]
 
 	\item[Bereich (C)]
 		\[
-			\varphi(x) = \gamma_+ \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
+			\varphi_E(x) = \gamma_+ \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
 			+ \gamma_- \exp\del{-\ii \frac{\sqrt{2Em}}\hbar x}
 		\]
 \end{description}
