@@ -123,16 +123,9 @@ eindringen.
 Die Wellenzahlen $k$ sind letztlich der Vorfaktor im Argument der
 Exponentialfunktion ohne $\ii$:
 \[
-	k_\text{außen}(E) = \frac{\sqrt{2Em}}\hbar
+	k(E) = \frac{\sqrt{2Em}}\hbar
 	\eqnsep
-	k_\text{innen}(E) = - \ii \frac{\sqrt{2(V_0-E)m}}\hbar
-\]
-
-Diese Größen kann ich noch nach $E$ ableiten und erhalte:
-\[
-	k'_\text{außen}(E) = \frac{m}{\hbar\sqrt{2Em}}
-	\eqnsep
-	k'_\text{innen}(E) = \ii \frac{m}{\hbar\sqrt{2(V_0-E)m}}
+	k'(E) = - \ii \frac{\sqrt{2(V_0-E)m}}\hbar
 \]
 
 \subsection{Anschlussbeziehungen}
@@ -140,44 +133,87 @@ Diese Größen kann ich noch nach $E$ ableiten und erhalte:
 Für die Anschlussbeziehungen herzuleiten, schreibe ich die Funktionen
 $\varphi_E$ mit den $k$ kompakter:
 
-\newcommand{\ki}{k_\text{i}}
-\newcommand{\ka}{k_\text{a}}
-
 \begin{description}
 	\item[Bereich (A)]
 		\[
-			\phiA(x) = \alpha_+ \exp\del{\ii \ka x}
-			+ \alpha_- \exp\del{-\ii \ka x}
+			\phiA(x) = \alpha_+ \exp\del{\ii k x}
+			+ \alpha_- \exp\del{-\ii k x}
 		\]
 
 	\item[Bereich (B)]
 		\[
-			\phiB(x) = \beta_+ \exp\del{\ii \ki x}
-			+ \beta_- \exp\del{-\ii \ki x}
+			\phiB(x) = \beta_+ \exp\del{\ii k' x}
+			+ \beta_- \exp\del{-\ii k' x}
 		\]
 
 	\item[Bereich (C)]
 		\[
-			\phiC(x) = \gamma_+ \exp\del{\ii \ka x}
-			+ \gamma_- \exp\del{-\ii \ka x}
+			\phiC(x) = \gamma_+ \exp\del{\ii k x}
+			+ \gamma_- \exp\del{-\ii k x}
 		\]
 \end{description}
 
 An den Übergangsstellen $\pm L/2$ muss die Wellenfunktion $\varphi_E$ stetig
-sein und gleiche Steigung haben. Es muss also gelten:
-\begin{gather*}
-	\phiA\del{-\frac L2} = \phiB\del{-\frac L2} \\
-	\phiB\del{\frac L2} = \phiC\del{\frac L2} \\
-	\dod{}x \phiA\del{-\frac L2} = \dod{}x \phiB\del{-\frac L2} \\
-	\dod{}x \phiB\del{\frac L2} = \dod{}x \phiC\del{\frac L2} \\
-\end{gather*}
+sein und gleiche Steigung haben.  Es muss also gelten:
+\begin{align*}
+	\phiA\del{-\frac L2} &= \phiB\del{-\frac L2} \\
+	\phiB\del{\frac L2} &= \phiC\del{\frac L2} \\
+	\dod{}x \phiA\del{-\frac L2} &= \dod{}x \phiB\del{-\frac L2} \\
+	\dod{}x \phiB\del{\frac L2} &= \dod{}x \phiC\del{\frac L2} \\
+	\intertext{%
+		Setze die Funktionen $\phiA$ und $\phiB$ ein:
+	}
+	\alpha_+ \exp\del{- \ii k \frac L2} + \alpha_- \exp\del{\ii k \frac L2}
+	&= \beta_+ \exp\del{- \ii k' \frac L2} + \beta_- \exp\del{\ii k' \frac L2} \\
+	%
+	\beta_+ \exp\del{\ii k' \frac L2} + \beta_- \exp\del{- \ii k' \frac L2}
+	&= \gamma_+ \exp\del{\ii k \frac L2} + \gamma_- \exp\del{- \ii k \frac L2} \\
+	%
+	-\ii k \alpha_+ \exp\del{- \ii k \frac L2} + \ii k \alpha_- \exp\del{\ii k \frac L2}
+	&= -\ii k' \beta_+ \exp\del{- \ii k' \frac L2} + \ii k' \beta_- \exp\del{\ii k' \frac L2} \\
+	%
+	\ii k' \beta_+ \exp\del{\ii k' \frac L2} - \ii k' \beta_- \exp\del{- \ii k' \frac L2}
+	&= \ii k \gamma_+ \exp\del{\ii k \frac L2} - \ii k \gamma_- \exp\del{- \ii k \frac L2} \\
+	\intertext{%
+		Bei der weiteren Herleitung habe ich mich stark an \cite[Seite
+		269]{nolting-theo5} gehalten. Dann teile ich die dritte und die vierte
+		Gleichung jeweils durch $- \ii k$ und führe $y = k'/k$ ein.
+	}
+	\alpha_+ \exp\del{- \ii k \frac L2} + \alpha_- \exp\del{\ii k \frac L2}
+	&= \beta_+ \exp\del{- \ii k' \frac L2} + \beta_- \exp\del{\ii k' \frac L2} \\
+	%
+	\beta_+ \exp\del{\ii k' \frac L2} + \beta_- \exp\del{- \ii k' \frac L2}
+	&= \gamma_+ \exp\del{\ii k \frac L2} + \gamma_- \exp\del{- \ii k \frac L2} \\
+	%
+	\alpha_+ \exp\del{- \ii k \frac L2} - \alpha_- \exp\del{\ii k \frac L2}
+	&= y \beta_+ \exp\del{- \ii k' \frac L2} -y \beta_- \exp\del{\ii k' \frac L2} \\
+	%
+	- y\beta_+ \exp\del{\ii k' \frac L2} + y\beta_- \exp\del{- \ii k' \frac L2}
+	&= - \gamma_+ \exp\del{\ii k \frac L2} +  \gamma_- \exp\del{- \ii k \frac L2} \\
+	\intertext{%
+		Addiere nun die Erste und die Dritte. Addiere dann Zweite und Vierte.
+	}
+	2 \alpha_+ \exp\del{- \ii k \frac L2}
+	&= (1+y) \beta_+ \exp\del{- \ii k' \frac L2} + (1-y) \beta_- \exp\del{\ii k' \frac L2} \\
+	%
+	(1-y) \beta_+ \exp\del{\ii k' \frac L2} + (1+y) \beta_- \exp\del{- \ii k' \frac L2}
+	&= 2 \gamma_- \exp\del{\ii k \frac L2} \\
+	\intertext{%
+		Stelle um:
+	}
+	2 \alpha_+ \exp\del{- \ii k \frac L2}
+	&= (1+y) \beta_+ \exp\del{- \ii k' \frac L2} + (1-y) \beta_- \exp\del{\ii k' \frac L2} \\
+	%
+	2 \gamma_- \exp\del{\ii k \frac L2}
+	&= (1-y) \beta_+ \exp\del{\ii k' \frac L2} + (1+y) \beta_- \exp\del{- \ii k' \frac L2} \\
+\end{align*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \IfFileExists{\bibliographyfile}{
-	%\bibliography{\bibliographyfile}
+	\bibliography{\bibliographyfile}
 }{}
 
 \end{document}
