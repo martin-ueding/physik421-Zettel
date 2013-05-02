@@ -177,7 +177,7 @@ sein und gleiche Steigung haben.  Es muss also gelten:
 	\intertext{%
 		Bei der weiteren Herleitung habe ich mich stark an \cite[Seite
 		269]{nolting-theo5} gehalten. Dann teile ich die dritte und die vierte
-		Gleichung jeweils durch $- \ii k$ und führe $y = k'/k$ ein.
+		Gleichung jeweils durch $- \ii k$ und führe $y := k'/k$ ein.
 	}
 	\alpha_+ \exp\del{- \ii k \frac L2} + \alpha_- \exp\del{\ii k \frac L2}
 	&= \beta_+ \exp\del{- \ii k' \frac L2} + \beta_- \exp\del{\ii k' \frac L2} \\
@@ -288,11 +288,35 @@ herauskommen, was ich selbst allerdings nicht erhalten konnte:
 	\alpha_- = - 2 \ii \sin\del{2 k' \frac L2} \frac{1-y^2}\detA \tau_-^2
 \]
 
+Meine $k$ und $k'$ waren so definiert, dass das Problem gleich dem
+Potentialtopf war:
 \[
 	k(E) = \frac{\sqrt{2Em}}\hbar
 	\eqnsep
 	k'(E) = - \ii \frac{\sqrt{2(V_0-E)m}}\hbar
 \]
+
+Um eine Interpretation für dieses Problem zu erlangen, führe ich $\bar k$ ein.
+Ich glaube, Paul hat $\bar k$ und $k'$ genau anders herum.
+\[
+	k(E) = \frac{\sqrt{2Em}}\hbar
+	\eqnsep
+	\bar k(E) := \frac{\sqrt{2(V_0-E)m}}\hbar
+\]
+
+Nun muss ich die Transformation $k' \mapsto - \ii \bar k$ überall vornehmen.
+Dadurch wird auch $y \mapsto -\ii y$. Die Determinante $\detA$ wird zu:
+\[
+	\detA = 2(1-\ii y)^2 \tau_-^{\prime2} - (1+\ii y)^2 \tau_+^{\prime 2}
+\]
+
+Und die $\tau_\pm'$ werden von periodischen Funktionen zu normalen
+Exponentialfunktionen:
+\begin{align*}
+	\bar\tau_+
+\end{align*}
+
+\fehlt
 
 \subsection{Von links einlaufendes Teilchen}
 
@@ -300,16 +324,65 @@ Die Vereinfachung ist $\gamma_- = 0$. Diese hatte ich zur Reduktion des
 Rechenaufwands allerdings schon in der vorherigen Teilaufgabe vorgenommen, so
 dass ich hier nicht vergleichen kann.
 
-\subsection{Transmissions- und Reflektionskoeffizient}
+\subsection{Transmissions- und Reflexionskoeffizient}
 
+Der Reflexionskoeffizient:
+\begin{align*}
+	R
+	&= \abs{\alpha_-}^2 \\
+	&= \abs{-2 \ii \sin\del{2 k' \frac L2} \frac{1-y^2}{\detA} \tau_-^2}^2 \\
+	&= 2 \abs{\sin\del{2 k' \frac L2}}^2 \abs{\frac{1-y^2}{\detA}}^2 \underbrace{\abs{\tau_-^2}^2}_{=1} \\
+	\intertext{%
+		Hier wende ich die Transformation $y^2 \mapsto - y^2$ an.
+	}
+	&= 2 \sinh^2\del{2 \bar k \frac L2} \frac{\del{1+y^2}^2}{\abs{\detA}^2}
+\end{align*}
+
+Der Transmissionskoeffizient:
 \begin{align*}
 	T
 	&= \abs{\gamma_+}^2 \\
 	&= \abs{\frac{4y}\detA}^2 \\
-	&= 16 \abs{\frac{y}\detA}^2 \\
+	&= 16 \frac{y^2}{\abs{\detA}^2}
 \end{align*}
 
+Und die transformierte Determinante $\del{\detA}^2$:
+\begin{align*}
+	\detA
+	&= 2 (1-\ii y)^2 \tau_-^{\prime2} - 2(1+\ii y)^2 \tau_+^{\prime2} \\
+	&= 2 \del{1 - 2\ii y - y^2} \exp\del{2 \bar k \frac L2} - 2 \del{1 + 2\ii y - y^2} \exp\del{- 2 \bar k \frac L2} \\
+	&= \del{1-y^2} \sinh\del{2 \bar k \frac L2} - 2 \ii y \cosh\del{2 \bar k \frac L2} \\
+	%
+	\del\detA^2
+	&= \del{1-y^2}^2 \sinh^2\del\ldots + 4 y^2 \cosh^2\del\ldots \\
+	&= \del{1-2y^2+y^4} \sinh^2\del\ldots + 4 y^2 \cosh^2\del\ldots \\
+	&= \sinh^2\del\ldots - 2 y^2\sinh^2\del\ldots + y^4 \sinh^2\del\ldots + 4 y^2 + 4 y^2 \sinh^2\del\ldots \\
+	&= \del{1 + 2 y^2 + y^4} \sinh^2\del\ldots + 4 y^4 \\
+	&= \del{1 + y^2}^2 \sinh^2\del\ldots + 4 y^4
+\end{align*}
+
+Die Summe von $R$ und $T$ ist, wenn man einige Faktor $2$ in $R$ und $T$
+verteilt, gerade $1$. In \cite[Seite 283]{nolting-theo5} kommt es sehr ähnlich
+heraus, ich gehe davon aus, dass ich mich nur verrechnet habe.
+
 \subsection{Grenzfall der Koeffizienten}
+
+Laut \cite[Seite 283]{nolting-theo5} sind die Transmissions- und
+Reflexionskoeffizienten für die Potenzialbarriere mit
+\[
+	x := \frac{\bar k}{k} = \sqrt{\frac{V_0-E}E}
+\]
+gegeben als:
+\[
+	T(E) = \frac{4x^2}{4x^2 + \del{1+x^2}^2 \sinh^2\del{2 \bar k \frac L2}}
+	\eqnsep
+	R(E) = \frac{\del{1+x^2}^2 \sinh^2\del{2 \bar k \frac L2}}
+	{4x^2 + \del{1+x^2}^2 \sinh^2\del{2 \bar k \frac L2}}
+\]
+
+Der Grenzwert einer breiten und hohen Potenzialbarriere bedeutet, dass $V_0$
+und $L$ als groß anzusehen sind. Dabei strebt $T(E)$ gegen $0$ und $R(E)$ gegen
+1. Das Teilchen wir also ausschließlich reflektiert.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
