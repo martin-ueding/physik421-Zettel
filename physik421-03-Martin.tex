@@ -191,22 +191,125 @@ sein und gleiche Steigung haben.  Es muss also gelten:
 	- y\beta_+ \exp\del{\ii k' \frac L2} + y\beta_- \exp\del{- \ii k' \frac L2}
 	&= - \gamma_+ \exp\del{\ii k \frac L2} +  \gamma_- \exp\del{- \ii k \frac L2} \\
 	\intertext{%
-		Addiere nun die Erste und die Dritte. Addiere dann Zweite und Vierte.
+		Ab hier führe ich folgende Abkürzungen ein:
+		\[
+			\tau_+ := \exp\del{\ii k \frac L2}
+			\eqnsep
+			\tau_- := \exp\del{-\ii k \frac L2}
+			\eqnsep
+			\tau_+' := \exp\del{\ii k' \frac L2}
+			\eqnsep
+			\tau_-' := \exp\del{-\ii k' \frac L2}
+		\]
+		Damit werden die vier Gleichungen zu:
 	}
-	2 \alpha_+ \exp\del{- \ii k \frac L2}
-	&= (1+y) \beta_+ \exp\del{- \ii k' \frac L2} + (1-y) \beta_- \exp\del{\ii k' \frac L2} \\
+	\alpha_+ \tau_- + \alpha_- \tau_+
+	&= \beta_+ \tau_-' + \beta_- \tau_+' \\
 	%
-	(1-y) \beta_+ \exp\del{\ii k' \frac L2} + (1+y) \beta_- \exp\del{- \ii k' \frac L2}
-	&= 2 \gamma_- \exp\del{\ii k \frac L2} \\
+	\beta_+ \tau_+' + \beta_- \tau_-'
+	&= \gamma_+ \tau_+ + \gamma_- \tau_- \\
+	%
+	\alpha_+ \tau_- - \alpha_- \tau_+
+	&= y \beta_+ \tau_-' -y \beta_- \tau_+' \\
+	%
+	- y\beta_+ \tau_+' + y\beta_- \tau_-'
+	&= - \gamma_+ \tau_+ +  \gamma_- \tau_- \\
 	\intertext{%
-		Stelle um:
+		In dieser Aufgabe sollte dieser Schritt zwar noch nicht vollzogen
+		werden, damit ich dieses Gleichungssystem allerdings etwas einfacher
+		lösen kann, mache ich bereits hier die Annahme, dass die Welle von
+		rechts einläuft, also $\gamma_- = 0$. Außerdem lege ich $\alpha_+ = 1$
+		fest.
 	}
-	2 \alpha_+ \exp\del{- \ii k \frac L2}
-	&= (1+y) \beta_+ \exp\del{- \ii k' \frac L2} + (1-y) \beta_- \exp\del{\ii k' \frac L2} \\
+	\tau_- + \alpha_- \tau_+
+	&= \beta_+ \tau_-' + \beta_- \tau_+' \\
 	%
-	2 \gamma_- \exp\del{\ii k \frac L2}
-	&= (1-y) \beta_+ \exp\del{\ii k' \frac L2} + (1+y) \beta_- \exp\del{- \ii k' \frac L2} \\
+	\beta_+ \tau_+' + \beta_- \tau_-'
+	&= \gamma_+ \tau_+ \\
+	%
+	\tau_- - \alpha_- \tau_+
+	&= y \beta_+ \tau_-' -y \beta_- \tau_+' \\
+	%
+	- y\beta_+ \tau_+' + y\beta_- \tau_-'
+	&= - \gamma_+ \tau_+ \\
+	\intertext{%
+		Betrachte nun Erste plus Dritte, sowie Zweite plus Vierte.
+	}
+	2 \tau_- & = (1+y) \beta_+ \tau_-' + (1-y) \beta_- \tau_+' \\
+	(1-y) \beta_+ \tau_+' (1+y) \beta_- \tau_-' & = 0
 \end{align*}
+
+Dieses Gleichungssystem in $\beta_+$ und $\beta_-$ schreibe ich in Matrixform:
+\[
+	\underbrace{
+		\begin{pmatrix}
+			(1+y) \tau_-' & (1-y) \tau_+' \\
+			(1-y) \tau_+' & (1+y) \tau_-' 		
+		\end{pmatrix}
+	}_{\tens A}
+	\begin{pmatrix}
+		\beta_+ \\ \beta_-
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		2 \tau_-  \\ 0
+	\end{pmatrix}
+\]
+
+\newcommand\detA{\det{\tens A}}
+
+Dieses System löse ich mit der Cramer'schen Regel:
+\[
+	\detA = 2(1+y)^2 \tau_-^{\prime2} - (1-y)^2 \tau_+^{\prime 2}
+\]
+
+Die Lösungen sind:
+\begin{align*}
+	\beta_+ &= \frac1\detA 2 \tau_- \tau_-' (1+y) \\
+	\beta_- &= - \frac1\detA 2 \tau_- \tau_+' (1-y) \\
+\end{align*}
+
+Diese Ergebnisse bringe ich jetzt in folgendes System ein:
+\begin{align*}
+	\beta_+ \tau_+' + \beta_- \tau_-'
+	&= \gamma_+ \tau_+ + \gamma_- \tau_- \\
+	y\beta_+ \tau_+' - y\beta_- \tau_-'
+	&= \gamma_+ \tau_+ - \gamma_- \tau_-
+\end{align*}
+
+Nach Umformen erhalte ich:
+\[
+	\gamma_+ = \frac{4 \tau_-^2 y}\detA
+\]
+
+Laut \cite[Seite 270]{nolting-theo5} soll für $\alpha_-$ folgendes
+herauskommen, was ich selbst allerdings nicht erhalten konnte:
+\[
+	\alpha_- = - 2 \ii \sin\del{2 k' \frac L2} \frac{1-y^2}\detA \tau_-^2
+\]
+
+\[
+	k(E) = \frac{\sqrt{2Em}}\hbar
+	\eqnsep
+	k'(E) = - \ii \frac{\sqrt{2(V_0-E)m}}\hbar
+\]
+
+\subsection{Von links einlaufendes Teilchen}
+
+Die Vereinfachung ist $\gamma_- = 0$. Diese hatte ich zur Reduktion des
+Rechenaufwands allerdings schon in der vorherigen Teilaufgabe vorgenommen, so
+dass ich hier nicht vergleichen kann.
+
+\subsection{Transmissions- und Reflektionskoeffizient}
+
+\begin{align*}
+	T
+	&= \abs{\gamma_+}^2 \\
+	&= \abs{\frac{4y}\detA}^2 \\
+	&= 16 \abs{\frac{y}\detA}^2 \\
+\end{align*}
+
+\subsection{Grenzfall der Koeffizienten}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
