@@ -306,17 +306,12 @@ Ich glaube, Paul hat $\bar k$ und $k'$ genau anders herum.
 
 Nun muss ich die Transformation $k' \mapsto - \ii \bar k$ überall vornehmen.
 Dadurch wird auch $y \mapsto -\ii y$. Die Determinante $\detA$ wird zu:
-\[
-	\detA = 2(1-\ii y)^2 \tau_-^{\prime2} - (1+\ii y)^2 \tau_+^{\prime 2}
-\]
-
-Und die $\tau_\pm'$ werden von periodischen Funktionen zu normalen
-Exponentialfunktionen:
 \begin{align*}
-	\bar\tau_+
+	\detA
+	&= 2 (1-\ii y)^2 \tau_-^{\prime2} - 2(1+\ii y)^2 \tau_+^{\prime2} \\
+	&= 2 \del{1 - 2\ii y - y^2} \exp\del{2 \bar k \frac L2} - 2 \del{1 + 2\ii y - y^2} \exp\del{- 2 \bar k \frac L2} \\
+	&= \del{1-y^2} \sinh\del{2 \bar k \frac L2} - 2 \ii y \cosh\del{2 \bar k \frac L2}
 \end{align*}
-
-\fehlt
 
 \subsection{Von links einlaufendes Teilchen}
 
@@ -348,11 +343,6 @@ Der Transmissionskoeffizient:
 
 Und die transformierte Determinante $\del{\detA}^2$:
 \begin{align*}
-	\detA
-	&= 2 (1-\ii y)^2 \tau_-^{\prime2} - 2(1+\ii y)^2 \tau_+^{\prime2} \\
-	&= 2 \del{1 - 2\ii y - y^2} \exp\del{2 \bar k \frac L2} - 2 \del{1 + 2\ii y - y^2} \exp\del{- 2 \bar k \frac L2} \\
-	&= \del{1-y^2} \sinh\del{2 \bar k \frac L2} - 2 \ii y \cosh\del{2 \bar k \frac L2} \\
-	%
 	\del\detA^2
 	&= \del{1-y^2}^2 \sinh^2\del\ldots + 4 y^2 \cosh^2\del\ldots \\
 	&= \del{1-2y^2+y^4} \sinh^2\del\ldots + 4 y^2 \cosh^2\del\ldots \\
