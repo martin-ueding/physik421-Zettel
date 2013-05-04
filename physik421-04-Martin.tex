@@ -58,6 +58,61 @@
 
 \subsection{Ableitung}
 \label{1a}
+
+Diesen Ansatz habe ich aus \cite{koeppel-hermite_beiblatt}. Zuerst betrachte
+ich eine Funktion $f(x) = \ee^{-x^2}$, deren Ableitungen fast die Hermetischen
+Polynome ergeben:
+\begin{align*}
+	H_n(z)
+	&= \del-^n \ee^{x^2} \dod[n]{}x \ee^{-x^2} \\
+	&= \del-^n \ee^{x^2} \dod[n]{}x f(x) \\
+	&= \del-^n \ee^{x^2} f^{(n)}(x)
+\end{align*}
+
+Dann betrachte ich die Taylorentwicklung der Funktion $f(x - y)$ um den Punkt
+$y = 0$:
+\begin{align*}
+	f(x - y)
+	&= \ee^{-(x-y)^2} \\
+	&= \sum_{n=0}^\infty \del-^n \frac{f^{(n)}(x)}{n!} y^n \\
+	\intertext{%
+		Setze die obige Relation ein.
+	}
+	&= \sum_{n=0}^\infty \frac{y^n}{n!} H_n(x) \ee^{-x^2} \\
+	f(x-y) \ee^{x^2} 
+	&= \sum_{n=0}^\infty \frac{y^n}{n!} H_n(x)
+\end{align*}
+
+Die linke Seite ist die erzeugende Funktion, ich nenne sie $w(x, y)$:
+\[
+	w(x, y) = \ee^{2xy-y^2}
+\]
+
+Die partielle Ableitung nach $x$ liefert:
+\[
+	\dpd{w(x, y)}x = 2 y w(x, y)
+	= \sum_{n=0}^\infty \frac{y^n}{n!} \dod{}x H_n(z)
+\]
+
+Allerdings kann ich den Ausdruck $2 y w(x, y)$ auch erhalten, in dem ich
+folgendes rechne:
+\begin{align*}
+	2 w(x, y)
+	&= 2 \sum_{n=0}^\infty \frac{y^n}{n!} H_n(x) \\
+	2 y w(x, y)
+	&= 2 \sum_{n=0}^\infty \frac{y^{n+1}}{n!} H_n(x) \\
+	\intertext{%
+		Verschiebe die Indizes.
+	}
+	&= 2 \sum_{n=0}^\infty \frac{y^{n}}{(n-1)!} H_{n-1}(x) \\
+	&= 2 \sum_{n=0}^\infty \frac{y^{n}}{n!} n H_{n-1}(x)
+\end{align*}
+
+Ein Koeffizientenvergleich der beiden Ausdrücke liefert die gesuchte Relation:
+\[
+	\dpd{}x H_n(x) = 2n H_{n-1}(x)
+\]
+
 \subsection{Orthogonalität}
 \subsection{Eigenfunktionen}
 \subsection{Rekursionsbeziehung}
@@ -73,7 +128,7 @@
 	2n H_{n-1}(x)
 	&= 2x H_n(x) - H_{n+1}(x) \\
 	H_{n+1}(x)
-	&= 2x H_n(x) - 2n H_{n-1}(x) \\
+	&= 2x H_n(x) - 2n H_{n-1}(x)
 \end{align*}
 
 \subsection{Differentialgleichung}
