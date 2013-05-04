@@ -202,7 +202,18 @@ gerade die $\ee^{-x^2}$, so dass die obige Orthogonalitätsrelation gilt.
 
 \subsection{Differentialgleichung}
 
-\fehlt
+\begin{align*}
+	\del{\dod[2]{}x - 2x \dod{}x - \del{1-\epsilon_n}} H_n(x) &= 0 \\
+	4n(n-1) H_{n-2}(x) - 4xn H_{n-1}(x) - \del{1-\epsilon_n} H_n(x) &= 0 \\
+	\intertext{%
+		Substituiere $m := n - 1$.
+	}
+	4(m+1)m H_{m-1}(x) - 4x(m+1) H_{m}(x) - \del{1-\epsilon_{m+1}} H_{m+1}(x) &= 0 \\
+	\underbrace{2m H_{m-1}(x) - 2x H_{m}(x)}_{-H_{m+1}(x)} - \frac{1-\epsilon_{m+1}}{2(m+1)} H_{m+1}(x) &= 0 \\
+	\del{\frac{1-\epsilon_{m+1}}{2(m+1)} + 1} H_{m+1} &= 0 \\
+	\frac{1-\epsilon_n}{2n} + 1 &= 0 \\
+	\epsilon_n &= 2n + 1
+\end{align*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
