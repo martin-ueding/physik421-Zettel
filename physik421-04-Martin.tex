@@ -56,6 +56,28 @@
 \section{Hermitische Polynome}
 \label 1
 
+\subsection{Ableitung}
+\label{1a}
+\subsection{Orthogonalität}
+\subsection{Eigenfunktionen}
+\subsection{Rekursionsbeziehung}
+
+\begin{align*}
+	\dod{}x H_n(x)
+	&= \del-^n \dod{}x \ee^{x^2} \dod[n]{}x \ee^{-x^2} \\
+	&= \del-^n 2x \ee^{x^2} \dod[n]{}x \ee^{-x^2} + \del-^n \ee^{x^2} \dod[n+1]{}x \ee^{-x^2} \\
+	&= 2x H_n(x) - H_{n+1}(x) \\
+	\intertext{%
+		Wende die Relation aus Aufgabe \ref{1a} an.
+	}
+	2n H_{n-1}(x)
+	&= 2x H_n(x) - H_{n+1}(x) \\
+	H_{n+1}(x)
+	&= 2x H_n(x) - 2n H_{n-1}(x) \\
+\end{align*}
+
+\subsection{Differentialgleichung}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
