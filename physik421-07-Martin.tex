@@ -226,7 +226,48 @@ Daraus folgen die Kommutatoren:
 
 \section{Hantelmolekül}
 
+\subsection{Schwerpunktskoordinaten}
+
 \fehlt
+
+\subsection{Drehimpuls}
+
+Der Hamiltonoperator ist:
+\[
+	\hat H = - \frac{\hbar^2}{2\mu} \laplace
+\]
+
+\newcommand\legendrian{\laplace_{\theta,\phi}}
+
+Der Laplaceoperator in Kugelkoordinaten ist:
+\[
+	\laplace = \frac1{r^2} \dpd{}r r \dpd{}r + \underbrace{\frac1{r^2\sin\theta} \dpd{}\theta \sin\theta \dpd{}\theta + \frac1{r^2\sin^2\theta} \dpd[2]{}\phi}_{\legendrian/r^2}
+\]
+
+Mit $\hat L^2 = - \hbar^2 \legendrian$, sowie $r = \text{konstant}$ folgt für
+den Hamiltonoperator:
+\[
+	\hat H = \frac{1}{2\mu r^2} \hat L^2
+\]
+
+Mit $\Theta := \mu r^2$, dem Trägheitsmoment eines Kreisrings mit Radius $r$
+aus der klassischen Mechanik folgt:
+\[
+	\hat H = \frac{1}{2\Theta} \hat L^2
+\]
+
+\subsection{Eigenwerte und Entartungsgrade}
+
+Die stationäre Schrödingergleichung:
+\begin{align*}
+	E \psi &= \hat H \psi \\
+			  &= \frac1{2\Theta} \legendrian \psi \\
+		   &= \frac{\hbar^2 \ell (\ell + 1)}{2 \Theta} \psi
+\end{align*}
+
+Die Eigenfunktionen des Drehimpulsoperators sind die Kugelflächenfunktionen
+$Y_{\ell m}$, der Eigenwert ist $\hbar^2 \ell(\ell+1)$. Alle Werte von $m$
+haben die gleiche Energie, es gibt also eine Entartung von $2\ell+1$ Zuständen.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
