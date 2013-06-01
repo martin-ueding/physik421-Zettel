@@ -36,6 +36,170 @@
 	\ccbysadetitle
 \end{center}
 
+Vektor $\vec L$, Tensor $\tens L$, Operator $\hat L$. Leere Stellen in
+Matrizen sind 0.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                              Spin-1 Operatoren                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Spin-1 Operatoren}
+
+\subsection{Matrixdarstellung}
+
+Die Elemente der Matrix $\tens L_z$ berechnen sich wie folgt:
+\[
+	\del{L_z}_{ij} = \braopket i{\hat L_z}j
+	\eqnsep
+	i, j \in \set{\uparrow, 0, \downarrow}
+\]
+
+\newcommand\lz{\begin{pmatrix}
+		1 && \\
+		  & 0 & \\
+		  && -1
+\end{pmatrix}}
+
+Aufgrund der Orthogonalität der Basiszustände und dem Eigenwert $m_l$ gilt:
+\[
+	\tens L_z = \hbar \lz
+\]
+
+Nun $\hat L_\pm$:
+\begin{align*}
+	\del{L_z}_{\uparrow,\uparrow}
+	&= \braopket \uparrow{\hat L_\pm}\uparrow = 0
+	&& \text{wegen Orthogonalität}
+	\displaybreak[0]
+	\\
+	%
+	\del{L_z}_{\uparrow,0}
+	&= \braopket \uparrow{\hat L_\pm}0 = \hbar \sqrt 2
+	&& \text{nur für $\hat L_+$}
+	\displaybreak[0]
+	\\
+	%
+	\del{L_z}_{\uparrow,\downarrow}
+	&= \braopket \uparrow{\hat L_\pm}\downarrow = 0
+	\displaybreak[0]
+	\\
+	%
+	\del{L_z}_{0,\uparrow}
+	&= \braopket 0{\hat L_\pm}\uparrow = \hbar \sqrt 2
+	&& \text{nur für $\hat L_-$}
+	\displaybreak[0]
+	\\
+	%
+	\del{L_z}_{0,0}
+	&= \braopket 0{\hat L_\pm}0 = 0
+	\displaybreak[0]
+	\\
+	%
+	\del{L_z}_{0,\downarrow}
+	&= \braopket 0{\hat L_\pm}\downarrow = \hbar \sqrt 2
+	&& \text{nur für $L_+$}
+	\displaybreak[0]
+	\\
+	%
+	\del{L_z}_{\downarrow,\uparrow}
+	&= \braopket \downarrow{\hat L_\pm}\uparrow = 0
+	\displaybreak[0]
+	\\
+	%
+	\del{L_z}_{\downarrow,0}
+	&= \braopket \downarrow{\hat L_\pm}0 = \hbar \sqrt 2
+	&& \text{nur für $\hat L_-$}
+	\displaybreak[0]
+	\\
+	%
+	\del{L_z}_{\downarrow,\downarrow}
+	&= \braopket \downarrow{\hat L_\pm}\downarrow = 0
+\end{align*}
+
+\newcommand\lplus{\begin{pmatrix}
+		& 1 & \\
+		&& 1 \\
+		&&
+\end{pmatrix}}
+
+\newcommand\lminus{\begin{pmatrix}
+		&& \\
+		1 && \\
+		  & 1 &
+\end{pmatrix}}
+
+\newcommand\lx{\begin{pmatrix}
+		& 1 & \\
+		1 && 1 \\
+		  & 1 &
+\end{pmatrix}}
+
+\newcommand\ly{\begin{pmatrix}
+		& 1 & \\
+		-1 && 1 \\
+		  & -1 &
+\end{pmatrix}}
+
+\[
+	\tens L_+ = \hbar \sqrt 2 \lplus
+	\eqnsep
+	\tens L_- = \hbar \sqrt 2 \lminus
+\]
+
+Mit $\hat L_\pm = \hat L_x \pm \ii \hat L_y$ und
+\[
+	\hat L_x = \frac 12 \del{\hat L_+ + \hat L_-}
+	\eqnsep
+	\hat L_y = \frac1{2\ii} \del{\hat L_+ - \hat L_-}
+\]
+folgt:
+\[
+	\tens L_x = \frac \hbar 2 \lx
+	\eqnsep
+	\tens L_y = \frac \hbar {2\ii} \ly
+\]
+
+\subsection{Kommutatoren in Matrixdarstellung}
+
+\begin{align*}
+	\sbr{\tens L_x, \tens L_y}
+	&= \frac{\hbar^2}{4\ii} \del{\lx \ly - \ly \lx} \\
+	&= \frac{\hbar^2}{4\ii} \begin{pmatrix}
+	-2 && \\
+	   && \\
+	   && 2
+	\end{pmatrix}
+	= \ii \hbar \tens L_z
+	\displaybreak[0] \\
+	%
+	\sbr{\tens L_x, \tens L_z}
+	&= \frac{\hbar^2}{2} \del{\lx \lz - \lz \lx} \\
+	&= \frac{\hbar^2}{2} \begin{pmatrix}
+	& -1 & \\
+	1 && -1 \\
+	   & 1 &
+	\end{pmatrix}
+	= \ii \hbar \tens L_y
+	\displaybreak[0] \\
+	%
+	\sbr{\tens L_y, \tens L_z}
+	&= - \frac{\hbar^2}{2} \del{\ly \lz - \lz \ly} \\
+	&= - \frac{\hbar^2}{2} \begin{pmatrix}
+	& -1 & \\
+	-1 && -1 \\
+	   & -1 &
+	\end{pmatrix}
+	= \ii \hbar \tens L_x
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                               Hantelmolekül                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Hantelmolekül}
+
+\fehlt
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
