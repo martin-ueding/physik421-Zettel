@@ -69,48 +69,51 @@ Nun $\hat L_\pm$:
 \begin{align*}
 	\del{L_z}_{\uparrow,\uparrow}
 	&= \braopket \uparrow{\hat L_\pm}\uparrow = 0
-	&& \text{wegen Orthogonalität}
-	\displaybreak[0]
-	\\
+	\displaybreak[0] \\
 	%
 	\del{L_z}_{\uparrow,0}
-	&= \braopket \uparrow{\hat L_\pm}0 = \hbar \sqrt 2
-	&& \text{nur für $\hat L_+$}
-	\displaybreak[0]
-	\\
+	&= \braopket \uparrow{\hat L_\pm}0
+	= \begin{cases}
+		\hbar \sqrt 2 & \hat L_+ \\
+		0 & \hat L_-
+	\end{cases}
+	\displaybreak[0] \\
 	%
 	\del{L_z}_{\uparrow,\downarrow}
 	&= \braopket \uparrow{\hat L_\pm}\downarrow = 0
-	\displaybreak[0]
-	\\
+	\displaybreak[0] \\
 	%
 	\del{L_z}_{0,\uparrow}
-	&= \braopket 0{\hat L_\pm}\uparrow = \hbar \sqrt 2
-	&& \text{nur für $\hat L_-$}
-	\displaybreak[0]
-	\\
+	&= \braopket 0{\hat L_\pm}\uparrow
+	= \begin{cases}
+		0 & \hat L_+ \\
+		\hbar \sqrt 2 & \hat L_-
+	\end{cases}
+	\displaybreak[0] \\
 	%
 	\del{L_z}_{0,0}
 	&= \braopket 0{\hat L_\pm}0 = 0
-	\displaybreak[0]
-	\\
+	\displaybreak[0] \\
 	%
 	\del{L_z}_{0,\downarrow}
-	&= \braopket 0{\hat L_\pm}\downarrow = \hbar \sqrt 2
-	&& \text{nur für $L_+$}
-	\displaybreak[0]
-	\\
+	&= \braopket 0{\hat L_\pm}\downarrow
+	= \begin{cases}
+		\hbar \sqrt 2 & \hat L_+ \\
+		0 & \hat L_-
+	\end{cases}
+	\displaybreak[0] \\
 	%
 	\del{L_z}_{\downarrow,\uparrow}
 	&= \braopket \downarrow{\hat L_\pm}\uparrow = 0
-	\displaybreak[0]
-	\\
+	\displaybreak[0] \\
 	%
 	\del{L_z}_{\downarrow,0}
-	&= \braopket \downarrow{\hat L_\pm}0 = \hbar \sqrt 2
-	&& \text{nur für $\hat L_-$}
-	\displaybreak[0]
-	\\
+	&= \braopket \downarrow{\hat L_\pm}0
+	= \begin{cases}
+		0 & \hat L_+ \\
+		\hbar \sqrt 2 & \hat L_-
+	\end{cases}
+	\displaybreak[0] \\
 	%
 	\del{L_z}_{\downarrow,\downarrow}
 	&= \braopket \downarrow{\hat L_\pm}\downarrow = 0
