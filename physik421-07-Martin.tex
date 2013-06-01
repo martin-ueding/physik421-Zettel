@@ -166,7 +166,7 @@ folgt:
 	&= \frac{\hbar^2}{4\ii} \del{\lx \ly - \ly \lx} \\
 	&= \frac{\hbar^2}{4\ii} \begin{pmatrix}
 	-2 && \\
-	   && \\
+	   & 0 & \\
 	   && 2
 	\end{pmatrix}
 	= \ii \hbar \tens L_z
@@ -190,6 +190,34 @@ folgt:
 	   & -1 &
 	\end{pmatrix}
 	= \ii \hbar \tens L_x
+\end{align*}
+
+\subsection{Kommutator mit Hamiltonoperator}
+
+\begin{align*}
+	\hat H
+	&= - \frac{\hbar^2}{2m} \laplace + V(r) \\
+	\intertext{%
+		In Kugelkoordinaten kann der Laplaceoperator in Radial- und
+		Winkelanteil separiert werden:
+	}
+	&= - \frac{\hbar^2}{2m} \del{\laplace_r + \frac{1}{r^2} \laplace_{\theta,\phi}} + V(r) \\
+	\intertext{%
+		Der Drehimpulsoperator ist gerade $\hat L^2 = \hbar^2
+		\laplace_{\theta,\phi}$. Trenne so Radial- und Winkelanteil im
+		Hamiltonoperator:
+	}
+	&= - \frac{\hbar^2}{2m} \laplace_r + \frac{1}{r^2} \hat L^2 + V(r)
+\end{align*}
+
+Daraus folgen die Kommutatoren:
+\begin{align*}
+	\sbr{\dpd{}r, \laplace_{\theta,\phi}} = 0
+	&\implies
+	\sbr{\hat H, \hat L^2} = 0 \\
+	\sbr{\dpd{}r, \dpd{}\phi} = 0
+	&\implies
+	\sbr{\hat H, \hat L_z} = 0
 \end{align*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
