@@ -237,7 +237,29 @@ Mit dem gleichen Ansatz aus dem normalen Keplerproblem:
 	\vec R &:= \frac{m_1 \vec{x_1} + m_2 \vec{x_2}}M
 \end{align*}
 
-\fehlt
+Daraus folgen die inversen Transformationen:
+\begin{align*}
+	\vec x_1 &= \vec R - \frac{m_2}M \vec r \\
+	\vec x_2 &= \vec R + \frac{m_1}M \vec r
+\end{align*}
+
+Wende den Laplaceoperator auf diese beiden an. Schreibe $\underset\beth\laplace$ für den Laplaceoperator, der nur auf $\beth$ wirkt.
+\begin{align*}
+	\laplace \vec x_1 &= \laplace \vec R - \laplace \frac{m_2}M \vec r \\
+	\underset{\vec x_1}\laplace \vec x_1 &= \del{\underset{\vec R}\laplace + \underset{\vec r}\laplace} \del{ \vec R - \frac{m_2}M \vec r} \\
+	\underset{\vec x_1}\laplace &= \del{\underset{\vec R}\laplace + \underset{\vec r}\laplace}
+\end{align*}
+
+Analog folgt auch $\underset{\vec x_2}\laplace$. Transformiere damit den
+Hamiltonoperator:
+\begin{align*}
+	\hat H
+	&= - \frac{\hbar^2}{2} \del{\frac{1}{m_1} \underset{\vec x_1}\laplace + \frac{1}{m_2} \underset{\vec x_2}\laplace} \\
+	&= - \frac{\hbar^2}{2\mu} \del{\underset{\vec x_1}\laplace + \underset{\vec x_2}\laplace}
+\end{align*}
+
+Jetzt sind die Koordinaten getrennt, allerdings steht vor dem Laplaceoperator,
+der auf $\vec R$ wirkt, ein $\mu$, und kein $M$.
 
 \subsection{Drehimpuls}
 
