@@ -1,0 +1,133 @@
+ % Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+%
+\input{header.tex}
+
+\usepackage{cancel}
+\usepackage{tikz}
+
+\newcommand{\themodul}{physik421}
+\newcommand{\thegruppe}{Gruppe 4 -- Franz Niecknig}
+\newcommand{\theuebung}{8}
+
+\ifoot{\footnotesize{Martin Ueding}}
+\ihead{\themodul{} -- Übung \theuebung}
+\ofoot{\footnotesize{\thegruppe}}
+
+\def\thesection{H \arabic{section}}
+\def\thesubsection{\thesection\alph{subsection}}
+
+\setcounter{section}{11}
+
+\title{\themodul{} -- Übung \theuebung}
+\subtitle{\thegruppe}
+\author{
+	Martin Ueding \footnote{\href{mailto:mu@uni-bonn.de}{mu@uni-bonn.de}}
+}
+
+\hypersetup{
+	pdftitle={\themodul{} - Übung \theuebung},
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\ccbysadetitle
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                        Nachtrag zum Wasserstoffatom                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Nachtrag zum Wasserstoffatom}
+
+\subsection{Ansatz}
+
+\newcommand\er{\ee^{-\rho}}
+\newcommand\omr{\omega(\rho)}
+
+\begin{gather*}
+	\del{\dpd[2]{}\rho - \frac{l(l+1)}{\rho^2} + \frac{\rho_0}\rho - 1}
+	\rho^{l+1} \ee^{-\rho} \omega(\rho) = 0 \\
+	%
+	\begin{split}
+		\dpd{}\rho \del{l(l+1) \rho^l \ee^{-\rho} \omega(\rho)
+		- \rho^{l+1} \ee^{-\rho} \omega(\rho)
+	+ \rho^{l+1} \ee^{-\rho} \omega'(\rho)}
+	- l(l+1) \rho^{l-1} \ee^{-\rho} \omega(\rho) & \\
+		+ \rho_0 \rho^l \ee^{-\rho} \omega(\rho)
+		- \rho^{l+1} \ee^{-\rho} \omega(\rho)
+		&= 0
+	\end{split} \\
+	%
+	\intertext{%
+		Führe an dieser Stelle Farben ein, um das Termmemory zu erleichtern.
+	}
+	%
+	\begin{split}
+		\textcolor{blue}{ l(l+1) \rho^{l-1} \er \omr }
+		- \textcolor{gray}{ (l+1) \rho^l \er \omr }
+		+ \textcolor{red}{ (l+1) \rho^l \er \omega'(\rho) }
+		+ \textcolor{gray}{ (l+1) \rho^l \er \omr } & \\
+		+ \textcolor{ForestGreen}{ \rho^{l+1} \er \omr }
+		- \textcolor{orange}{ \rho^{l+1} \er \omega'(\rho) }
+		+ \textcolor{red}{ (l+1) \rho^l \er \omr }
+		- \textcolor{orange}{ \rho^{l+1} \er \omega'(\rho) } & \\
+		+ \textcolor{cyan}{ \rho^{l+1} \er \omega''(\rho) }
+		- \textcolor{blue}{ l(l+1) \rho^{l-1} \er \omr }
+		+ \textcolor{green}{ \rho_0 \rho^l \er \omr }
+		- \textcolor{ForestGreen}{ \rho^{l+1} \er \omr }
+		&= 0
+	\end{split}
+	%
+	\intertext{%
+		Nach Umsortieren bleiben:
+	}
+	%
+	\begin{split}
+		- 2 \textcolor{gray}{ (l+1) \rho^l \er \omr }
+		+ 2 \textcolor{red}{ (l+1) \rho^l \er \omega'(\rho) }
+		- 2 \textcolor{orange}{ \rho^{l+1} \er \omega'(\rho) }
+		+ \textcolor{cyan}{ \rho^{l+1} \er \omega''(\rho) } & \\
+		+ \textcolor{green}{ \rho_0 \rho^l \er \omr }
+		&= 0
+	\end{split}
+	%
+	\intertext{%
+		Entferne die $\er$ komplett, und im nächsten Schritt teile ich durch
+		$\rho^l$.
+	}
+	%
+	- 2  (l+1) \rho^l \omr
+	+ 2  (l+1) \rho^l \omega'(\rho)
+	- 2  \rho^{l+1} \omega'(\rho)
+	+  \rho^{l+1} \omega''(\rho) 
+	+ \rho_0 \rho^l \omr
+	= 0 \\
+	%
+	- 2  (l+1) \omr
+	+ 2  (l+1) \omega'(\rho)
+	- 2  \rho \omega'(\rho)
+	+  \rho \omega''(\rho) 
+	+ \rho_0 \omr
+	= 0
+	%
+	\intertext{%
+		Umstellen und Gruppieren gibt die gewünschte Differentialgleichung.
+	}
+	%
+	\rho \omega''(\rho) + 2(l+1-\rho) \omega'(\rho) + \del{\rho_0 - 2(l+1)} \omega(\rho) = 0
+\end{gather*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    Ende                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\IfFileExists{\bibliographyfile}{
+	%\bibliography{\bibliographyfile}
+}{}
+
+\end{document}
+
+% vim: spell spelllang=de
