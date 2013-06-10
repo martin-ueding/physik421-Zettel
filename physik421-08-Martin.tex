@@ -120,6 +120,35 @@
 	\rho \omega''(\rho) + 2(l+1-\rho) \omega'(\rho) + \del{\rho_0 - 2(l+1)} \omega(\rho) = 0
 \end{gather*}
 
+\subsection{Potenzreihenansatz}
+
+Setze an mit:
+\[
+	\omega(\rho) = \sum_k a_k \rho^k
+\]
+
+Setze dies in die Differentialgleichung ein:
+\[
+	\sum_k \del{k(k-1) a_k \rho^{k-1} + 2(l+1-\rho) k a_k \rho^{k-1} + \del{\rho_0 - 2(l+1)} a_k \rho^k} = 0
+\]
+
+Dies ist auf jeden Fall erfüllt, wenn jeder Summand null ist. Also:
+\begin{align*}
+	(k+1) k a_{k+1} \rho^k + 2(l+1)(k+1) a_{k+1} \rho^k
+	- 2(k+1) a_{k+1} \rho^{k+1} + \del{\rho_0 - 2(l+1)} a_k \rho^k &= 0 \\
+	%
+	(k+1) k a_{k+1} + 2(l+1)(k+1) a_{k+1} - 2k a_k
+	+ \del{\rho_0 - 2(l+1)} a_k &= 0 \\
+	%
+	\del{(k+1) k + 2(l+1)(k+1) } a_{k+1}
+	+ \del{\rho_0 - 2(l+1) - 2k} a_k &= 0
+\end{align*}
+
+Erhalte die gesuchte Rekursionsbeziehung:
+\[
+	a_{k+1} = \frac{2(l+1) + 2k - \rho_0}{(k+1)(k+2l+2)} a_k
+\]
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
