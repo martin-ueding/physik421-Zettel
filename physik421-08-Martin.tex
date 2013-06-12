@@ -28,6 +28,8 @@
 	pdftitle={\themodul{} - Übung \theuebung},
 }
 
+\setcounter{secnumdepth}{2}
+
 \begin{document}
 
 \maketitle
@@ -148,6 +150,113 @@ Erhalte die gesuchte Rekursionsbeziehung:
 \[
 	a_{k+1} = \frac{2(l+1) + 2k - \rho_0}{(k+1)(k+2l+2)} a_k
 \]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                     Erwartungswerte zum Wasserstoffatom                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Erwartungswerte zum Wasserstoffatom}
+
+\subsection{Reskalierung}
+
+Beginne mit:
+\begin{align*}
+	\del{\dod[2]{}\rho - \frac{l(l+1)}{\rho^2} + \frac{\rho_0}\rho - 1} u_l(\rho) &= 0 \\
+	\intertext{
+		Substituiere $\bar\rho := \rho n$ mit $\rho = \bar\rho / n$. Nach der
+		Kettenregel:
+		\[
+			\dod{\bar\rho}\rho \dod{}{\bar\rho}
+			= n \dod{}{\bar\rho}
+			\leadsto
+			n^2 \dod[2]{}{\bar\rho}
+		\]
+		Damit folgt:
+	}
+	\del{n^2 \dod[2]{}{\bar\rho} - n^2 \frac{l(l+1)}{\bar\rho^2} + n \frac{\rho_0}{\bar\rho} - 1} u_l(\rho) &= 0 \\
+	\del{\frac{l(l+1)}{\bar\rho^2} - \frac{\rho_0}{n\bar\rho} + \frac{1}{n^2}} u_l(\rho) &= u''_l(\rho)
+\end{align*}
+
+Das kommt allerdings nicht hin, da $\rho_0/n \neq 2$ ist.
+
+\subsection{Integration der Differentialgleichung}
+
+\subsubsection{Rechte Seite}
+
+\begin{align*}
+	\text{RS}
+	&= \del{\frac 1{n^2} - \frac{2}{\bar\rho} + \frac{l(l+1)}{\bar\rho^2}} u_l^2 \del{\bar\rho} \bar\rho^q \\
+	&\leadsto \int_0^\infty \dif{\bar\rho} \, \del{\frac 1{n^2} - \frac{2}{\bar\rho} + \frac{l(l+1)}{\bar\rho^2}} u_l^2 \del{\bar\rho} \bar\rho^q \\
+	\intertext{%
+		Mit der Definition
+		\[
+			\bracket q := \int_0^\infty \dif{\bar\rho} \,
+			u_l^2 \del{\bar\rho} \bar\rho^q
+		\]
+		folgt:
+	}
+	&= \frac1{n^2} \bracket q - 2 \bracket{q-1} + l(l+1) \bracket{q-2}
+\end{align*}
+
+\subsubsection{Linke Seite}
+
+\begin{align*}
+	\text{LS}
+	&= u_l''(\bar\rho) u_l\del{\bar\rho} \bar\rho^q \\
+	&\leadsto \int_0^\infty \dif{\bar\rho} \, u_l''(\bar\rho) u_l\del{\bar\rho} \bar\rho^q \\
+\end{align*}
+
+
+\subsubsection{Einsetzen in Differentialgleichung}
+
+Beginne mit
+\begin{align*}
+	\frac{\bracket q}n - 2 \bracket{q-1} + l(l+1) \bracket{q-2}
+	&= \half q (q-1) \bracket{q-2} + \int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1} 2 u''_l(\bar\rho) u'_l(\bar\rho) \\
+	\intertext{%
+		Setze die Differentialgleichung ein.
+	}
+	\frac{\bracket q}n - 2 \bracket{q-1} + l(l+1) \bracket{q-2}
+	&= \half q (q-1) \bracket{q-2}
+	+ \int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1} 2 \del{\frac1{n^2} - \frac2{\bar\rho} + \frac{l(l+1)}{\bar\rho^2}} u_l(\bar\rho) u'_l(\bar\rho) \\
+\end{align*}
+
+Betrachte nun nur das Integral und zerlege es in Summanden:
+\begin{gather*}
+	\int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1} 2 \del{\frac1{n^2} - \frac2{\bar\rho}
+	+ \frac{l(l+1)}{\bar\rho^2}} u_l(\bar\rho) u'_l(\bar\rho) \\
+	=
+	\int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1} 2
+	\frac1{n^2}
+	u_l(\bar\rho) u'_l(\bar\rho)
+	-
+	\int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1} 2
+	\frac2{\bar\rho}
+	u_l(\bar\rho) u'_l(\bar\rho)
+	+
+	\int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1} 2
+	\frac{l(l+1)}{\bar\rho^2}
+	u_l(\bar\rho) u'_l(\bar\rho)
+\end{gather*}
+
+Das erste Integral:
+\begin{align*}
+	\int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1} 2
+	\frac1{n^2}
+	u_l(\bar\rho) u'_l(\bar\rho)
+	&= 
+\end{align*}
+
+\subsection{Matrixelemente}
+
+\fehlt
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
