@@ -206,6 +206,7 @@ Das kommt allerdings nicht hin, da $\rho_0/n \neq 2$ ist.
 	&\leadsto \int_0^\infty \dif{\bar\rho} \, u_l''(\bar\rho) u_l\del{\bar\rho} \bar\rho^q \\
 \end{align*}
 
+\fehlt
 
 \subsubsection{Einsetzen in Differentialgleichung}
 
@@ -245,14 +246,104 @@ Betrachte nun nur das Integral und zerlege es in Summanden:
 	u_l(\bar\rho) u'_l(\bar\rho)
 \end{gather*}
 
-Das erste Integral:
+Wende Trick an:
+\[
+	2 u u' = \del{u^2}'
+\]
+
+Das erste Integral, ohne Randterme:
 \begin{align*}
 	\int_0^\infty \dif \bar\rho \,
-	\frac{\bar\rho^{q+1}}{q+1} 2
+	\frac{\bar\rho^{q+1}}{q+1}
 	\frac1{n^2}
-	u_l(\bar\rho) u'_l(\bar\rho)
+	\dod{}{\bar\rho} u_l(\bar\rho)
 	&= 
+	-
+	\int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{n^2}
+	u_l(\bar\rho) \\
+	&= - \frac{1}{n^2} \bracket q
 \end{align*}
+
+Zweites Integral, gleiche Vorgehensweise:
+\[
+	\frac{q}{q+1} \bracket{q-1}
+\]
+
+Drittes Integral:
+\[
+	- l(l+1) \frac{q-1}{q+1} \bracket{q-2}
+\]
+
+Setze dies mit den restlichen Termen wieder zusammen:
+\begin{gather*}
+	\frac{\bracket q}n - 2 \bracket{q-1} + l(l+1) \bracket{q-2} \\
+	= \half q (q-1) \bracket{q-2}
+	- \frac{1}{n^2} \bracket q
+	+ \frac{q}{q+1} \bracket{q-1}
+	- l(l+1) \frac{q-1}{q+1} \bracket{q-2}
+\end{gather*}
+
+Multipliziere mit $2n^2(q+1)$, um alle Nenner zu entfernen:
+\begin{gather*}
+	2 (q+1) \bracket q
+	- 4 n^2 (q+1) \bracket{q-1}
+	+ 2 l(l+1) n^2 (q+1) \bracket{q-2} \\
+	= q n^2 (q+1) (q-1) \bracket{q-2}
+	- 2 (q+1) \bracket q
+	+ 2 q n^2 \bracket{q-1}
+	- 2 l(l+1) n^2 (q+1) (q-1) \bracket{q-2}
+\end{gather*}
+
+Die Terme fasse ich nach den $\bracket{q-i}$ zusammen und erhalte:
+\begin{gather*}
+	\bracket q
+	\del{
+		2(q+1) + 2(q+1)
+	} \\
+	+
+	\bracket{q-1}
+	\del{
+		-4n^2 (q+1) - 2n^2 q
+	} \\
+	+
+	\bracket{q-2}
+	\del{
+		2l(l+1)n^2(q+1) - q (q-1) n^2 (q+1) + 2 n^2 l(l+1) (q-1)
+	}
+	= 0
+\end{gather*}
+
+Mit folgender Nebenrechnung für den $\bracket{q-2}$ Term
+\begin{align*}
+		2l(l+1)n^2(q+1) - q (q-1) n^2 (q+1) + 2 n^2 l(l+1) (q-1)
+		&= 4n^2 q l(l+1) - q(q+1)(q-1) n^2 \\
+		&= n^2 q \del{4l^2 + 4l - \del{q^2 - 1}} \\
+		&= n^2 q \del{(2l+1)^2 - 1 - q^2 + 1} \\
+		&= n^2 q \del{(2l+1)^2 - q^2} \\
+\end{align*}
+folgt, zusammen mit anderen Umformungen:
+\begin{gather*}
+	\bracket q
+	\del{
+		4(q+1)
+	} \\
+	+
+	\bracket{q-1}
+	\del{
+		-n^2 (2q+1)
+	} \\
+	+
+	\bracket{q-2}
+	n^2 q
+	\del{
+		(2l+1)^2 - q^2
+	}
+	= 0
+\end{gather*}
+
+Bis auf einen Faktor 4, der in der Aufgabenstellung mehr ist, stimmt dies mit
+der gesuchten Gleichung überein.
 
 \subsection{Matrixelemente}
 
