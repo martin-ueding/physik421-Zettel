@@ -126,12 +126,15 @@ Der Absteigeoperator erzeugt ein $\hbar \sqrt{j(j+1) - m(m-1)}$. Ich wende ihn a
 		Seite, diese fasse ich zusammen.
 	}
 	\ket{2, 0}
-	&= \frac1{\sqrt 6} \ket{1, -1} \ket{1, 1} + \frac2{\sqrt 6} \ket{1, 0} \ket{1, 0} + \frac1{\sqrt 2} \ket{1, 1} \ket{1, -1} \\
+	&= \frac1{\sqrt 6} \ket{1, -1} \ket{1, 1}
+	+ \frac2{\sqrt 6} \ket{1, 0} \ket{1, 0}
+	+ \frac1{\sqrt 2} \ket{1, 1} \ket{1, -1} \\
 	\intertext{%
 		Erneute Anwendung des Absteigeoperators.
 	}
 	\ket{2, -1}
-	&= \frac1{\sqrt 2} \ket{1, -1} \ket{1, 0} + \frac1{\sqrt 2} \ket{1, 0} \ket{1, -1} \\
+	&= \frac1{\sqrt 2} \ket{1, -1} \ket{1, 0}
+	+ \frac1{\sqrt 2} \ket{1, 0} \ket{1, -1} \\
 	\ket{2, -2}
 	&= \ket{1, -1} \ket{1, -1}
 \end{align*}
@@ -148,8 +151,29 @@ aus den gleichen Zuständen, also muss der gegebene Zustand auf jeden Fall zu
 diesem Orthogonal sein:
 \begin{align*}
 	\braket{2, 1}{1, 1} &= 0 \\
-	\del{a \ket{1, 1} \ket{1, 0} + b \ket{1, 0} \ket{1, 1}}^\dagger \del{\frac1{\sqrt 2} \ket{1, 0} \ket{1, 1} + \frac1{\sqrt 2} \ket{1, 1} \ket{1, 0}} &= 0 \\
+	\del{a \ket{1, 1} \ket{1, 0} + b \ket{1, 0} \ket{1, 1}}^\dagger
+	\del{\frac1{\sqrt 2} \ket{1, 0} \ket{1, 1} + \frac1{\sqrt 2} \ket{1, 1} \ket{1, 0}}
+	&= 0 \\
+	\intertext{%
+		Durch das transponieren beim Adjungieren vertauschen sich die beiden
+		Zustände, so dass auch hier nur Vektoren aus dem ersten Hilbertraum
+		miteinander multipliziert werden.
+	}
+	\frac1{\sqrt2} a^* \braket{1, 1}{1, 0} \braket{1, 0}{1, 1}
+	+ \frac1{\sqrt2} a^* \braket{1, 1}{1, 1} \braket{1, 0}{1, 0} \\
+	+ \frac1{\sqrt2} b^* \braket{1, 0}{1, 0} \braket{1, 1}{1, 1}
+	+ \frac1{\sqrt2} b^* \braket{1, 0}{1, 1} \braket{1, 1}{1, 0}
+	&= 0 \\
+	a^* + b^* &= 0
 \end{align*}
+
+Also muss $a = -b$ gelten. Zusätzlich sollte noch $a^2 + b^2 = 1$ erfüllt sein,
+damit die neue Wellenfunktion normiert bleibt. Somit folgt:
+\[
+	a = \frac1{\sqrt 2}
+	\eqnsep
+	b = - \frac1{\sqrt 2}
+\]
 
 \subsection{Absteigeoperator}
 
