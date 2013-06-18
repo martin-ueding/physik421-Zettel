@@ -60,11 +60,96 @@
 
 \subsection{Kombinationen, Multipletts}
 
+Zwei Spin-1 Teilchen haben $j_1 = j_2 = 1$. Für den Gesamtdrehimpuls $j$ gilt dann:
+\[
+	0 \leq j \leq 2
+\]
+
+Die Multipletts sind:
+\[
+	\begin{cases}
+		j = 0 & \text{Singulett} \\
+		j = 1 & \text{Triplett} \\
+		j = 2 & \text{Pentlett}
+	\end{cases}
+\]
+
+Da $m_1$ und $m_2$ aus $\set{-1, 0, 1}$ gewählt werden können, gibt es folgende Zustände:
+\begin{gather*}
+	\ket{0, 0} \\
+	\ket{1, 1} 
+	\eqnsep
+	\ket{1, 0} 
+	\eqnsep
+	\ket{1, -1} \\
+	\ket{2, 2} 
+	\eqnsep
+	\ket{2, 1} 
+	\eqnsep
+	\ket{2, 0} 
+	\eqnsep
+	\ket{2, -2}
+	\eqnsep
+	\ket{2, -1} \\
+\end{gather*}
+
 \subsection{Zustandsbildung}
+
+Der Zustand $\ket{2, 2}$ ist aus dem Pentlett und kann nur mit $m_1 = m_2 = 1$ gebildet werden. Also gilt:
+\[
+	\ket{2, 2} = \ket{1, 1} \ket{1, 1}
+\]
 
 \subsection{Absteigeoperator}
 
+Es ist zu zeigen, dass der Absteigeoperator einfach die Summe der einzelnen
+ist:
+\begin{align*}
+	J_-^{(1)} + J_-^{(2)}
+	&= J_1^{(1)} - \ii J_2^{(1)} + J_1^{(2)} - \ii J_2^{(2)} \\
+	&= J_1^{(1)} + J_1^{(2)} - \ii J_2^{(1)} - \ii J_2^{(2)} \\
+	&= J_1 - \ii J_2 \\
+	&= J_-
+\end{align*}
+
+Der Absteigeoperator erzeugt ein $\hbar \sqrt{j(j+1) - m(m-1)}$. Ich wende ihn auf den Zustand $\ket{2, 2}$ an:
+\begin{align*}
+	J_- \ket{2, 2}
+	&= \del{J_-^{(1)} + J_-^{(2)}} \ket{1, 1} \ket{1, 1} \\
+	\hbar 2 \ket{2, 1}
+	&= \hbar \sqrt 2 \ket{1, 0} \ket{1, 1} + \hbar \sqrt 2 \ket{1, 1} \ket{1, 0} \\
+	\ket{2, 1}
+	&= \frac1{\sqrt 2} \ket{1, 0} \ket{1, 1} + \frac1{\sqrt 2} \ket{1, 1} \ket{1, 0} \\
+	\intertext{%
+		Wende den Absteigeoperator erneut an und teile durch den Vorfaktor auf
+		der linken Seite. Zuerst entstehen vier Summanden auf der rechten
+		Seite, diese fasse ich zusammen.
+	}
+	\ket{2, 0}
+	&= \frac1{\sqrt 6} \ket{1, -1} \ket{1, 1} + \frac2{\sqrt 6} \ket{1, 0} \ket{1, 0} + \frac1{\sqrt 2} \ket{1, 1} \ket{1, -1} \\
+	\intertext{%
+		Erneute Anwendung des Absteigeoperators.
+	}
+	\ket{2, -1}
+	&= \frac1{\sqrt 2} \ket{1, -1} \ket{1, 0} + \frac1{\sqrt 2} \ket{1, 0} \ket{1, -1} \\
+	\ket{2, -2}
+	&= \ket{1, -1} \ket{1, -1}
+\end{align*}
+
 \subsection{Orthonormalität}
+
+Gegeben ist:
+\[
+	\ket{1, 1} = a \ket{1, 1} \ket{1, 0} + b \ket{1, 0} \ket{1, 1}
+\]
+
+Wir wissen, dass $\ket{j, m}$ orthogonal sind. Der Zustand $\ket{2, 1}$ besteht
+aus den gleichen Zuständen, also muss der gegebene Zustand auf jeden Fall zu
+diesem Orthogonal sein:
+\begin{align*}
+	\braket{2, 1}{1, 1} &= 0 \\
+	\del{a \ket{1, 1} \ket{1, 0} + b \ket{1, 0} \ket{1, 1}}^\dagger \del{\frac1{\sqrt 2} \ket{1, 0} \ket{1, 1} + \frac1{\sqrt 2} \ket{1, 1} \ket{1, 0}} &= 0 \\
+\end{align*}
 
 \subsection{Absteigeoperator}
 
