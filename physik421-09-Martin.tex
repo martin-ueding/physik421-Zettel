@@ -47,9 +47,57 @@
 
 \subsection{Energiespektrum}
 
+Die Energien des ungestörten harmonischen Oszillators sind:
+\[
+	E_n^0 = \hbar \omega \del{n + \half}
+\]
+
+In der Vorlesung \date{2013-06-14} hatten wir für die Störungen:
+\[
+	E_n^{(1)} = \bra n H_1 \ket n
+	\eqnsep
+	E_n^{(2)} = \frac{\bra n H_1 \ket m}{E_n^0 - E_m^0}
+\]
+
 \subsection{Korrektur exakt null}
 
+Das $n$ im Exponenten des Störterms ist im Konflikt mit dem $n$ aus der
+Quantenzahl des harmonischen Oszillators. Daher benutze ich $\nu$. Der Störterm
+ist:
+\[
+	H_1 = \lambda x^\nu
+\]
+
+Ich schreibe den Ortsoperator $x$ mit Auf- und Absteigeoperator:
+\[
+	x = \sqrt{\frac{\hbar}{2m \omega}} \del{a + a^\dagger}
+\]
+
+Prof.~Kubis hatte in der Vorlesung gesagt, dass er die Hütchen ($\hat a$)
+weglassen würde. Da alle Operatoren ($H$, $L$, $S$, $J$, …) Großbuchstaben und
+die Quantenzahlen kleine Buchstaben ($n$, $m$, $j$, …) haben, gäbe es auch
+keine Verwechslung. Wie sieht das denn mit kleinen Operatoren wie dem
+Absteigeoperator $\hat a$ oder Ortsoperator $\hat x$ und großen Skalaren wie
+der Energie $E$ aus? Gibt es da nicht doch irgendwie wieder
+Verwechslungsgefahr?
+
+Die Korrektur erster Ordnung ist:
+\[
+	\lambda^\nu \sqrt{\frac{\hbar}{2m \omega}}^\nu \bra n \del{a + a^\dagger}^\nu \ket n
+\]
+
+Falls $\nu$ gerade ist, wird es in $\del{a + a^\dagger}^\nu$ immer Terme mit
+$aa^\dagger$ und $a^\dagger a$ geben, so dass der Vektor $\ket n$ bis auf einen
+Vorfaktor erhalten bleibt. Diese Terme tragen zur Korrektur bei. Bei ungeradem
+$\nu$ wird $\ket n$ allerdings immer verändert, da es eine ungerade Anzahl von
+Auf- und Absteigevorgängen hat. Somit ist die Korrektur null.
+
 \subsection{Explizite Energiekorrektur}
+
+Dies habe ich bisher nur handschriftlich:
+\url{http://chaos.stw-bonn.de/users/mu/uploads/2013-06-18/H14.xoj.pdf}
+
+\fehlt
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                       Kopplung zweier Spin-1 Teilchen                       %
@@ -60,7 +108,8 @@
 
 \subsection{Kombinationen, Multipletts}
 
-Zwei Spin-1 Teilchen haben $j_1 = j_2 = 1$. Für den Gesamtdrehimpuls $j$ gilt dann:
+Zwei Spin-1 Teilchen haben $j_1 = j_2 = 1$. Für den Gesamtdrehimpuls $j$ gilt
+dann:
 \[
 	0 \leq j \leq 2
 \]
@@ -74,7 +123,8 @@ Die Multipletts sind:
 	\end{cases}
 \]
 
-Da $m_1$ und $m_2$ aus $\set{-1, 0, 1}$ gewählt werden können, gibt es folgende Zustände:
+Da $m_1$ und $m_2$ aus $\set{-1, 0, 1}$ gewählt werden können, gibt es folgende
+Zustände:
 \begin{gather*}
 	\ket{0, 0} \\
 	\ket{1, 1} 
@@ -90,12 +140,13 @@ Da $m_1$ und $m_2$ aus $\set{-1, 0, 1}$ gewählt werden können, gibt es folgend
 	\eqnsep
 	\ket{2, -2}
 	\eqnsep
-	\ket{2, -1} \\
+	\ket{2, -1}
 \end{gather*}
 
 \subsection{Zustandsbildung}
 
-Der Zustand $\ket{2, 2}$ ist aus dem Pentlett und kann nur mit $m_1 = m_2 = 1$ gebildet werden. Also gilt:
+Der Zustand $\ket{2, 2}$ ist aus dem Pentlett und kann nur mit $m_1 = m_2 = 1$
+gebildet werden. Also gilt:
 \[
 	\ket{2, 2} = \ket{1, 1} \ket{1, 1}
 \]
@@ -112,7 +163,8 @@ ist:
 	&= J_-
 \end{align*}
 
-Der Absteigeoperator erzeugt ein $\hbar \sqrt{j(j+1) - m(m-1)}$. Ich wende ihn auf den Zustand $\ket{2, 2}$ an:
+Der Absteigeoperator erzeugt ein $\hbar \sqrt{j(j+1) - m(m-1)}$. Ich wende ihn
+auf den Zustand $\ket{2, 2}$ an:
 \begin{align*}
 	J_- \ket{2, 2}
 	&= \del{J_-^{(1)} + J_-^{(2)}} \ket{1, 1} \ket{1, 1} \\
@@ -146,9 +198,9 @@ Gegeben ist:
 	\ket{1, 1} = a \ket{1, 1} \ket{1, 0} + b \ket{1, 0} \ket{1, 1}
 \]
 
-Wir wissen, dass $\ket{j, m}$ orthogonal sind. Der Zustand $\ket{2, 1}$ besteht
-aus den gleichen Zuständen, also muss der gegebene Zustand auf jeden Fall zu
-diesem Orthogonal sein:
+Wir wissen, dass die verschiedenen $\ket{j, m}$ orthogonal sind. Der Zustand
+$\ket{2, 1}$ besteht aus den gleichen Zuständen, also muss der gegebene Zustand
+auf jeden Fall zu diesem Orthogonal sein:
 \begin{align*}
 	\braket{2, 1}{1, 1} &= 0 \\
 	\del{a \ket{1, 1} \ket{1, 0} + b \ket{1, 0} \ket{1, 1}}^\dagger
@@ -177,7 +229,8 @@ damit die neue Wellenfunktion normiert bleibt. Somit folgt:
 
 \subsection{Absteigeoperator}
 
-Analog zur vorherigen Teilaufgabe wende ich jetzt $J_-$ auf den Zustand $\ket{1, 1}$ an. Die Rechnungen sind analog.
+Analog zur vorherigen Teilaufgabe wende ich jetzt $J_-$ auf den Zustand
+$\ket{1, 1}$ an. Die Rechnungen sind analog.
 \begin{align*}
 	\ket{1, 1} &= \frac1{\sqrt 2} \ket{1, 1} \ket{1, 0} - \frac1{\sqrt 2} \ket{1, 0} \ket{1, 1} \\
 	\ket{1, 0} &= \frac1{\sqrt 2} \ket{1, 1} \ket{1, -1} - \frac1{\sqrt 2} \ket{1, -1} \ket{1, 1} \\
