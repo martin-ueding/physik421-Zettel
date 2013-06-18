@@ -177,7 +177,35 @@ damit die neue Wellenfunktion normiert bleibt. Somit folgt:
 
 \subsection{Absteigeoperator}
 
+Analog zur vorherigen Teilaufgabe wende ich jetzt $J_-$ auf den Zustand $\ket{1, 1}$ an. Die Rechnungen sind analog.
+\begin{align*}
+	\ket{1, 1} &= \frac1{\sqrt 2} \ket{1, 1} \ket{1, 0} - \frac1{\sqrt 2} \ket{1, 0} \ket{1, 1} \\
+	\ket{1, 0} &= \frac1{\sqrt 2} \ket{1, 1} \ket{1, -1} - \frac1{\sqrt 2} \ket{1, -1} \ket{1, 1} \\
+	\ket{1, -1} &= \frac1{\sqrt 2} \ket{1, 0} \ket{1, -1} - \frac1{\sqrt 2} \ket{1, -1} \ket{1, 0}
+\end{align*}
+
 \subsection{Orthonormalität}
+
+Gegeben ist $\ket{0, 0}$ als:
+\[
+	\ket{0, 0} = a \ket{1, 1} \ket{1, -1} + b \ket{1, 0} \ket{1, 0} + c \ket{1, -1} \ket{1, 1}
+\]
+
+Dieser Zustand muss zum Beispiel orthogonal zu $\ket{2, 0}$ sein. Dazu bilde
+ich $\braket{2, 0}{0, 0}$ und erstelle eine Multiplikationstabelle für die drei
+Summanden jeweils:
+\begin{center}
+	\begin{tabular}{c|ccc}
+		$\braket\cdot\cdot$ & $a \ket{1, 1} \ket{1, -1}$ & $b \ket{1, 0} \ket{1, 0}$ & $c \ket{1, -1} \ket{1, 1}$ \\
+		\hline
+		$\frac{1}{\sqrt6} \ket{1, -1} \ket{1, 1}$ & 0 & 0 & $\frac c{\sqrt6}$ \\
+		$\frac{2}{\sqrt6} \ket{1, 0} \ket{1, 0}$ & 0 & $\frac{2b}{\sqrt6}$ & 0  \\
+		$\frac{1}{\sqrt6} \ket{1, 1} \ket{1, -1}$ & $\frac{a}{\sqrt6}$ & 0 & 0  \\
+	\end{tabular}
+\end{center}
+
+Als Bedingung erhalte ich also $a + 2b + c = 0$. Zusammen mit $a^2 + 4b^2 + c^2
+= 1$ werden auch normierte Wellenfunktionen erzeugt.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Ende                                     %
