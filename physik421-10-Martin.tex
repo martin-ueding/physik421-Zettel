@@ -54,7 +54,52 @@
 \section{Landau-Niveaus}
 
 \subsection{Kanonischer Impuls}
+
+Die kanonischen Gleichungen aus der klassichen Mechanik besagen für den Ort:
+\[
+	\dot x^i = \dpd H{\pi_i} = \frac{\pi_i}m = \frac{p_i}m + \frac q{cm} A^i
+\]
+
+Die leite ich nach der Zeit ab und multipliziere mit $m$. Außerdem wende ich
+an, dass $\vec E = - \frac 1c \dot{\vec A}$:
+\[
+	m \ddot x^i = \dot p_i - q E^i
+\]
+
+Die ist elektrische Kraft auf ein sonst freies Teilchen.
+
 \subsection{Coulombeichung}
+
+Die Coulomb-Eichung ist (Summenkonvention):
+\[
+	\partial_i A^i = 0
+\]
+
+Mit
+\[
+	\pi_i = p_i + \frac qc A^i
+	= - \ii \hbar \dpd{}{{x_i}} + \frac qc A^i
+\]
+kann ich den Kommutator schreiben:
+\begin{align*}
+	[\pi_i, \pi_j]
+	&= \sbr{-\ii \hbar \dpd{}{{x_i}} + \frac qc A^i, -\ii \hbar \dpd{}{{x_j}} + \frac qc A^j} \\
+	\intertext{%
+		Die Ableitungen kommutieren untereinander, die $A$ auch, allerdings
+		nicht gemischt.
+	}
+	&= \sbr{-\ii \hbar \dpd{}{{x_i}}, \frac qc A^j} + \sbr{\frac qc A^i, -\ii \hbar \dpd{}{{x_j}}} \\
+	&= -\ii \hbar \frac qc \sbr{\dpd{}{{x_i}}, A^j} + \sbr{A^i, \dpd{}{{x_j}}} \\
+	&= - \ii \hbar \frac qc \del{\dpd{}{{x_i}} A^j - \dpd{}{{x_j}} A^i} \\
+	&= - \ii \hbar \frac qc \epsilon^i{}_j{}^k \partial_i A^j \\
+	&= - \ii \hbar \frac qc B^k
+\end{align*}
+
+Wegen $B^1 = B^2 = 0$ ist $[\pi_i, \pi_z] = 0$.
+
+Die Lorentzkraft wirkt nicht in $z$-Richtung, so dass dort ebene Wellen
+herauskommen. Daher kann der Separationsansatz so gewählt werden.
+
 \subsection{Landaueichung}
 \subsection{Energieniveaus}
 
