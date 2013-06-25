@@ -149,7 +149,43 @@ nicht, wie das passen soll. $\dot f$ und $\vnabla f$ kommen beide in den
 Transformationen vor, vielleicht geht das also doch irgendwie.
 
 \subsection{Kontinuitätsgleichung}
+
+\begin{align*}
+	\varrho &= \psi^* \psi \\
+	\dot \varrho &= \dot \psi^* \psi + \psi^* \psi \\
+	\intertext{%
+		Setze die Schrödingergleichung ein.
+	}
+	&= \del{\frac{H}{-\ii \hbar} \psi}^* \psi + \psi^* \frac{H}{\ii \hbar} \psi \\
+	\intertext{%
+		Setze $H$ ein. Dabei kann ich schon jetzt sehen, dass das $e\varphi$
+		wegfällt. Es ist rein reell und kein Operator, fällt also in der
+		Differnz weg.
+	}
+	&= \frac{1}{2 \ii \hbar m} \del{\psi^* \del{\vec p - \frac ec \vec A}^2 \psi - \del{\del{\vec p - \frac ec \vec A}^2 \psi}^* \psi} \\
+	\intertext{%
+		Ausmultiplizieren …
+	}
+	&= \frac{1}{2 \ii \hbar m} \del{\psi^* \del{\vec p^2 - \frac ec \vec A \vec p - \frac ec \vec p \vec A + \frac{e^2}{c^2} \vec A^2} \psi - \del{\del{\vec p^2 - \frac ec \vec A \vec p - \frac ec \vec p \vec A + \frac{e^2}{c^2} \vec A^2} \psi}^* \psi} \\
+	\intertext{%
+		Da $p$ imaginär ist, kehrt sich das Vorzeichen um.
+	}
+	&= \frac{1}{2 \ii \hbar m} \del{\psi^* \del{\vec p^2 - \frac ec \vec A \vec p - \frac ec \vec p \vec A + \frac{e^2}{c^2} \vec A^2} \psi - \del{\del{\vec p^2 + \frac ec \vec A \vec p + \frac ec \vec p \vec A + \frac{e^2}{c^2} \vec A^2} \psi} \psi} \\
+	&= \frac{\ii \hbar}{2m} (\psi^* \laplace \psi - \laplace \psi^* \psi) + \frac{e}{2mc}(\vnabla \vec A) (\psi^* \psi + \psi^* \psi) + \frac{e}{2mc} \vec A (\psi^* \vnabla \psi + \vnabla \psi^* \psi) \\
+	&= \frac{\ii \hbar}{2m} \vnabla (\psi^* \vnabla \psi - \vnabla \psi^* \psi) + \vnabla \frac{e}{2mc} \vec A \psi^* \psi \\
+	&= - \vnabla \del{\frac{\ii \hbar}{2m} (\vnabla \psi^* \psi - \psi^* \vnabla \psi) - \frac{e}{2mc} \vec A \psi^* \psi} \\
+	&= - \vnabla \vec j
+\end{align*}
+
 \subsection{Stromdichte}
+
+Da $\varphi$ nicht mehr vorkommt, ändert sich nur noch das $\vec A$-Feld. Daher
+kommt einfach ein Summand
+\[
+	- \frac{e}{2mc} \vnabla f \psi^* \psi
+\]
+dazu. Wobei ich erwarten würde, dass die Stromdichte invariant gegenüber der
+Umeichung ist.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                               Landau-Niveaus                                %
@@ -159,7 +195,7 @@ Transformationen vor, vielleicht geht das also doch irgendwie.
 
 \subsection{Kanonischer Impuls}
 
-Die kanonischen Gleichungen aus der klassichen Mechanik besagen für den Ort:
+Die kanonischen Gleichungen aus der klassischen Mechanik besagen für den Ort:
 \[
 	\dot x^i = \dpd H{\pi_i} = \frac{\pi_i}m = \frac{p_i}m + \frac q{cm} A^i
 \]
