@@ -41,9 +41,113 @@
 %                                Eichinvarianz                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand\call[2]{#1[#2]}
+\newcommand\Call[2]{#1\sbr{#2}}
+
 \section{Eichinvarianz}
 
 \subsection{Forminvarianz der Schrödingergleichung}
+
+Es soll gezeigt werden, dass mit den umgeeichten Feldern die
+Schrödingergleichung immer noch für die modifizierte Wellenfunktion gilt. Ich
+werde in die linke und rechte Seite der gestrichenen Schrödingergleichung die
+gestrichenen Größen einsetzen und versuchen zu zeigen, dass die ungestrichene
+Schrödingergleichung herauskommt.
+
+Dabei benutze ich für diese Aufgabe testweise die Notation aus Mathematica, bei
+der Funktionsaufrufe mit eckigen Klammern, normale Multiplikation mit runden
+Klammern geschrieben wird. Bei der Exponentialfunktion werde ich ab einem Punkt
+die Argumente weglassen, es sollte jedoch noch immer eindeutig sein. So meint
+$\exp \psi$:
+\[
+	\exp\psi \leadsto \Call\exp{\frac{\ii e}{\hbar c} \call f{t, \vec x}} \call \psi{t, \vec x}
+\]
+
+Zuerst die linke Seite:
+\begin{align*}
+	\ii \hbar \partial_t \psi'
+	&= \ii \hbar \Call\exp{\frac{\ii e}{\hbar c} f} \psi \\
+	&= \ii \hbar \Call\exp{\frac{\ii e}{\hbar c} f} \del{\frac{\ii e}{\hbar c} \dot f \psi + \dot \psi} \\
+	&= \ii \hbar \exp \del{\frac{\ii e}{\hbar c} \dot f \psi + \dot \psi}
+\end{align*}
+
+Nun die kompliziertere rechte Seite. Dabei lasse ich den Vorfaktor $1/2m$
+erstmal weg.
+\begin{align*}
+	&\phantom =
+	\del{\vec p - \frac ec (\vec A + \vnabla f)}^2 \exp \psi + e\del{\phi + \frac 1c \dot f} \exp \psi \\
+	&= \del{\del{\vec p - \frac ec \vec A} - \frac ec \vnabla f}^2 \exp \psi + e\del{\phi + \frac 1c \dot f} \exp \psi \\
+	\intertext{%
+		Dies multipliziere ich alles aus.
+	}
+	&= \del{\vec p^2 - \frac ec \vec p \vec A - \frac ec \vec A \vec p + \frac{e^2}{c^2} \vec A^2 - \frac ec \vec p (\vnabla f) + 2 \frac{e^2}{c^2} \vec A (\vnabla f) - \frac ec (\vnabla f) \vec p + \frac{e^2}{c^2} (\vnabla f)^2} \exp \psi \\
+	\intertext{%
+		An dieser Stelle wende ich die Operatoren auf $\exp \psi$ an. Dabei
+		entstehen durch die Produktregel mit $\exp$ als auch $\psi$ jede Menge
+		Terme. Ich lasse hier einige Zwischenschritte weg, die ich beim Rechnen
+		gemacht hatte. Dabei sind die mehreren Zeilen in der Klammer wie eine
+		lange Zeile zu interpretieren, es ist kein Vektor. Jede Zeile
+		entspricht grob einem Summand aus der vorherigen Klammer.
+	}
+	&= \exp \del{
+		\begin{gathered}
+			+ \frac{e^2}{c^2} (\vnabla f)^2 - \ii \hbar \frac ec \laplace f + \vec p \\
+			+ \ii \hbar \frac ec \vnabla \vec A - \frac ec \vec A (\vnabla f) - \frac ec \vec A \vec p \\
+			- \frac{e^2}{c^2} \vec A (\vnabla f) - \frac ec \vec A \vec p \\
+			+ \frac{e^2}{c^2} \vec A^2 \\
+			+ \ii \hbar \frac ec (\laplace f) - \frac{e^2}{c^2} (\vnabla f)^2 - \frac ec (\vnabla f) \vec p \\
+			+ 2 \frac{e^2}{c^2} \vec A (\vnabla f) \\
+			- \frac{e^2}{c^2} (\vnabla f)^2 - \frac ec (\vnabla f) \vec p \\
+			+ \frac{e^2}{c^2} (\vnabla f)^2
+		\end{gathered}
+	} \psi \\
+	\intertext{%
+		Die ganzen Terme lassen sich jetzt noch nach den verschiedenen
+		Ableitungen von $f$ anordenen. Dabei ist die Matrix keine Matrix,
+		sondern nur einen übersichtliche Anordnung der Terme, die eigentlich
+		alle in einer Zeile stehen sollten.
+	}
+	&= \exp
+	\begin{pmatrix}
+		+ \vec p^2 & - \frac ec \vec A (\vnabla f) & - \ii \hbar \frac ec (\laplace f) & + \frac{e^2}{c^2} (\vnabla f)^2 \\
+		+ \ii \hbar \frac ec (\vnabla \vec A) & - \frac{e^2}{c^2} \vec A (\vnabla f) & + \ii \hbar \frac ec (\laplace f) & - \frac{e^2}{c^2} (\vnabla f)^2 \\
+		- \frac ec \vec A \vec p & - \frac ec (\vnabla f) \vec p & & + e \frac{e^2}{c^2} (\vnabla f)^2 \\
+		- \frac ec \vec A \vec p & + 2 \frac{e^2}{c^2} \vec A \vnabla f & & - \frac{e^2}{c^2} (\vnabla f)^2 \\
+		+ \frac{e^2}{c^2} & - \frac ec (\vnabla f) \vec p & &
+	\end{pmatrix}
+	\psi \\
+	\intertext{%
+		In der ersten Spalte steht genau das, was von der normale
+		Schrödingergleichung zu erwarten ist. Der Faktor $\exp$ kann dann auf
+		beiden Seiten weggekürzt werden. In der dritten und vierten Spalte
+		steht nur noch null. In der zweiten Spalte ist wahrscheinlich ein
+		Vorzeichenfehler drin. Ansonsten würde ich erwarten, dass dort auch
+		null steht. Eventuell aber auch nicht, damit es sich mit etwas anderem
+		weghebt.
+	}
+	&= \exp \del{+ \vec p^2 + \ii \hbar \frac ec (\vnabla \vec A) - \frac ec \vec A \vec p - \frac ec \vec A \vec p + \frac{e^2}{c^2} -  2 \frac ec (\vnabla f) \vec p} \psi
+\end{align*}
+
+Nun schreibe ich beide Seiten zusammen:
+\begin{align*}
+	\ii \hbar \exp \del{\frac{\ii e}{\hbar c} \dot f \psi + \dot \psi}
+	&= \exp \del{+ \vec p^2 + \ii \hbar \frac ec (\vnabla \vec A) - \frac ec \vec A \vec p - \frac ec \vec A \vec p + \frac{e^2}{c^2} -  2 \frac ec (\vnabla f) \vec p} \psi \\
+	\intertext{%
+		Das $\exp$ fliegt – wie versprochen – raus.
+	}
+	\ii \hbar \del{\frac{\ii e}{\hbar c} \dot f \psi + \dot \psi}
+	&= \del{+ \vec p^2 + \ii \hbar \frac ec (\vnabla \vec A) - \frac ec \vec A \vec p - \frac ec \vec A \vec p + \frac{e^2}{c^2} -  2 \frac ec (\vnabla f) \vec p} \psi \\
+	\intertext{%
+		Nun kann ich die Lösung der ungestrichenen Schrödingergleichung abziehen.
+	}
+	\ii \hbar \frac{\ii e}{\hbar c} \dot f \psi &= 2 \frac ec (\vnabla f) \vec p \psi \\
+	- \dot f \psi &= 2 (\vnabla f) \vec p \psi
+\end{align*}
+
+Wenn hier $0=0$ herauskommen würde, wäre die Relation gezeigt. Jedoch sehe ich
+nicht, wie das passen soll. $\dot f$ und $\vnabla f$ kommen beide in den
+Transformationen vor, vielleicht geht das also doch irgendwie.
+
 \subsection{Kontinuitätsgleichung}
 \subsection{Stromdichte}
 
