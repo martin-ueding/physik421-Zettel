@@ -45,15 +45,169 @@
 
 \subsection{Störterm, Dipolmoment}
 
+Die Einstellenergie eines elektrischen Dipols ist:
+\[
+	- \vec E \vec d
+\]
+
+Das elektrische Dipolmoment $\vec d$ ist über die Ladungsdichte $\varrho$
+definiert als:
+\[
+	\vec d = \int \dif{^3 x} \, \vec x \varrho(\vec x)
+\]
+
+Somit kommt der neue Term hinzu.
+
 \subsection{Störterm in Kugelkoordinaten}
+
+\begin{align*}
+	H'
+	&= e \vec E \vec x \\
+	&= e E \ev_3 \vec x \\
+	&= e E r \cos(\theta)
+\end{align*}
 
 \subsection{Verschwinden der Matrixelemente}
 
+Laut \cite{wikipedia/Parität} unterscheiden sich gerade und ungerade
+Wellenfunktionen in der Parität. Es ist also zu zeigen, dass gilt:
+\[
+	\bra{n, l, m} H' \ket{n', l', m} \neq 0
+	\implies
+	|n - n'| \mod 2 = 1
+\]
+
+Ein derartiges Matrixelement ist ausgeschrieben:
+\[
+	\int_0^\infty \dif r \int_0^{2\piup} \dif \phi \, r^2 \int_{-1}^1 \dif{\cos\theta} \, R_{nl}^*(r) Y_{lm}^*(\theta, \phi) e E r \cos(\theta) R_{n'l'}(r) Y_{l'm}(\theta, \phi)
+\]
+
+Die Kugelflächenfunktionen bestehen aus einem $\theta$- und einem
+$\phi$-Anteil, wobei letzterer den Absolutbetrag 1 hat. Somit fällt der in
+diesem Integral weg, da $m$ auf beiden Seiten gleich ist. Der $\theta$-Anteil
+wird mit $\xi = \cos(\theta)$ zu einem Polynom, das entweder gerade oder
+ungerade ist. Im Integral steht noch ein $\xi$ drin, womit es bei der
+Integration über das zentrierte Integral $[-1, 1]$ darauf ankommt, dass der
+Integrand insgesamt eine gerade Funktion ist. Dies ist nur gegeben, wenn die
+$Y^*Y$ eine ungerade Funktion ist, also $Y^*$ und $Y$ verschiedene Paritäten
+aufweisen. Die Symmetrie der $Y$ hängt von $l$ ab, diese müssen verschieden
+sein.
+
 \subsection{Verschiebung ab Ordnung}
+
+Ich probiere die Energieverschiebung bei der ersten Ordnung der Störung einfach aus:
+\[
+	\Deltaup E_n^{(1)} = \bra n H' \ket n
+\]
+
+Im Grundzustand $\ket{1, 0, 0}$:
+\begin{align*}
+	\Deltaup E_0^{(1)}
+	&= \int_0^\infty \dif r \int_0^{2\piup} \dif \phi \, \int_{-1}^1 \dif{\cos\theta} \, 
+	r^2 \frac{2}{a_0^{3/2}} \exp\del{-\frac r{a_0}} e E r \cos(\theta) \exp\del{-\frac r{a_0}} \\
+	&= \frac{8 \piup eE}{a_0^3} \int_0^\infty \dif r r^3 \exp\del{-\frac r{a_0}} \\
+	&> 0
+\end{align*}
+
+Also tritt schon bei der ersten Ordnung eine Energieverschiebung auf.
 
 \subsection{Diagonalisieren des Störterms}
 
+Die vier Entartungszustände sind:
+\begin{align*}
+	E_{20}&\colon \ket{2, 0, 0} \\
+	E_{21}&\colon \ket{2, 1, -1}, \ket{2, 1, 0}, \ket{2, 1, 1}
+\end{align*}
+
+Als Basis für $H'$ wähle ich die Energieeigenbasis von $H$ selbst, also die
+vier Zustände. Dabei ist die Basis in dieser Reihenfolge:
+\[
+	\set{\psi_1, \psi_2, \psi_3, \psi_4} =
+	\set{\ket{2, 0, 0}, \ket{2, 1, -1}, \ket{2, 1, 0}, \ket{2, 1, 1}}
+\]
+
+Die Matrixelemente sind dann:
+\[
+	H'_{ij} = \bra i H' \ket j
+\]
+
+Die Integrale, die dahinter stecken, sind wie oben angegeben zu rechnen. Dies
+habe ich mit Mathematica gerechnet. Das Mathematica Notebook ist ganz am Ende
+dieser Abgabe. Als Matrix erhalte ich, wenn ich das, wofür es wohl die meisten
+Punkte in dieser Aufgabe gibt, an Mathematica abgebe:
+\[
+	\tens H' = - 3 a_0 E e
+	\begin{pmatrix}
+		0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & 0 \\
+		1 & 0 & 0 & 0 \\
+		0 & 0 & 0 & 0
+	\end{pmatrix}
+\]
+
+Von den Einheiten kommt der Vorfaktor auch hin:
+\[
+	\si\meter \cdot \si{\volt\per\meter} \cdot \si\coulomb
+	= \si\volt \cdot \si\coulomb
+	= \si\joule
+\]
+
+Die Eigenwerte und Vektoren dieser Matrix sind:
+\begin{align*}
+	-1 &\colon
+	\begin{pmatrix}
+		-1 \\ 0 \\ 1 \\ 0
+	\end{pmatrix} \\
+	1 &\colon
+	\begin{pmatrix}
+		-1 \\ 0 \\ -1 \\ 0
+	\end{pmatrix} \\
+	0 &\colon
+	\begin{pmatrix}
+		0 \\ 0 \\ 0 \\ 1
+	\end{pmatrix}
+	,
+	\begin{pmatrix}
+		0 \\ 1 \\ 0 \\ 0
+	\end{pmatrix}
+\end{align*}
+
+Somit sind die neuen Zustände also:
+\begin{align*}
+	\ket{1'} &\propto - \ket{2, 0, 0} + \ket{2, 1, 0} \\
+	\ket{2'} &\propto - \ket{2, 0, 0} - \ket{2, 1, 0} \\
+	\ket{3'} &\propto \ket{2, 1, 1} \\
+	\ket{4'} &\propto \ket{2, 1, -1}
+\end{align*}
+
+Die Eigenwerte geben mir die Energie. Diese ist für die Zustände 1 und 2 $\mp 3
+a_0 E e$, und für die Zustände 3 und 4 null. Diese Zustände haben also keine
+Energieverschiebung.
+
 \subsection{Erwartungswerte}
+
+Der Dipoloperator ist:
+\[
+	d = - e \vec x
+\]
+
+Die 3-Komponente sollte dann sein:
+\[
+	d_3 = - ez
+	= - er \cos(\theta)
+\]
+
+Die Erwartungswerte sind $\bra{n'} d_3 \ket{n'}$, auch dies lasse ich mit
+Mathematica rechnen. Ich erhalte als Erwartungswerte:
+\[
+	- 6 a_0 e
+	\eqnsep
+	6 a_0 e
+	\eqnsep
+	0
+	\eqnsep
+	0
+\]
 
 \includepdf[pages=-]{Mathematica.pdf}
 
