@@ -1,0 +1,223 @@
+ % Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+%
+\input{header.tex}
+
+\usepackage{cancel}
+\usepackage{tikz}
+
+\newcommand{\themodul}{physik421}
+\newcommand{\thegruppe}{Gruppe 4 -- Franz Niecknig}
+\newcommand{\theuebung}{5}
+
+\ifoot{\footnotesize{Martin Ueding}}
+\ihead{\themodul{} -- Übung \theuebung}
+\ofoot{\footnotesize{\thegruppe}}
+
+\def\thesection{H \arabic{section}}
+\def\thesubsection{\thesection\alph{subsection}}
+
+\setcounter{section}{5}
+
+\title{\themodul{} -- Übung \theuebung}
+\subtitle{\thegruppe}
+\author{
+	Martin Ueding \footnote{\href{mailto:mu@uni-bonn.de}{mu@uni-bonn.de}}
+}
+
+\hypersetup{
+	pdftitle={\themodul{} - Übung \theuebung},
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\ccbysadetitle
+\end{center}
+
+\begin{Form}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l|c|c|c}
+		Aufgabe
+		& \ref 1
+		& \ref 2
+		& $\sum$ \\
+		\hline
+		Punkte
+		& \TextField[name=aufgabe1, width=1cm]{} / 10
+		& \TextField[name=aufgabe2, width=1cm]{} / 10
+		& \TextField[name=aufgabe3, width=1cm]{} / 20
+	\end{tabular}
+\end{table}
+\end{Form}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               Unschärferelation beim Harmonischen Oszillator               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Unschärferelation beim Harmonischen Oszillator}
+\label 1
+
+\subsection{Erwartungswerte}
+
+\begin{align*}
+	\braopket n{\hat x}n
+	&= \sqrt{\frac{\hbar}{2m\omega}} \braopket n{\hat a + \hat a^\dagger}n \\
+	&= \sqrt{\frac{\hbar}{2m\omega}} \del{\braopket n{\hat a}n + \braopket n{\hat a^\dagger}n} \\
+	&= \sqrt{\frac{\hbar}{2m\omega}} \del{\sqrt n \braket n{n-1} + \sqrt{n+1} \braket n{n+1}} \\
+	&= 0
+\end{align*}
+
+Analog: $\braopket n{\hat p}n = 0$.
+
+\begin{align*}
+	\braopket n{\hat x^2}n
+	&= \frac{\hbar}{2m\omega} \braopket n{\del{\hat a + \hat a^\dagger}^2}n \\
+	&= \frac{\hbar}{2m\omega} \braopket n{\hat a^2 + \hat a \hat a^\dagger + \hat a^\dagger \hat a + \hat a^{\dagger2}}n \\
+	&= \frac{\hbar}{2m\omega} (2n+1)
+\end{align*}
+
+\begin{align*}
+	\braopket n{\hat p^2}n
+	&= - \frac{\hbar m \omega}{2} \braopket n{\del{\hat a - \hat a^\dagger}^2}n \\
+	&= - \frac{\hbar m \omega}{2} \braopket n{\hat a^2 - \hat a \hat a^\dagger - \hat a^\dagger \hat a + \hat a^{\dagger2}}n \\
+	&= \hbar m\omega \del{n+\half}
+\end{align*}
+
+\subsection{Unschärferelation}
+
+\begin{align*}
+	\del{\Deltaup x}^2 \del{\Deltaup p}^2
+	&= \del{\bracket{x^2} - \bracket x^2} \del{\bracket{p^2} - \bracket p^2} \\
+	&= \hbar ^2 \del{n+\half}^2 \\
+	\del{\Deltaup x} \del{\Deltaup p}
+	&= \hbar \del{n+\half}
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                Wellenpakete                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Wellenpakete}
+\label 2
+
+\subsection{Zeichnung}
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[range=-5:5, samples=100, thick] plot (\x, {exp(-(\x+4)^2/.1)});
+		\draw[color=blue] (-5, 0) -- (-1, 0) -- (-1, -1) -- (1, -1) -- (1, 0) -- (5, 0);
+	\end{tikzpicture}
+\end{center}
+
+Wegen $\sigma \ll \abs{x_0 + L/2}$ ist $x = -L/2$ bei mindestens $10 \sigma$,
+Integral vernachlässigbar.
+
+\subsection{Entwicklungskoeffizienten}
+
+\begin{align*}
+	\braket{\Psi\del\cdot}{\Psi\del{\cdot, 0}}
+	&= \braket{\alpha_+ \exp\del{\ii k x } + \alpha_- \exp\del{-\ii kx}}{\frac{1}{\sqrt{\piup \sigma^2}} \exp\del{-\frac{\del{x-x_0}^2}{2\sigma^2}} \exp\del{\ii k_0x}} \\
+	&= \braket{\alpha_+ \exp\del{\ii k x }}{\frac{1}{\sqrt{\piup \sigma^2}} \exp\del{-\frac{\del{x-x_0}^2}{2\sigma^2}} \exp\del{\ii k_0x}} \\
+	&\phantom= + \braket{\alpha_- \exp\del{-\ii kx}}{\frac{1}{\sqrt{\piup \sigma^2}} \exp\del{-\frac{\del{x-x_0}^2}{2\sigma^2}} \exp\del{\ii k_0x}} \\
+	\displaybreak[0]
+	%
+	&= \braket{\alpha_+ }{\exp\del{-\ii k x} \frac{1}{\sqrt{\piup \sigma^2}} \exp\del{-\frac{\del{x-x_0}^2}{2\sigma^2}} \exp\del{\ii k_0x}} \\
+	&\phantom= + \braket{\alpha_-}{\exp\del{\ii kx} \frac{1}{\sqrt{\piup \sigma^2}} \exp\del{-\frac{\del{x-x_0}^2}{2\sigma^2}} \exp\del{\ii k_0x}} \\
+	\displaybreak[0]
+	%
+	&= \alpha_+^\dagger \int_{-\infty}^\infty \dif x \,
+\exp\del{-\ii k x} \frac{1}{\sqrt{\piup \sigma^2}} \exp\del{-\frac{\del{x-x_0}^2}{2\sigma^2}} \exp\del{\ii k_0x} \\
+	&\phantom= + \alpha_-^\dagger \int_{-\infty}^\infty \dif x \,
+	\displaybreak[0]
+\exp\del{\ii kx} \frac{1}{\sqrt{\piup \sigma^2}} \exp\del{-\frac{\del{x-x_0}^2}{2\sigma^2}} \exp\del{\ii k_0x} \\
+%
+&= \alpha_+^\dagger \fourier\sbr{\Psi}(k) + \alpha_-^\dagger \fourier^{-1}\sbr{\Psi}(k) \\
+	\displaybreak[0]
+&= \alpha_+^\dagger \fourier\sbr{\Psi}(k) + \alpha_-^\dagger \fourier\sbr{\Psi}(-k) \\
+	\displaybreak[0]
+&= \alpha_+^\dagger \tilde{\Psi}(k) + \alpha_-^\dagger \tilde{\Psi}(-k)
+\end{align*}
+
+\subsection{Fouriertransformation}
+
+\begin{align*}
+	\tilde\Psi(k)
+	&= \frac{1}{\sqrt{\sigma^2\piup}} \int_{-\infty}^\infty \dif x \,
+	\eup^{- \ii k x} \exp\del{-\frac{\del{x-x_0}^2}{2\sigma^2}} \eup^{\ii k_0 x} \\
+	\displaybreak[0]
+	%
+	&= \frac{1}{\sqrt{\sigma^2\piup}} \int_{-\infty}^\infty \dif x \,
+	\exp\del{-\frac{\del{x-x_0}^2}{2\sigma^2} + \ii k_0 x- \ii k x} \\
+	\displaybreak[0]
+	%
+	&= \frac{1}{\sqrt{\sigma^2\piup}} \int_{-\infty}^\infty \dif x \,
+	\exp\del{-\frac{\del{x-x_0}^2}{2\sigma^2} + \ii \del{k_0-k} x} \\
+	\displaybreak[0]
+	%
+	&= \frac{1}{\sqrt{\sigma^2\piup}} \int_{-\infty}^\infty \dif x \,
+	\exp\del{-\frac{x^2}{2\sigma^2} + \frac{xx_0}{\sigma^2} -\frac{x_0^2}{2\sigma^2}+ \ii \del{k_0-k} x} \\
+	\displaybreak[0]
+	%
+	&= \frac{1}{\sqrt{\sigma^2\piup}} \int_{-\infty}^\infty \dif x \,
+	\exp\del{
+		-\del{\frac{x}{\sqrt{2\sigma^2}} - \frac{\sqrt{2\sigma^2}}2 \del{ \frac{x_0}{2\sigma^2} + \ii \del{k_0-k}}}^2 - \frac{x_0^2}{2\sigma^2} + \frac{2\sigma^2}4 \del{\frac{x_0}{\sigma^2} + \ii \del{k_0-k}}^2
+		} \\
+	%
+		\intertext{%
+			\[
+				\xi := \frac{x}{\sqrt{2\sigma^2}} - \frac{\sqrt{2\sigma^2}}2 \del{ \frac{x_0}{2\sigma^2} + \ii \del{k_0-k}}
+			\]
+		}
+	%
+	&= \frac{\sqrt 2}{\sqrt{\piup}} 
+	\exp\del{
+		- \frac{x_0^2}{2\sigma^2} + \frac{2\sigma^2}4 \del{\frac{x_0}{\sigma^2} + \ii \del{k_0-k}}^2
+		}
+		\int_{-\infty}^\infty \dif \xi \, \eup^{-\xi^2} \\
+	\displaybreak[0]
+	%
+	&= \sqrt 2 \exp\del{
+		-\half \del{k - k_0} \del{2 \ii x_0 + \sigma^2 \del{k - k_0}}
+		}
+\end{align*}
+
+\subsection{Wert von $\alpha_+$}
+
+\begin{align*}
+	\Psi(x, 0)
+	&= \frac1{2\piup} \int_0^\infty \dif k \,
+	\alpha_+^* \tilde \Psi(k, 0) \del{\alpha_+ \ee^{\ii kx} + \alpha_- \ee^{-\ii kx}} \\
+	%
+	&= \frac1{2\piup} \int_0^\infty \dif k \,
+	\abs{\alpha_+}^2 \tilde \Psi(k, 0) \ee^{\ii kx}
+	+ \frac1{2\piup} \int_0^\infty \dif k \,
+	\alpha_+^* \alpha_- \tilde \Psi(k, 0) \ee^{-\ii kx} \\
+	%
+	&= \abs{\alpha_+}^2 \psi(x, 0) + \underbrace{\frac1{2\piup} \alpha_+^* \alpha_- \psi(-x, 0)}_{=0}
+\end{align*}
+
+$\abs{\alpha_+} = 1$.
+
+\subsection{Gruppengeschwindigkeit}
+
+\[
+	v_\text G = \dpd \omega k \del{k_0}
+	= \frac\hbar m k_0
+\]
+
+Große $t$: Transmittierte Welle nach rechts, reflektierte nach links.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    Ende                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\IfFileExists{\bibliographyfile}{
+	%\bibliography{\bibliographyfile}
+}{}
+
+\end{document}
+
+% vim: spell spelllang=de
