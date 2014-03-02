@@ -1,0 +1,49 @@
+\input{header.tex}
+
+\hypersetup{
+	pdftitle=
+}
+
+\title{physik421 Anwesenheitsaufgaben 1}
+\author{
+	Martin Ueding \\
+	\small{\href{mailto:mu@uni-bonn.de}{mu@uni-bonn.de}}
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Rückblick -- Hamiltonsche Mechanik}
+
+\subsection{explizite Formel}
+
+\begin{align*}
+	\dif H 
+	&= \sum_i \del{p_i \dif{\dot q_i} + \dot q_i \dif{p_i} - \dpd L{\dot q_i} \dif{\dot q_i} - \dpd L{p_i} \dif{p_i}} \\
+	&= \sum_i \del{p_i \dif{\dot q_i} + \dot q_i \dif{p_i} - p_i \dif{\dot q_i} - \dpd L{p_i} \dif{p_i}} \\
+\end{align*}
+
+\subsection{H als Funktion von $p$, $q$ und $t$}
+
+\[
+	H = \sum_i \frac{p_i^2}{2m} + V(q) \\
+\]
+
+Totales Differential:
+\[
+	\dif H = \sum_i \frac{p_i}{m} \dif p_i + \dpd Vq \dif q
+\]
+
+\subsection{Koeffizientenvergleich}
+
+Es gibt doppelte so viele Gleichungen, allerdings nur erster Ordnung.
+
+%\IfFileExists{\bibliographyfile}{
+%	\bibliography{\bibliographyfile}
+%	\bibliographystyle{plain}
+%}{}
+
+\end{document}
+
+% vim: spell spelllang=de
