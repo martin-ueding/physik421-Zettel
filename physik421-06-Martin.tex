@@ -1,0 +1,371 @@
+ % Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+%
+\input{header.tex}
+
+\usepackage{cancel}
+\usepackage{tikz}
+
+\newcommand{\themodul}{physik421}
+\newcommand{\thegruppe}{Gruppe 4 -- Franz Niecknig}
+\newcommand{\theuebung}{6}
+
+\ifoot{\footnotesize{Martin Ueding}}
+\ihead{\themodul{} -- Übung \theuebung}
+\ofoot{\footnotesize{\thegruppe}}
+
+\def\thesection{H \arabic{section}}
+\def\thesubsection{\thesection\alph{subsection}}
+
+\setcounter{section}{7}
+
+\title{\themodul{} -- Übung \theuebung}
+\subtitle{\thegruppe}
+\author{
+	Martin Ueding \footnote{\href{mailto:mu@uni-bonn.de}{mu@uni-bonn.de}}
+}
+
+\hypersetup{
+	pdftitle={\themodul{} - Übung \theuebung},
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\ccbysadetitle
+\end{center}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l|c|c|c}
+		Aufgabe
+		& \ref 1
+		& \ref 2
+		& $\sum$ \\
+		\hline
+		Punkte
+		& \punkte / 9
+		& \punkte / 11
+		& \punkte / 20
+	\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                    Unschärfe der kohärenten Zustände                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Unschärfe der kohärenten Zustände}
+\label 1
+
+\subsection{Erwartungswert des Ortsoperators}
+
+\begin{align*}
+	\braopket{\phi}{\hat x}{\phi}
+	&= \sqrt{\frac{\hbar}{2m\omega}} \braopket\phi{\hat a + \hat a^\dagger}\phi \\
+	&= \sqrt{\frac{\hbar}{2m\omega}} \del{\braket\phi{\hat a \phi} + \braket{\hat a\phi}\phi} \\
+	\intertext{%
+		Benutze komplexe Symmetrie des Skalarprodukts.
+	}
+	&= \sqrt{\frac{\hbar}{2m\omega}} \del{\braket\phi{\hat a \phi} + \braket{\phi}{\hat a\phi}^*} \\
+	\intertext{%
+		Benutze gegebene Eigenwertgleichung für den Absteigeoperator.
+	}
+	&= \sqrt{\frac{\hbar}{2m\omega}} \del{\alpha + \alpha^*}
+\end{align*}
+
+\begin{align*}
+	\braopket{\phi}{\hat x^2}{\phi}
+	&= \frac{\hbar}{2m\omega} \braopket\phi{\del{\hat a + \hat a^\dagger}^2}\phi \\
+	&= \frac{\hbar}{2m\omega} \braopket\phi{\hat a^2 + \hat a \hat a^\dagger + \hat a^\dagger \hat a + \hat a^{\dagger2}}\phi \\
+	\intertext{%
+		Benutze den Kommutator $\sbr{\hat a, \hat a^\dagger} = 1$.
+	}
+	&= \frac{\hbar}{2m\omega} \braopket\phi{\hat a^2 + 2\hat a^\dagger \hat a + \hat a^{\dagger2} + 1}\phi \\
+	&= \frac{\hbar}{2m\omega} \del{\alpha^2 + 2\braopket\phi{\hat a^\dagger \hat a}\phi + \alpha^{*2} + 1} \\
+	&= \frac{\hbar}{2m\omega} \del{\alpha^2 + 2\braket{\hat a\phi}{\hat a\phi} + \alpha^{*2} + 1} \\
+	&= \frac{\hbar}{2m\omega} \del{\alpha^2 + 2 \alpha \alpha^* + \alpha^{*2} + 1} \\
+	&= \frac{\hbar}{2m\omega} \del{\del{\alpha+ \alpha^*}^2 + 1}
+\end{align*}
+
+Die Ortsunschärfe ist die Differenz von $\bracket{x^2}$ und $\bracket{x}^2$. Also:
+\[
+	\del{\Deltaup x}^2 = \frac{\hbar}{2m\omega} 
+\]
+
+\subsection{Impulsunschärfe}
+
+Gehe analog für den Impuls vor. Dort ist:
+\[
+	\hat p = \frac 1i \sqrt{\frac{\hbar m \omega}{2}} \del{\hat a - \hat a^\dagger}
+\]
+
+Dadurch ändert sich der Vorfaktor und die Vorzeichen in den Mischtermen:
+\[
+	\bracket{\hat p} =  \frac 1i \sqrt{\frac{\hbar m \omega}{2}} \del{\alpha + \alpha^*}
+\]
+\[
+	\bracket{\hat p^2} = - \frac{\hbar m \omega}{2} \del{\del{\alpha - \alpha^*}^2 - 1}
+\]
+
+Somit ist die Impulsunschärfe:
+\[
+	\del{\Deltaup p}^2 = \frac{\hbar m \omega}{2}
+\]
+
+Und deren Produkt:
+\[
+	\sqrt{
+		\frac{\hbar}{2m\omega} 
+		\frac{\hbar m \omega}{2}
+	}
+	= \frac \hbar2
+\]
+
+\subsection{Energie und -unschärfe}
+
+Mit dem Hamiltonoperator:
+\[
+	\hat H
+	= \frac{\hbar\omega}2 \del{\hat a \hat a^\dagger + \hat a^\dagger \hat a}
+	= \frac{\hbar\omega}2 \del{2 \hat a^\dagger \hat a + 1}
+\]
+
+Berechne Energieerwartungswert:
+\begin{align*}
+	\braopket{\phi}{\hat H}{\phi}
+	&= \frac{\hbar\omega}{2} \braopket{\phi}{2 \hat a^\dagger \hat a + 1}{\phi} \\
+	&= \frac{\hbar\omega}2 \del{2 \alpha^* \alpha + 1}
+\end{align*}
+
+Berechne zweites Moment der Verteilung:
+\begin{align*}
+	\braopket{\phi}{\hat H^2}{\phi}
+	&= \frac{\hbar^2\omega^2}{4} \braopket{\phi}{\del{2 \hat a^\dagger \hat a + 1^2}}{\phi} \\
+	&= \frac{\hbar^2\omega^2}{4} \braopket{\phi}{4 \hat a^\dagger \hat a \hat a^\dagger \hat a + 4 \hat a^\dagger \hat a + 1}{\phi} \\
+	&= \frac{\hbar^2\omega^2}{4} \del{\braopket{\phi}{4 \hat a^\dagger \hat a \hat a^\dagger \hat a}{\phi} + 4 \alpha^* \alpha + 1} \\
+	&= \frac{\hbar^2\omega^2}{4} \del{4 \braopket{\hat a \phi}{\hat a \hat a^\dagger}{\hat a \phi} + 4 \alpha^* \alpha + 1} \\
+	&= \frac{\hbar^2\omega^2}{4} \del{4 \alpha^* \alpha \braopket{\phi}{\hat a \hat a^\dagger}{\phi} + 4 \alpha^* \alpha + 1} \\
+	\intertext{%
+		Nutze den Kommutator.
+	}
+	&= \frac{\hbar^2\omega^2}{4} \del{4 \alpha^* \alpha \braopket{\phi}{\hat a^\dagger \hat a + 1}{\phi} + 4 \alpha^* \alpha + 1} \\
+	&= \frac{\hbar^2\omega^2}{4} \del{4 \alpha^* \alpha \del{\alpha^* \alpha + 1} + 4 \alpha^* \alpha + 1} \\
+	&= \frac{\hbar^2\omega^2}{4} \del{4 \alpha^{*2} \alpha^2 + 8 \alpha^* \alpha + 1} \\
+	&= \frac{\hbar^2\omega^2}{4} \del{\del{2\alpha^* \alpha + 1}^2 + 4 \alpha^* \alpha}
+\end{align*}
+
+Die Differenz ist:
+\[
+	\del{\Deltaup \hat H}^2 = \hbar \omega \abs\alpha^2
+\]
+
+Breite des Peaks:
+\[
+	\frac{\Deltaup \hat H}{\bracket{\hat H}}
+	= \frac{\hbar \omega \abs\alpha^2}{\frac{\hbar\omega}2 \del{2 \alpha^* \alpha + 1}}
+	\approx \frac{1}{\abs\alpha}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                 Differentialoperatoren in Kugelkoordinaten                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Differentialoperatoren in Kugelkoordinaten}
+\label 2
+
+\subsection{Orthonormalität}
+
+Zu zeigen, dass die Vektoren paarweise orthogonal sind. Die Rechnungen sind
+trivial:
+\begin{align*}
+	\inner{\ev_r}{\ev_\theta}
+	&= \inner{
+	\begin{pmatrix}
+		\sin\theta \cos\phi \\
+		\sin\theta \sin\phi \\
+		\cos\theta
+	\end{pmatrix}
+}{
+	\begin{pmatrix}
+		\cos\theta \cos\phi \\
+		\cos\theta \sin\phi \\
+		- \sin\theta
+	\end{pmatrix}
+} \\
+&= \sin\theta \cos\theta - \cos\theta \sin\theta \\
+&= 0
+\end{align*}
+\begin{align*}
+	\inner{\ev_\theta}{\ev_\phi}
+	&= \inner{
+	\begin{pmatrix}
+		\cos\theta \cos\phi \\
+		\cos\theta \sin\phi \\
+		- \sin\theta
+	\end{pmatrix}
+}{
+	\begin{pmatrix}
+		-\sin\phi \\
+		\cos\phi \\
+		0
+	\end{pmatrix}
+} \\
+&= 0
+\end{align*}
+\begin{align*}
+	\inner{\ev_\phi}{\ev_r}
+	&= \inner{
+	\begin{pmatrix}
+		-\sin\phi \\
+		\cos\phi \\
+		0
+	\end{pmatrix}
+}{
+	\begin{pmatrix}
+		\sin\theta \cos\phi \\
+		\sin\theta \sin\phi \\
+		\cos\theta
+	\end{pmatrix}
+} \\
+&= 0
+\end{align*}
+
+Der Betrag der Vektoren muss eins sein. Dies ist mit $\sin^2 + \cos^2 = 1$
+schnell zu sehen.
+
+\subsection{Gradient}
+
+Betrachte die Ableitungen nach den Koordinaten $r, \theta, \phi$ in
+Abhängigkeit von den Koordinaten $x, y, z$. 
+\begin{align*}
+	\dpd{}r
+	&= \dpd xr \dpd{}x + \dpd yr \dpd{}y + \dpd zr \dpd{}z \\
+	&= \sin\theta \cos\phi \dpd{}x + \sin\theta \sin\phi \dpd{}y + \cos\theta \dpd{}z \\
+	&= \inner{\ev_r}\vnabla
+	%
+	\displaybreak[0] \\
+	%
+	\dpd{}\theta
+	&= \dpd x\theta \dpd{}x + \dpd y\theta \dpd{}y + \dpd z\theta \dpd{}z \\
+	&= r \cos\theta \cos\phi \dpd{}x + r \cos\theta \sin\phi \dpd{}y - r \sin\theta \dpd{}z \\
+	&= r \inner{\ev_\theta}\vnabla
+	%
+	\displaybreak[0] \\
+	%
+	\dpd{}\phi
+	&= \dpd x\phi \dpd{}x + \dpd y\phi \dpd {}y + \dpd z\phi \dpd{}z \\
+	&= - r \sin\theta \sin\phi \dpd{}x + r \sin\theta \cos\phi \dpd{}y \\
+	&= r \sin\theta \inner{\ev_\phi}\vnabla
+\end{align*}
+
+Dies liefert die Projektionen des $\vnabla$-Operators auf die Einheitsvektoren
+der Kugelkoordinaten. Stelle obige Gleichungen um und erhalte:
+\begin{align*}
+	\nabla_r &= \dpd{}r \\
+	\nabla_\theta &= \frac 1r \dpd{}\theta \\
+	\nabla_\phi &= \frac1{r \sin\theta} \dpd{}\phi
+\end{align*}
+
+\subsection{Divergenz}
+
+Die Divergenz ist wie immer $\divergence{\vec v}$. Allerdings ist $\vnabla$ nun
+nicht mehr der Vektor der gradlinigen partiellen Ableitungen $\partial$,
+sondern der Vektor der „covariant derivatives“. Außerdem ist der metrische
+Tensor nicht mehr trivial. Betrachte folgendes als Skalarprodukt:
+\[
+	\sum_{i, j} \inner{\ev_i \nabla_i}{v_j, \ev_j}
+\]
+
+In einem normalen Koordinatensystem verschwinden aufgrund der Orthogonalität
+der $\ev_i$ und $\ev_j$ alle Terme mit $i \neq j$. Hier treten solche Terme
+allerdings auf:
+\begin{align*}
+	\ev_r \nabla_r v_r \ev_r
+	&= \ev_r \dpd{}r v_r \ev_r \\
+	&= \ev_r \dpd{v_r}r \ev_r + \ev_r v_r \underbrace{\dpd{\ev_r}{r}}_{=0} \\
+	&= \dpd{v_r}r 
+	%
+	\displaybreak[0] \\
+	%
+	\ev_r \nabla_r v_\theta \ev_\theta
+	&= \ev_r \dpd{}r v_\theta \ev_\theta \\
+	&= \ev_r \dpd{v_r}r \ev_\theta + \ev_r v_r \underbrace{\dpd{\ev_\theta}{r}}_{=0} \\
+	&= 0
+	%
+	\displaybreak[0] \\
+	%
+	\ev_r \nabla_r v_\phi \ev_\phi
+	&= 0 & \text{Weil $\inner{\ev_r}{\ev_\theta} = 0$ und $\pd{\ev\phi}r = 0$.}
+	%
+	\displaybreak[0] \\
+	%
+	\ev_\theta \nabla_\theta v_r \ev_r
+	&= \ev_\theta \frac 1r \dpd{}\theta v_r \ev_r \\
+	&= \ev_\theta \frac 1r \dpd{v_r}\theta \ev_r + \ev_\theta \frac 1r v_r \underbrace{\dpd{\ev_r}\theta}_{=\ev_\theta} \\
+	&= \frac 1r v_r
+	%
+	\displaybreak[0] \\
+	%
+	\ev_\theta \nabla_\theta v_\theta \ev_\theta
+	&= \ev_\theta \frac 1r \dpd{}\theta v_\theta \ev_\theta \\
+	&= \ev_\theta \frac 1r \dpd{v_\theta}\theta \ev_\theta + \underbrace{\ev_\theta \frac 1r v_\theta \underbrace{\dpd{\ev_\theta}\theta}_{=-\ev_r}}_{=0} \\
+	&= \frac 1r \dpd{v_\theta}\theta
+	%
+	\displaybreak[0] \\
+	%
+	\ev_\theta \nabla_\theta v_\phi \ev_\phi
+	&= 0
+	%
+	\displaybreak[0] \\
+	%
+	\ev_\phi \nabla_\phi v_r \ev_r
+	&= \ev_\phi \frac1{1\sin\theta} v_r \underbrace{\dpd{\ev_r}\phi}_{=\sin\theta \ev_\phi} \\
+	&= \frac 1r v_r
+	%
+	\displaybreak[0] \\
+	%
+	\ev_\phi \nabla_\phi v_\theta \ev_\theta
+	&= \ev_\phi \frac1{r \sin\theta} v_\theta \underbrace{\dpd{\ev_\theta}\phi}_{=\cos\theta \ev_\phi} \\
+	&= \frac 1r \tan\theta v_\theta
+	%
+	\displaybreak[0] \\
+	%
+	\ev_\phi \nabla_\phi v_\phi \ev_\phi
+	&= \frac1{r\sin\theta} \dpd{v_\phi}\phi + \ev_\phi \frac1{r \sin\theta} v_\phi \dpd{\ev_\phi}\phi \\
+	&= \frac1{r\sin\theta} \dpd{v_\phi}\phi
+\end{align*}
+
+Auf dem Zettel ist gegeben:
+\begin{align*}
+	\frac1{r^2} \dpd{}r \del{r^2 v_r} &= \dpd{v_r}r + \frac 2r v_r \\
+	\frac1{r\sin\theta} \dpd{}\theta \sin\theta v_\theta &= \frac 1r \dpd{v_\theta}\theta + \frac 1r \tan\theta v_\theta \\
+	\frac1{r\sin\theta} \dpd{r_\phi}\phi &
+\end{align*}
+
+Die Summanden sind alle, bis auf dem Faktor 2, oben zu finden. Somit ist die
+Identität gezeigt.
+
+\subsection{Laplaceoperator}
+
+Der Laplaceoperator ist $\inner\vnabla\vnabla$. Oder die Divergenz des
+Gradienten. Setze den Gradient in die Divergenz ein:
+\[
+	\frac1{r^2} \dpd{}r r^2 \dpd{}r + \frac1{r\sin\theta} \dpd{}\theta
+	\sin\theta \frac 1r \dpd{}\theta + \frac1{r\sin\theta} \dpd{}\phi
+	\frac1{r\sin\theta} \dpd{}\phi
+\]
+
+Ziehe alles vor die Ableitung und erhalte den gesuchten Ausdruck.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    Ende                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\IfFileExists{\bibliographyfile}{
+	%\bibliography{\bibliographyfile}
+}{}
+
+\end{document}
+
+% vim: spell spelllang=de
