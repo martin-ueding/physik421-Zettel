@@ -1,0 +1,273 @@
+ % Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+%
+\input{header.tex}
+
+\usepackage{cancel}
+\usepackage{tikz}
+\usepackage{pdfpages}
+
+\newcommand{\themodul}{physik421}
+\newcommand{\thegruppe}{Gruppe 4 -- Franz Niecknig}
+\newcommand{\theuebung}{9}
+
+\ifoot{\footnotesize{Martin Ueding}}
+\ihead{\themodul{} -- Übung \theuebung}
+\ofoot{\footnotesize{\thegruppe}}
+
+\def\thesection{H \arabic{section}}
+\def\thesubsection{\thesection\alph{subsection}}
+
+\setcounter{section}{13}
+
+\title{\themodul{} -- Übung \theuebung}
+\subtitle{\thegruppe}
+\author{
+	Martin Ueding \footnote{\href{mailto:mu@uni-bonn.de}{mu@uni-bonn.de}}
+}
+
+\hypersetup{
+	pdftitle={\themodul{} - Übung \theuebung},
+}
+
+\setcounter{secnumdepth}{2}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\ccbysadetitle
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%              Nichtentartete zeitunabhängige Störungstheorie               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Nichtentartete zeitunabhängige Störungstheorie}
+\label 1
+
+\subsection{Energiespektrum}
+
+Die Energien des ungestörten harmonischen Oszillators sind:
+\[
+	E_n^0 = \hbar \omega \del{n + \half}
+\]
+
+In der Vorlesung \date{2013-06-14} hatten wir für die Störungen:
+\[
+	E_n^{(1)} = \bra n H_1 \ket n
+	\eqnsep
+	E_n^{(2)} = \frac{\bra n H_1 \ket m}{E_n^0 - E_m^0}
+\]
+
+\subsection{Korrektur exakt null}
+
+Das $n$ im Exponenten des Störterms ist im Konflikt mit dem $n$ aus der
+Quantenzahl des harmonischen Oszillators. Daher benutze ich $\nu$. Der Störterm
+ist:
+\[
+	H_1 = \lambda x^\nu
+\]
+
+Ich schreibe den Ortsoperator $x$ mit Auf- und Absteigeoperator:
+\[
+	x = \sqrt{\frac{\hbar}{2m \omega}} \del{a + a^\dagger}
+\]
+
+Prof.~Kubis hatte in der Vorlesung gesagt, dass er die Hütchen ($\hat a$)
+weglassen würde. Da alle Operatoren ($H$, $L$, $S$, $J$, …) Großbuchstaben und
+die Quantenzahlen kleine Buchstaben ($n$, $m$, $j$, …) haben, gäbe es auch
+keine Verwechslung. Wie sieht das denn mit kleinen Operatoren wie dem
+Absteigeoperator $\hat a$ oder Ortsoperator $\hat x$ und großen Skalaren wie
+der Energie $E$ aus? Gibt es da nicht doch irgendwie wieder
+Verwechslungsgefahr?
+
+Die Korrektur erster Ordnung ist:
+\[
+	\lambda^\nu \sqrt{\frac{\hbar}{2m \omega}}^\nu \bra n \del{a + a^\dagger}^\nu \ket n
+\]
+
+Falls $\nu$ gerade ist, wird es in $\del{a + a^\dagger}^\nu$ immer Terme mit
+$aa^\dagger$ und $a^\dagger a$ geben, so dass der Vektor $\ket n$ bis auf einen
+Vorfaktor erhalten bleibt. Diese Terme tragen zur Korrektur bei. Bei ungeradem
+$\nu$ wird $\ket n$ allerdings immer verändert, da es eine ungerade Anzahl von
+Auf- und Absteigevorgängen hat. Somit ist die Korrektur null.
+
+\subsection{Explizite Energiekorrektur}
+
+In diesem Aufgabenteil habe ich wohl einen ziemlich umständlichen Weg gewählt, da ich vier Seiten mit Rechnungen voll habe. Auf den nächsten Seiten sind meine handschriftlichen Rechnungen zu dieser Aufgabe.
+
+\includepdf[pages=-]{H14c.pdf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                       Kopplung zweier Spin-1 Teilchen                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Kopplung zweier Spin-1 Teilchen}
+\label 2
+
+\subsection{Kombinationen, Multipletts}
+
+Zwei Spin-1 Teilchen haben $j_1 = j_2 = 1$. Für den Gesamtdrehimpuls $j$ gilt
+dann:
+\[
+	0 \leq j \leq 2
+\]
+
+Die Multipletts sind:
+\[
+	\begin{cases}
+		j = 0 & \text{Singulett} \\
+		j = 1 & \text{Triplett} \\
+		j = 2 & \text{Pentlett}
+	\end{cases}
+\]
+
+Da $m_1$ und $m_2$ aus $\set{-1, 0, 1}$ gewählt werden können, gibt es folgende
+Zustände:
+\begin{gather*}
+	\ket{0, 0} \\
+	\ket{1, 1} 
+	\eqnsep
+	\ket{1, 0} 
+	\eqnsep
+	\ket{1, -1} \\
+	\ket{2, 2} 
+	\eqnsep
+	\ket{2, 1} 
+	\eqnsep
+	\ket{2, 0} 
+	\eqnsep
+	\ket{2, -2}
+	\eqnsep
+	\ket{2, -1}
+\end{gather*}
+
+\subsection{Zustandsbildung}
+
+Der Zustand $\ket{2, 2}$ ist aus dem Pentlett und kann nur mit $m_1 = m_2 = 1$
+gebildet werden. Also gilt:
+\[
+	\ket{2, 2} = \ket{1, 1} \ket{1, 1}
+\]
+
+\subsection{Absteigeoperator}
+
+Es ist zu zeigen, dass der Absteigeoperator einfach die Summe der einzelnen
+ist:
+\begin{align*}
+	J_-^{(1)} + J_-^{(2)}
+	&= J_1^{(1)} - \ii J_2^{(1)} + J_1^{(2)} - \ii J_2^{(2)} \\
+	&= J_1^{(1)} + J_1^{(2)} - \ii J_2^{(1)} - \ii J_2^{(2)} \\
+	&= J_1 - \ii J_2 \\
+	&= J_-
+\end{align*}
+
+Der Absteigeoperator erzeugt ein $\hbar \sqrt{j(j+1) - m(m-1)}$. Ich wende ihn
+auf den Zustand $\ket{2, 2}$ an:
+\begin{align*}
+	J_- \ket{2, 2}
+	&= \del{J_-^{(1)} + J_-^{(2)}} \ket{1, 1} \ket{1, 1} \\
+	\hbar 2 \ket{2, 1}
+	&= \hbar \sqrt 2 \ket{1, 0} \ket{1, 1} + \hbar \sqrt 2 \ket{1, 1} \ket{1, 0} \\
+	\ket{2, 1}
+	&= \frac1{\sqrt 2} \ket{1, 0} \ket{1, 1} + \frac1{\sqrt 2} \ket{1, 1} \ket{1, 0} \\
+	\intertext{%
+		Wende den Absteigeoperator erneut an und teile durch den Vorfaktor auf
+		der linken Seite. Zuerst entstehen vier Summanden auf der rechten
+		Seite, diese fasse ich zusammen.
+	}
+	\ket{2, 0}
+	&= \frac1{\sqrt 6} \ket{1, -1} \ket{1, 1}
+	+ \frac2{\sqrt 6} \ket{1, 0} \ket{1, 0}
+	+ \frac1{\sqrt 2} \ket{1, 1} \ket{1, -1} \\
+	\intertext{%
+		Erneute Anwendung des Absteigeoperators.
+	}
+	\ket{2, -1}
+	&= \frac1{\sqrt 2} \ket{1, -1} \ket{1, 0}
+	+ \frac1{\sqrt 2} \ket{1, 0} \ket{1, -1} \\
+	\ket{2, -2}
+	&= \ket{1, -1} \ket{1, -1}
+\end{align*}
+
+\subsection{Orthonormalität}
+
+Gegeben ist:
+\[
+	\ket{1, 1} = a \ket{1, 1} \ket{1, 0} + b \ket{1, 0} \ket{1, 1}
+\]
+
+Wir wissen, dass die verschiedenen $\ket{j, m}$ orthogonal sind. Der Zustand
+$\ket{2, 1}$ besteht aus den gleichen Zuständen, also muss der gegebene Zustand
+auf jeden Fall zu diesem Orthogonal sein:
+\begin{align*}
+	\braket{2, 1}{1, 1} &= 0 \\
+	\del{a \ket{1, 1} \ket{1, 0} + b \ket{1, 0} \ket{1, 1}}^\dagger
+	\del{\frac1{\sqrt 2} \ket{1, 0} \ket{1, 1} + \frac1{\sqrt 2} \ket{1, 1} \ket{1, 0}}
+	&= 0 \\
+	\intertext{%
+		Durch das transponieren beim Adjungieren vertauschen sich die beiden
+		Zustände, so dass auch hier nur Vektoren aus dem ersten Hilbertraum
+		miteinander multipliziert werden.
+	}
+	\frac1{\sqrt2} a^* \braket{1, 1}{1, 0} \braket{1, 0}{1, 1}
+	+ \frac1{\sqrt2} a^* \braket{1, 1}{1, 1} \braket{1, 0}{1, 0} \\
+	+ \frac1{\sqrt2} b^* \braket{1, 0}{1, 0} \braket{1, 1}{1, 1}
+	+ \frac1{\sqrt2} b^* \braket{1, 0}{1, 1} \braket{1, 1}{1, 0}
+	&= 0 \\
+	a^* + b^* &= 0
+\end{align*}
+
+Also muss $a = -b$ gelten. Zusätzlich sollte noch $a^2 + b^2 = 1$ erfüllt sein,
+damit die neue Wellenfunktion normiert bleibt. Somit folgt:
+\[
+	a = \frac1{\sqrt 2}
+	\eqnsep
+	b = - \frac1{\sqrt 2}
+\]
+
+\subsection{Absteigeoperator}
+
+Analog zur vorherigen Teilaufgabe wende ich jetzt $J_-$ auf den Zustand
+$\ket{1, 1}$ an. Die Rechnungen sind analog.
+\begin{align*}
+	\ket{1, 1} &= \frac1{\sqrt 2} \ket{1, 1} \ket{1, 0} - \frac1{\sqrt 2} \ket{1, 0} \ket{1, 1} \\
+	\ket{1, 0} &= \frac1{\sqrt 2} \ket{1, 1} \ket{1, -1} - \frac1{\sqrt 2} \ket{1, -1} \ket{1, 1} \\
+	\ket{1, -1} &= \frac1{\sqrt 2} \ket{1, 0} \ket{1, -1} - \frac1{\sqrt 2} \ket{1, -1} \ket{1, 0}
+\end{align*}
+
+\subsection{Orthonormalität}
+
+Gegeben ist $\ket{0, 0}$ als:
+\[
+	\ket{0, 0} = a \ket{1, 1} \ket{1, -1} + b \ket{1, 0} \ket{1, 0} + c \ket{1, -1} \ket{1, 1}
+\]
+
+Dieser Zustand muss zum Beispiel orthogonal zu $\ket{2, 0}$ sein. Dazu bilde
+ich $\braket{2, 0}{0, 0}$ und erstelle eine Multiplikationstabelle für die drei
+Summanden jeweils:
+\begin{center}
+	\begin{tabular}{c|ccc}
+		$\braket\cdot\cdot$ & $a \ket{1, 1} \ket{1, -1}$ & $b \ket{1, 0} \ket{1, 0}$ & $c \ket{1, -1} \ket{1, 1}$ \\
+		\hline
+		$\frac{1}{\sqrt6} \ket{1, -1} \ket{1, 1}$ & 0 & 0 & $\frac c{\sqrt6}$ \\
+		$\frac{2}{\sqrt6} \ket{1, 0} \ket{1, 0}$ & 0 & $\frac{2b}{\sqrt6}$ & 0  \\
+		$\frac{1}{\sqrt6} \ket{1, 1} \ket{1, -1}$ & $\frac{a}{\sqrt6}$ & 0 & 0  \\
+	\end{tabular}
+\end{center}
+
+Als Bedingung erhalte ich also $a + 2b + c = 0$. Zusammen mit $a^2 + 4b^2 + c^2
+= 1$ werden auch normierte Wellenfunktionen erzeugt.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    Ende                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\IfFileExists{\bibliographyfile}{
+	%\bibliography{\bibliographyfile}
+}{}
+
+\end{document}
+
+% vim: spell spelllang=de
