@@ -1,0 +1,313 @@
+ % Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+%
+\input{header.tex}
+
+\usepackage{cancel}
+\usepackage{tikz}
+
+\newcommand{\themodul}{physik421}
+\newcommand{\thegruppe}{Gruppe 4 -- Franz Niecknig}
+\newcommand{\theuebung}{7}
+
+\ifoot{\footnotesize{Martin Ueding}}
+\ihead{\themodul{} -- Übung \theuebung}
+\ofoot{\footnotesize{\thegruppe}}
+
+\def\thesection{H \arabic{section}}
+\def\thesubsection{\thesection\alph{subsection}}
+
+\setcounter{section}{9}
+
+\title{\themodul{} -- Übung \theuebung}
+\subtitle{\thegruppe}
+\author{
+	Martin Ueding \footnote{\href{mailto:mu@uni-bonn.de}{mu@uni-bonn.de}}
+}
+
+\hypersetup{
+	pdftitle={\themodul{} - Übung \theuebung},
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\ccbysadetitle
+\end{center}
+
+Vektor $\vec L$, Tensor $\tens L$, Operator $\hat L$. Leere Stellen in
+Matrizen sind 0.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                              Spin-1 Operatoren                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Spin-1 Operatoren}
+
+\subsection{Matrixdarstellung}
+
+Die Elemente der Matrix $\tens L_z$ berechnen sich wie folgt:
+\[
+	\del{L_z}_{ij} = \braopket i{\hat L_z}j
+	\eqnsep
+	i, j \in \set{\uparrow, 0, \downarrow}
+\]
+
+\newcommand\lz{\begin{pmatrix}
+		1 && \\
+		  & 0 & \\
+		  && -1
+\end{pmatrix}}
+
+Aufgrund der Orthogonalität der Basiszustände und dem Eigenwert $m_l$ gilt:
+\[
+	\tens L_z = \hbar \lz
+\]
+
+Nun $\hat L_\pm$:
+\begin{align*}
+	\del{L_z}_{\uparrow,\uparrow}
+	&= \braopket \uparrow{\hat L_\pm}\uparrow = 0
+	\displaybreak[0] \\
+	%
+	\del{L_z}_{\uparrow,0}
+	&= \braopket \uparrow{\hat L_\pm}0
+	= \begin{cases}
+		\hbar \sqrt 2 & \hat L_+ \\
+		0 & \hat L_-
+	\end{cases}
+	\displaybreak[0] \\
+	%
+	\del{L_z}_{\uparrow,\downarrow}
+	&= \braopket \uparrow{\hat L_\pm}\downarrow = 0
+	\displaybreak[0] \\
+	%
+	\del{L_z}_{0,\uparrow}
+	&= \braopket 0{\hat L_\pm}\uparrow
+	= \begin{cases}
+		0 & \hat L_+ \\
+		\hbar \sqrt 2 & \hat L_-
+	\end{cases}
+	\displaybreak[0] \\
+	%
+	\del{L_z}_{0,0}
+	&= \braopket 0{\hat L_\pm}0 = 0
+	\displaybreak[0] \\
+	%
+	\del{L_z}_{0,\downarrow}
+	&= \braopket 0{\hat L_\pm}\downarrow
+	= \begin{cases}
+		\hbar \sqrt 2 & \hat L_+ \\
+		0 & \hat L_-
+	\end{cases}
+	\displaybreak[0] \\
+	%
+	\del{L_z}_{\downarrow,\uparrow}
+	&= \braopket \downarrow{\hat L_\pm}\uparrow = 0
+	\displaybreak[0] \\
+	%
+	\del{L_z}_{\downarrow,0}
+	&= \braopket \downarrow{\hat L_\pm}0
+	= \begin{cases}
+		0 & \hat L_+ \\
+		\hbar \sqrt 2 & \hat L_-
+	\end{cases}
+	\displaybreak[0] \\
+	%
+	\del{L_z}_{\downarrow,\downarrow}
+	&= \braopket \downarrow{\hat L_\pm}\downarrow = 0
+\end{align*}
+
+\newcommand\lplus{\begin{pmatrix}
+		& 1 & \\
+		&& 1 \\
+		&&
+\end{pmatrix}}
+
+\newcommand\lminus{\begin{pmatrix}
+		&& \\
+		1 && \\
+		  & 1 &
+\end{pmatrix}}
+
+\newcommand\lx{\begin{pmatrix}
+		& 1 & \\
+		1 && 1 \\
+		  & 1 &
+\end{pmatrix}}
+
+\newcommand\ly{\begin{pmatrix}
+		& 1 & \\
+		-1 && 1 \\
+		  & -1 &
+\end{pmatrix}}
+
+\[
+	\tens L_+ = \hbar \sqrt 2 \lplus
+	\eqnsep
+	\tens L_- = \hbar \sqrt 2 \lminus
+\]
+
+Mit $\hat L_\pm = \hat L_x \pm \ii \hat L_y$ und
+\[
+	\hat L_x = \frac 12 \del{\hat L_+ + \hat L_-}
+	\eqnsep
+	\hat L_y = \frac1{2\ii} \del{\hat L_+ - \hat L_-}
+\]
+folgt:
+\[
+	\tens L_x = \frac \hbar 2 \lx
+	\eqnsep
+	\tens L_y = \frac \hbar {2\ii} \ly
+\]
+
+\subsection{Kommutatoren in Matrixdarstellung}
+
+\begin{align*}
+	\sbr{\tens L_x, \tens L_y}
+	&= \frac{\hbar^2}{4\ii} \del{\lx \ly - \ly \lx} \\
+	&= \frac{\hbar^2}{4\ii} \begin{pmatrix}
+	-2 && \\
+	   & 0 & \\
+	   && 2
+	\end{pmatrix}
+	= \ii \hbar \tens L_z
+	\displaybreak[0] \\
+	%
+	\sbr{\tens L_x, \tens L_z}
+	&= \frac{\hbar^2}{2} \del{\lx \lz - \lz \lx} \\
+	&= \frac{\hbar^2}{2} \begin{pmatrix}
+	& -1 & \\
+	1 && -1 \\
+	   & 1 &
+	\end{pmatrix}
+	= \ii \hbar \tens L_y
+	\displaybreak[0] \\
+	%
+	\sbr{\tens L_y, \tens L_z}
+	&= - \frac{\hbar^2}{2} \del{\ly \lz - \lz \ly} \\
+	&= - \frac{\hbar^2}{2} \begin{pmatrix}
+	& -1 & \\
+	-1 && -1 \\
+	   & -1 &
+	\end{pmatrix}
+	= \ii \hbar \tens L_x
+\end{align*}
+
+\subsection{Kommutator mit Hamiltonoperator}
+
+\begin{align*}
+	\hat H
+	&= - \frac{\hbar^2}{2m} \laplace + V(r) \\
+	\intertext{%
+		In Kugelkoordinaten kann der Laplaceoperator in Radial- und
+		Winkelanteil separiert werden:
+	}
+	&= - \frac{\hbar^2}{2m} \del{\laplace_r + \frac{1}{r^2} \laplace_{\theta,\phi}} + V(r) \\
+	\intertext{%
+		Der Drehimpulsoperator ist gerade $\hat L^2 = \hbar^2
+		\laplace_{\theta,\phi}$. Trenne so Radial- und Winkelanteil im
+		Hamiltonoperator:
+	}
+	&= - \frac{\hbar^2}{2m} \laplace_r + \frac{1}{2mr^2} \hat L^2 + V(r)
+\end{align*}
+
+Daraus folgen die Kommutatoren:
+\begin{align*}
+	\sbr{\dpd{}r, \laplace_{\theta,\phi}} = 0
+	&\implies
+	\sbr{\hat H, \hat L^2} = 0 \\
+	\sbr{\dpd{}r, \dpd{}\phi} = 0
+	&\implies
+	\sbr{\hat H, \hat L_z} = 0
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                               Hantelmolekül                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Hantelmolekül}
+
+\subsection{Schwerpunktskoordinaten}
+
+Mit dem gleichen Ansatz aus dem normalen Keplerproblem:
+\begin{align*}
+	\vec r &:= \vec{x_2} - \vec{x_1} \\
+	\vec R &:= \frac{m_1 \vec{x_1} + m_2 \vec{x_2}}M
+\end{align*}
+
+Daraus folgen die inversen Transformationen:
+\begin{align*}
+	\vec x_1 &= \vec R - \frac{m_2}M \vec r \\
+	\vec x_2 &= \vec R + \frac{m_1}M \vec r
+\end{align*}
+
+Wende den Laplaceoperator auf diese beiden an. Schreibe $\underset\beth\laplace$ für den Laplaceoperator, der nur auf $\beth$ wirkt.
+\begin{align*}
+	\laplace \vec x_1 &= \laplace \vec R - \laplace \frac{m_2}M \vec r \\
+	\underset{\vec x_1}\laplace \vec x_1 &= \del{\underset{\vec R}\laplace + \underset{\vec r}\laplace} \del{ \vec R - \frac{m_2}M \vec r} \\
+	\underset{\vec x_1}\laplace &= \del{\underset{\vec R}\laplace + \underset{\vec r}\laplace}
+\end{align*}
+
+Analog folgt auch $\underset{\vec x_2}\laplace$. Transformiere damit den
+Hamiltonoperator:
+\begin{align*}
+	\hat H
+	&= - \frac{\hbar^2}{2} \del{\frac{1}{m_1} \underset{\vec x_1}\laplace + \frac{1}{m_2} \underset{\vec x_2}\laplace} \\
+	&= - \frac{\hbar^2}{2\mu} \del{\underset{\vec x_1}\laplace + \underset{\vec x_2}\laplace}
+\end{align*}
+
+Jetzt sind die Koordinaten getrennt, allerdings steht vor dem Laplaceoperator,
+der auf $\vec R$ wirkt, ein $\mu$, und kein $M$.
+
+\subsection{Drehimpuls}
+
+Der Hamiltonoperator ist:
+\[
+	\hat H = - \frac{\hbar^2}{2\mu} \laplace
+\]
+
+\newcommand\legendrian{\laplace_{\theta,\phi}}
+
+Der Laplaceoperator in Kugelkoordinaten ist:
+\[
+	\laplace = \frac1{r^2} \dpd{}r r \dpd{}r + \underbrace{\frac1{r^2\sin\theta} \dpd{}\theta \sin\theta \dpd{}\theta + \frac1{r^2\sin^2\theta} \dpd[2]{}\phi}_{\legendrian/r^2}
+\]
+
+Mit $\hat L^2 = - \hbar^2 \legendrian$, sowie $r = \text{konstant}$ folgt für
+den Hamiltonoperator:
+\[
+	\hat H = \frac{1}{2\mu r^2} \hat L^2
+\]
+
+Mit $\Theta := \mu r^2$, dem Trägheitsmoment eines Kreisrings mit Radius $r$
+aus der klassischen Mechanik folgt:
+\[
+	\hat H = \frac{1}{2\Theta} \hat L^2
+\]
+
+\subsection{Eigenwerte und Entartungsgrade}
+
+Die stationäre Schrödingergleichung:
+\begin{align*}
+	E \psi &= \hat H \psi \\
+			  &= \frac1{2\Theta} \legendrian \psi \\
+		   &= \frac{\hbar^2 \ell (\ell + 1)}{2 \Theta} \psi
+\end{align*}
+
+Die Eigenfunktionen des Drehimpulsoperators sind die Kugelflächenfunktionen
+$Y_{\ell m}$, der Eigenwert ist $\hbar^2 \ell(\ell+1)$. Alle Werte von $m$
+haben die gleiche Energie, es gibt also eine Entartung von $2\ell+1$ Zuständen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    Ende                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\IfFileExists{\bibliographyfile}{
+	%\bibliography{\bibliographyfile}
+}{}
+
+\end{document}
+
+% vim: spell spelllang=de
