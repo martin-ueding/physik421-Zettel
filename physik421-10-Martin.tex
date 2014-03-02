@@ -1,0 +1,280 @@
+ % Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+%
+\input{header.tex}
+
+\usepackage{cancel}
+\usepackage{tikz}
+\usepackage{pdfpages}
+
+\newcommand{\themodul}{physik421}
+\newcommand{\thegruppe}{Gruppe 4 -- Franz Niecknig}
+\newcommand{\theuebung}{10}
+
+\ifoot{\footnotesize{Martin Ueding}}
+\ihead{\themodul{} -- Übung \theuebung}
+\ofoot{\footnotesize{\thegruppe}}
+
+\def\thesection{H \arabic{section}}
+\def\thesubsection{\thesection\alph{subsection}}
+
+\setcounter{section}{15}
+
+\title{\themodul{} -- Übung \theuebung}
+\subtitle{\thegruppe}
+\author{
+	Martin Ueding \footnote{\href{mailto:mu@uni-bonn.de}{mu@uni-bonn.de}}
+}
+
+\hypersetup{
+	pdftitle={\themodul{} - Übung \theuebung},
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\ccbysadetitle
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                Eichinvarianz                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\call[2]{#1[#2]}
+\newcommand\Call[2]{#1\sbr{#2}}
+
+\section{Eichinvarianz}
+
+\subsection{Forminvarianz der Schrödingergleichung}
+
+Es soll gezeigt werden, dass mit den umgeeichten Feldern die
+Schrödingergleichung immer noch für die modifizierte Wellenfunktion gilt. Ich
+werde in die linke und rechte Seite der gestrichenen Schrödingergleichung die
+gestrichenen Größen einsetzen und versuchen zu zeigen, dass die ungestrichene
+Schrödingergleichung herauskommt.
+
+Dabei benutze ich für diese Aufgabe testweise die Notation aus Mathematica, bei
+der Funktionsaufrufe mit eckigen Klammern, normale Multiplikation mit runden
+Klammern geschrieben wird. Bei der Exponentialfunktion werde ich ab einem Punkt
+die Argumente weglassen, es sollte jedoch noch immer eindeutig sein. So meint
+$\exp \psi$:
+\[
+	\exp\psi \leadsto \Call\exp{\frac{\ii e}{\hbar c} \call f{t, \vec x}} \call \psi{t, \vec x}
+\]
+
+Zuerst die linke Seite:
+\begin{align*}
+	\ii \hbar \partial_t \psi'
+	&= \ii \hbar \Call\exp{\frac{\ii e}{\hbar c} f} \psi \\
+	&= \ii \hbar \Call\exp{\frac{\ii e}{\hbar c} f} \del{\frac{\ii e}{\hbar c} \dot f \psi + \dot \psi} \\
+	&= \ii \hbar \exp \del{\frac{\ii e}{\hbar c} \dot f \psi + \dot \psi}
+\end{align*}
+
+Nun die kompliziertere rechte Seite. Dabei lasse ich den Vorfaktor $1/2m$
+erstmal weg.
+\begin{align*}
+	&\phantom =
+	\del{\vec p - \frac ec (\vec A + \vnabla f)}^2 \exp \psi + e\del{\phi + \frac 1c \dot f} \exp \psi \\
+	&= \del{\del{\vec p - \frac ec \vec A} - \frac ec \vnabla f}^2 \exp \psi + e\del{\phi + \frac 1c \dot f} \exp \psi \\
+	\intertext{%
+		Dies multipliziere ich alles aus.
+	}
+	&= \del{\vec p^2 - \frac ec \vec p \vec A - \frac ec \vec A \vec p + \frac{e^2}{c^2} \vec A^2 - \frac ec \vec p (\vnabla f) + 2 \frac{e^2}{c^2} \vec A (\vnabla f) - \frac ec (\vnabla f) \vec p + \frac{e^2}{c^2} (\vnabla f)^2} \exp \psi \\
+	\intertext{%
+		An dieser Stelle wende ich die Operatoren auf $\exp \psi$ an. Dabei
+		entstehen durch die Produktregel mit $\exp$ als auch $\psi$ jede Menge
+		Terme. Ich lasse hier einige Zwischenschritte weg, die ich beim Rechnen
+		gemacht hatte. Dabei sind die mehreren Zeilen in der Klammer wie eine
+		lange Zeile zu interpretieren, es ist kein Vektor. Jede Zeile
+		entspricht grob einem Summand aus der vorherigen Klammer.
+	}
+	&= \exp \del{
+		\begin{gathered}
+			+ \frac{e^2}{c^2} (\vnabla f)^2 - \ii \hbar \frac ec \laplace f + \vec p \\
+			+ \ii \hbar \frac ec \vnabla \vec A - \frac ec \vec A (\vnabla f) - \frac ec \vec A \vec p \\
+			- \frac{e^2}{c^2} \vec A (\vnabla f) - \frac ec \vec A \vec p \\
+			+ \frac{e^2}{c^2} \vec A^2 \\
+			+ \ii \hbar \frac ec (\laplace f) - \frac{e^2}{c^2} (\vnabla f)^2 - \frac ec (\vnabla f) \vec p \\
+			+ 2 \frac{e^2}{c^2} \vec A (\vnabla f) \\
+			- \frac{e^2}{c^2} (\vnabla f)^2 - \frac ec (\vnabla f) \vec p \\
+			+ \frac{e^2}{c^2} (\vnabla f)^2
+		\end{gathered}
+	} \psi \\
+	\intertext{%
+		Die ganzen Terme lassen sich jetzt noch nach den verschiedenen
+		Ableitungen von $f$ anordenen. Dabei ist die Matrix keine Matrix,
+		sondern nur einen übersichtliche Anordnung der Terme, die eigentlich
+		alle in einer Zeile stehen sollten.
+	}
+	&= \exp
+	\begin{pmatrix}
+		+ \vec p^2 & - \frac ec \vec A (\vnabla f) & - \ii \hbar \frac ec (\laplace f) & + \frac{e^2}{c^2} (\vnabla f)^2 \\
+		+ \ii \hbar \frac ec (\vnabla \vec A) & - \frac{e^2}{c^2} \vec A (\vnabla f) & + \ii \hbar \frac ec (\laplace f) & - \frac{e^2}{c^2} (\vnabla f)^2 \\
+		- \frac ec \vec A \vec p & - \frac ec (\vnabla f) \vec p & & + e \frac{e^2}{c^2} (\vnabla f)^2 \\
+		- \frac ec \vec A \vec p & + 2 \frac{e^2}{c^2} \vec A \vnabla f & & - \frac{e^2}{c^2} (\vnabla f)^2 \\
+		+ \frac{e^2}{c^2} & - \frac ec (\vnabla f) \vec p & &
+	\end{pmatrix}
+	\psi \\
+	\intertext{%
+		In der ersten Spalte steht genau das, was von der normale
+		Schrödingergleichung zu erwarten ist. Der Faktor $\exp$ kann dann auf
+		beiden Seiten weggekürzt werden. In der dritten und vierten Spalte
+		steht nur noch null. In der zweiten Spalte ist wahrscheinlich ein
+		Vorzeichenfehler drin. Ansonsten würde ich erwarten, dass dort auch
+		null steht. Eventuell aber auch nicht, damit es sich mit etwas anderem
+		weghebt.
+	}
+	&= \exp \del{+ \vec p^2 + \ii \hbar \frac ec (\vnabla \vec A) - \frac ec \vec A \vec p - \frac ec \vec A \vec p + \frac{e^2}{c^2} -  2 \frac ec (\vnabla f) \vec p} \psi
+\end{align*}
+
+Nun schreibe ich beide Seiten zusammen:
+\begin{align*}
+	\ii \hbar \exp \del{\frac{\ii e}{\hbar c} \dot f \psi + \dot \psi}
+	&= \exp \del{+ \vec p^2 + \ii \hbar \frac ec (\vnabla \vec A) - \frac ec \vec A \vec p - \frac ec \vec A \vec p + \frac{e^2}{c^2} -  2 \frac ec (\vnabla f) \vec p} \psi \\
+	\intertext{%
+		Das $\exp$ fliegt – wie versprochen – raus.
+	}
+	\ii \hbar \del{\frac{\ii e}{\hbar c} \dot f \psi + \dot \psi}
+	&= \del{+ \vec p^2 + \ii \hbar \frac ec (\vnabla \vec A) - \frac ec \vec A \vec p - \frac ec \vec A \vec p + \frac{e^2}{c^2} -  2 \frac ec (\vnabla f) \vec p} \psi \\
+	\intertext{%
+		Nun kann ich die Lösung der ungestrichenen Schrödingergleichung abziehen.
+	}
+	\ii \hbar \frac{\ii e}{\hbar c} \dot f \psi &= 2 \frac ec (\vnabla f) \vec p \psi \\
+	- \dot f \psi &= 2 (\vnabla f) \vec p \psi
+\end{align*}
+
+Wenn hier $0=0$ herauskommen würde, wäre die Relation gezeigt. Jedoch sehe ich
+nicht, wie das passen soll. $\dot f$ und $\vnabla f$ kommen beide in den
+Transformationen vor, vielleicht geht das also doch irgendwie.
+
+\subsection{Kontinuitätsgleichung}
+
+\begin{align*}
+	\varrho &= \psi^* \psi \\
+	\dot \varrho &= \dot \psi^* \psi + \psi^* \psi \\
+	\intertext{%
+		Setze die Schrödingergleichung ein.
+	}
+	&= \del{\frac{H}{-\ii \hbar} \psi}^* \psi + \psi^* \frac{H}{\ii \hbar} \psi \\
+	\intertext{%
+		Setze $H$ ein. Dabei kann ich schon jetzt sehen, dass das $e\varphi$
+		wegfällt. Es ist rein reell und kein Operator, fällt also in der
+		Differnz weg.
+	}
+	&= \frac{1}{2 \ii \hbar m} \del{\psi^* \del{\vec p - \frac ec \vec A}^2 \psi - \del{\del{\vec p - \frac ec \vec A}^2 \psi}^* \psi} \\
+	\intertext{%
+		Ausmultiplizieren …
+	}
+	&= \frac{1}{2 \ii \hbar m} \del{\psi^* \del{\vec p^2 - \frac ec \vec A \vec p - \frac ec \vec p \vec A + \frac{e^2}{c^2} \vec A^2} \psi - \del{\del{\vec p^2 - \frac ec \vec A \vec p - \frac ec \vec p \vec A + \frac{e^2}{c^2} \vec A^2} \psi}^* \psi} \\
+	\intertext{%
+		Da $p$ imaginär ist, kehrt sich das Vorzeichen um.
+	}
+	&= \frac{1}{2 \ii \hbar m} \del{\psi^* \del{\vec p^2 - \frac ec \vec A \vec p - \frac ec \vec p \vec A + \frac{e^2}{c^2} \vec A^2} \psi - \del{\del{\vec p^2 + \frac ec \vec A \vec p + \frac ec \vec p \vec A + \frac{e^2}{c^2} \vec A^2} \psi} \psi} \\
+	&= \frac{\ii \hbar}{2m} (\psi^* \laplace \psi - \laplace \psi^* \psi) + \frac{e}{2mc}(\vnabla \vec A) (\psi^* \psi + \psi^* \psi) + \frac{e}{2mc} \vec A (\psi^* \vnabla \psi + \vnabla \psi^* \psi) \\
+	&= \frac{\ii \hbar}{2m} \vnabla (\psi^* \vnabla \psi - \vnabla \psi^* \psi) + \vnabla \frac{e}{2mc} \vec A \psi^* \psi \\
+	&= - \vnabla \del{\frac{\ii \hbar}{2m} (\vnabla \psi^* \psi - \psi^* \vnabla \psi) - \frac{e}{2mc} \vec A \psi^* \psi} \\
+	&= - \vnabla \vec j
+\end{align*}
+
+\subsection{Stromdichte}
+
+Da $\varphi$ nicht mehr vorkommt, ändert sich nur noch das $\vec A$-Feld. Daher
+kommt einfach ein Summand
+\[
+	- \frac{e}{2mc} \vnabla f \psi^* \psi
+\]
+dazu. Wobei ich erwarten würde, dass die Stromdichte invariant gegenüber der
+Umeichung ist.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                               Landau-Niveaus                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Landau-Niveaus}
+
+\subsection{Kanonischer Impuls}
+
+Die kanonischen Gleichungen aus der klassischen Mechanik besagen für den Ort:
+\[
+	\dot x^i = \dpd H{\pi_i} = \frac{\pi_i}m = \frac{p_i}m + \frac q{cm} A^i
+\]
+
+Die leite ich nach der Zeit ab und multipliziere mit $m$. Außerdem wende ich
+an, dass $\vec E = - \frac 1c \dot{\vec A}$:
+\[
+	m \ddot x^i = \dot p_i - q E^i
+\]
+
+Die ist elektrische Kraft auf ein sonst freies Teilchen.
+
+\subsection{Coulombeichung}
+
+Die Coulomb-Eichung ist (Summenkonvention):
+\[
+	\partial_i A^i = 0
+\]
+
+Mit
+\[
+	\pi_i = p_i + \frac qc A^i
+	= - \ii \hbar \dpd{}{{x_i}} + \frac qc A^i
+\]
+kann ich den Kommutator schreiben:
+\begin{align*}
+	[\pi_i, \pi_j]
+	&= \sbr{-\ii \hbar \dpd{}{{x_i}} + \frac qc A^i, -\ii \hbar \dpd{}{{x_j}} + \frac qc A^j} \\
+	\intertext{%
+		Die Ableitungen kommutieren untereinander, die $A$ auch, allerdings
+		nicht gemischt.
+	}
+	&= \sbr{-\ii \hbar \dpd{}{{x_i}}, \frac qc A^j} + \sbr{\frac qc A^i, -\ii \hbar \dpd{}{{x_j}}} \\
+	&= -\ii \hbar \frac qc \sbr{\dpd{}{{x_i}}, A^j} + \sbr{A^i, \dpd{}{{x_j}}} \\
+	&= - \ii \hbar \frac qc \del{\dpd{}{{x_i}} A^j - \dpd{}{{x_j}} A^i} \\
+	&= - \ii \hbar \frac qc \epsilon^i{}_j{}^k \partial_i A^j \\
+	&= - \ii \hbar \frac qc B^k
+\end{align*}
+
+Wegen $B^1 = B^2 = 0$ ist $[\pi_i, \pi_z] = 0$.
+
+Die Lorentzkraft wirkt nicht in $z$-Richtung, so dass dort ebene Wellen
+herauskommen. Daher kann der Separationsansatz so gewählt werden.
+
+\subsection{Landaueichung}
+
+\begin{align*}
+	H
+	&= \frac1{2m} \del{\vec p - \frac ec A}^2 \\
+	&= \frac1{2m} \del{\vec p^2 - 2 \frac ec x B p_y + \frac{e^2}{c^2} x^2 B^2}
+\end{align*}
+
+Mit einem Ansatz $\psi(x, y) = \psi_x(x) + \psi_y(y)$ kann ich dies trennen:
+\[
+	E \psi(x, y) = \frac1{2m} \del{p_x^2 + \frac{e^2}{c^2} x^2 B^2} \psi_x(x) + \frac{1}{2m} \del{p_y^2 - 2 \frac ec x B p_y + \frac{e^2}{c^2} x^2 B^2} \psi_y(y)
+\]
+
+\fehlt
+
+Die Eigenfrequenz bekomme ich, in dem ich mir den Potentialterm für die
+$x$-Komponente anschaue:
+\[
+	\frac1{2m} \frac{e^2}{c^2} B^2 = \frac m2 \omega^2
+	\iff
+	\omega = \frac{eB}{mc}
+\]
+
+\subsection{Energieniveaus}
+
+\fehlt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    Ende                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\IfFileExists{\bibliographyfile}{
+	%\bibliography{\bibliographyfile}
+}{}
+
+\end{document}
+
+% vim: spell spelllang=de
