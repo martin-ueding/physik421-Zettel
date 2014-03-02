@@ -1,0 +1,228 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5715,        218]
+NotebookOptionsPosition[      4966,        186]
+NotebookOutlinePosition[      5304,        201]
+CellTagsIndexPosition[      5261,        198]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.574590270199705*^9, 3.5745903675814953`*^9}, {
+  3.574592133221059*^9, 3.574592140723158*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ConditionalExpression", "[", 
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"-", 
+       FractionBox[
+        SuperscriptBox["o", "2"], 
+        RowBox[{"2", " ", 
+         SuperscriptBox["e", "2"]}]]}]], " ", 
+     SqrtBox[
+      RowBox[{"2", " ", "\[Pi]"}]]}], 
+    SqrtBox[
+     SuperscriptBox["e", "2"]]], ",", 
+   RowBox[{
+    RowBox[{"Re", "[", 
+     SuperscriptBox["e", "2"], "]"}], ">", "0"}]}], "]"}]], "Output",
+ CellChangeTimes->{{3.5745902931109343`*^9, 3.57459037336474*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{
+   RowBox[{"Exp", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "1"}], "/", "2"}], " ", 
+      RowBox[{"e", "^", "2"}], 
+      RowBox[{"x", "^", "2"}]}], "-", 
+     RowBox[{"I", " ", "o", " ", "x"}]}], "]"}], ",", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5745903796612873`*^9, 3.574590384531842*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"-", 
+     FractionBox[
+      SuperscriptBox["o", "2"], 
+      RowBox[{"2", " ", 
+       SuperscriptBox["e", "2"]}]]}]], " ", 
+   SqrtBox[
+    FractionBox["\[Pi]", "2"]], " ", 
+   RowBox[{"Erf", "[", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"\[ImaginaryI]", " ", "o"}], "+", 
+      RowBox[{
+       SuperscriptBox["e", "2"], " ", "x"}]}], 
+     RowBox[{
+      SqrtBox["2"], " ", "e"}]], "]"}]}], "e"]], "Output",
+ CellChangeTimes->{3.574590385424616*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{
+   RowBox[{"Exp", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "1"}], "/", "2"}], " ", 
+      RowBox[{"e", "^", "2"}], 
+      RowBox[{"x", "^", "2"}]}], "-", 
+     RowBox[{"I", " ", "o", " ", "x"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "Infinity"}], ",", " ", "Infinity"}], "}"}]}], 
+  "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"ConditionalExpression", "[", 
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"-", 
+       FractionBox[
+        SuperscriptBox["o", "2"], 
+        RowBox[{"2", " ", 
+         SuperscriptBox["e", "2"]}]]}]], " ", 
+     SqrtBox[
+      RowBox[{"2", " ", "\[Pi]"}]]}], 
+    SqrtBox[
+     SuperscriptBox["e", "2"]]], ",", 
+   RowBox[{
+    RowBox[{"Re", "[", 
+     SuperscriptBox["e", "2"], "]"}], ">", "0"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.5745921472629128`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Limit", "[", 
+  RowBox[{"%", ",", " ", 
+   RowBox[{"e", "\[Rule]", "0"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.574592149336109*^9, 3.574592158959243*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Limit", "[", 
+  RowBox[{
+   RowBox[{"ConditionalExpression", "[", 
+    RowBox[{
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"-", 
+         FractionBox[
+          SuperscriptBox["o", "2"], 
+          RowBox[{"2", " ", 
+           SuperscriptBox["e", "2"]}]]}]], " ", 
+       SqrtBox[
+        RowBox[{"2", " ", "\[Pi]"}]]}], 
+      SqrtBox[
+       SuperscriptBox["e", "2"]]], ",", 
+     RowBox[{
+      RowBox[{"Re", "[", 
+       SuperscriptBox["e", "2"], "]"}], ">", "0"}]}], "]"}], ",", 
+   RowBox[{"e", "\[Rule]", "0"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.57459215966755*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FourierTransform", "[", 
+  RowBox[{
+   RowBox[{"Exp", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "1"}], "/", "2"}], " ", 
+      RowBox[{"e", "^", "2"}], 
+      RowBox[{"x", "^", "2"}]}], "-", 
+     RowBox[{"I", " ", "o", " ", "x"}]}], "]"}], ",", "x", ",", "o"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.574598992423328*^9, 3.5745990010098763`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"FourierTransform", "[", 
+  RowBox[{
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "\[ImaginaryI]"}], " ", "o", " ", "x"}], "-", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["e", "2"], " ", 
+       SuperscriptBox["x", "2"]}], "2"]}]], ",", "x", ",", "o"}], 
+  "]"}]], "Output",
+ CellChangeTimes->{3.5745990041676683`*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 867},
+WindowMargins->{{116, Automatic}, {69, Automatic}},
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 143, 2, 32, "Input"],
+Cell[725, 26, 560, 18, 82, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1322, 49, 380, 11, 32, "Input"],
+Cell[1705, 62, 547, 19, 84, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2289, 86, 414, 14, 32, "Input"],
+Cell[2706, 102, 537, 18, 82, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3280, 125, 182, 4, 32, "Input"],
+Cell[3465, 131, 652, 21, 82, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4154, 157, 400, 12, 32, "Input"],
+Cell[4557, 171, 393, 12, 51, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
