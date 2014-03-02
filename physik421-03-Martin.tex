@@ -1,0 +1,387 @@
+% Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+%
+\input{header.tex}
+
+\usepackage{cancel}
+\usepackage{tikz}
+
+\newcommand{\themodul}{physik421}
+\newcommand{\thegruppe}{Gruppe 4 -- Franz Niecknig}
+\newcommand{\theuebung}{3}
+
+\ifoot{\footnotesize{Martin Ueding}}
+\ihead{\themodul{} -- Übung \theuebung}
+\ofoot{\footnotesize{\thegruppe}}
+
+\def\thesection{H \arabic{section}}
+\def\thesubsection{\thesection\alph{subsection}}
+
+\setcounter{section}{3}
+
+\title{\themodul{} -- Übung \theuebung}
+\subtitle{\thegruppe}
+\author{
+	Martin Ueding \footnote{\href{mailto:mu@uni-bonn.de}{mu@uni-bonn.de}}
+}
+
+\hypersetup{
+	pdftitle={\themodul{} - Übung \theuebung},
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\ccbysadetitle
+\end{center}
+
+\begin{Form}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l|c}
+		Aufgabe
+		& \ref 1 \\
+		\hline
+		Punkte
+		& \TextField[name=aufgabe1, width=1cm]{} / 20
+	\end{tabular}
+\end{table}
+\end{Form}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                Tunneleffekt                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Tunneleffekt}
+\label 1
+
+Zuerst vollziehe ich die Separation nach:
+\begin{align*}
+	\ii \hbar \dpd{}t \vartheta(t) \varphi_E(t) &= \del{-\frac{\hbar^2}{2m} \dpd[2]{}x + V(x)} \vartheta(t) \varphi_E(t) \\
+	\ii \hbar \frac{\dot\vartheta(t)}{\vartheta(t)} &= -\frac{\hbar^2}{2m} \frac{\varphi_E''(x)}{\varphi_E(x)} + V(x) =: E
+\end{align*}
+
+Dies kann ich zerlegen in:
+\[
+	\vartheta(t) = c_1 \exp\del{-\ii\frac E\hbar t}
+\]
+
+Sowie außerhalb der Barriere:
+\[
+	\varphi_E(x) = c_2 \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
+	+ c_3 \exp\del{-\ii \frac{\sqrt{2Em}}\hbar x}
+\]
+
+Und innerhalb:
+\[
+	\varphi_E(x) = c_4 \exp\del{\frac{\sqrt{2(V_0-E)m}}\hbar x}
+	+ c_5 \exp\del{-\frac{\sqrt{2(V_0-E)m}}\hbar x}
+\]
+
+\subsection{Energien außerhalb des Intervalls}
+
+\begin{tabular}{lll}
+	Energie & außen & innen \\
+	\hline
+	negativ & Abfall & Abfall \\
+	klein & Schwingung & Abfall \\
+	groß & Schwingung & Schwingung
+\end{tabular}
+
+Dies entspricht meiner Vorstellung: Ein komplett freies Teichen (große Energie)
+geht durch die Barriere durch. Ein Teilchen mit kleiner Energie ist außerhalb
+der Barriere frei, kann allerdings nicht beliebig tief in die Barriere
+eindringen.
+
+\subsection{Lösungen}
+
+\newcommand{\phiA}{\varphi_E^\text{(A)}}
+\newcommand{\phiB}{\varphi_E^\text{(B)}}
+\newcommand{\phiC}{\varphi_E^\text{(C)}}
+
+\begin{description}
+	\item[Bereich (A)]
+		\[
+			\phiA(x) = \alpha_+ \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
+			+ \alpha_- \exp\del{-\ii \frac{\sqrt{2Em}}\hbar x}
+		\]
+
+	\item[Bereich (B)]
+		\[
+			\phiB(x) = \beta_+ \exp\del{\frac{\sqrt{2(V_0-E)m}}\hbar x}
+			+ \beta_- \exp\del{-\frac{\sqrt{2(V_0-E)m}}\hbar x}
+		\]
+
+	\item[Bereich (C)]
+		\[
+			\phiC(x) = \gamma_+ \exp\del{\ii \frac{\sqrt{2Em}}\hbar x}
+			+ \gamma_- \exp\del{-\ii \frac{\sqrt{2Em}}\hbar x}
+		\]
+\end{description}
+
+Die Wellenzahlen $k$ sind letztlich der Vorfaktor im Argument der
+Exponentialfunktion ohne $\ii$:
+\[
+	k(E) = \frac{\sqrt{2Em}}\hbar
+	\eqnsep
+	k'(E) = - \ii \frac{\sqrt{2(V_0-E)m}}\hbar
+\]
+
+\subsection{Anschlussbeziehungen}
+
+Um die Anschlussbeziehungen herzuleiten, schreibe ich die Funktionen
+$\varphi_E$ mit den $k$ kompakter:
+
+\begin{description}
+	\item[Bereich (A)]
+		\[
+			\phiA(x) = \alpha_+ \exp\del{\ii k x}
+			+ \alpha_- \exp\del{-\ii k x}
+		\]
+
+	\item[Bereich (B)]
+		\[
+			\phiB(x) = \beta_+ \exp\del{\ii k' x}
+			+ \beta_- \exp\del{-\ii k' x}
+		\]
+
+	\item[Bereich (C)]
+		\[
+			\phiC(x) = \gamma_+ \exp\del{\ii k x}
+			+ \gamma_- \exp\del{-\ii k x}
+		\]
+\end{description}
+
+An den Übergangsstellen $\pm L/2$ muss die Wellenfunktion $\varphi_E$ und
+$\od{}x\varphi_E$ stetig sein. Es muss also gelten:
+\begin{align*}
+	\phiA\del{-\frac L2} &= \phiB\del{-\frac L2} \\
+	\phiB\del{\frac L2} &= \phiC\del{\frac L2} \\
+	\dod{}x \phiA\del{-\frac L2} &= \dod{}x \phiB\del{-\frac L2} \\
+	\dod{}x \phiB\del{\frac L2} &= \dod{}x \phiC\del{\frac L2} \\
+	\intertext{%
+		Setze die Funktionen $\phiA$ und $\phiB$ ein:
+	}
+	\alpha_+ \exp\del{- \ii k \frac L2} + \alpha_- \exp\del{\ii k \frac L2}
+	&= \beta_+ \exp\del{- \ii k' \frac L2} + \beta_- \exp\del{\ii k' \frac L2} \\
+	%
+	\beta_+ \exp\del{\ii k' \frac L2} + \beta_- \exp\del{- \ii k' \frac L2}
+	&= \gamma_+ \exp\del{\ii k \frac L2} + \gamma_- \exp\del{- \ii k \frac L2} \\
+	%
+	-\ii k \alpha_+ \exp\del{- \ii k \frac L2} + \ii k \alpha_- \exp\del{\ii k \frac L2}
+	&= -\ii k' \beta_+ \exp\del{- \ii k' \frac L2} + \ii k' \beta_- \exp\del{\ii k' \frac L2} \\
+	%
+	\ii k' \beta_+ \exp\del{\ii k' \frac L2} - \ii k' \beta_- \exp\del{- \ii k' \frac L2}
+	&= \ii k \gamma_+ \exp\del{\ii k \frac L2} - \ii k \gamma_- \exp\del{- \ii k \frac L2} \\
+	\intertext{%
+		Bei der weiteren Herleitung habe ich mich stark an \cite[Seite
+		269]{nolting-theo5} gehalten. Dann teile ich die dritte und die vierte
+		Gleichung jeweils durch $- \ii k$ und führe $y := k'/k$ ein.
+	}
+	\alpha_+ \exp\del{- \ii k \frac L2} + \alpha_- \exp\del{\ii k \frac L2}
+	&= \beta_+ \exp\del{- \ii k' \frac L2} + \beta_- \exp\del{\ii k' \frac L2} \\
+	%
+	\beta_+ \exp\del{\ii k' \frac L2} + \beta_- \exp\del{- \ii k' \frac L2}
+	&= \gamma_+ \exp\del{\ii k \frac L2} + \gamma_- \exp\del{- \ii k \frac L2} \\
+	%
+	\alpha_+ \exp\del{- \ii k \frac L2} - \alpha_- \exp\del{\ii k \frac L2}
+	&= y \beta_+ \exp\del{- \ii k' \frac L2} -y \beta_- \exp\del{\ii k' \frac L2} \\
+	%
+	- y\beta_+ \exp\del{\ii k' \frac L2} + y\beta_- \exp\del{- \ii k' \frac L2}
+	&= - \gamma_+ \exp\del{\ii k \frac L2} +  \gamma_- \exp\del{- \ii k \frac L2} \\
+	\intertext{%
+		Ab hier führe ich folgende Abkürzungen ein:
+		\[
+			\tau_+ := \exp\del{\ii k \frac L2}
+			\eqnsep
+			\tau_- := \exp\del{-\ii k \frac L2}
+			\eqnsep
+			\tau_+' := \exp\del{\ii k' \frac L2}
+			\eqnsep
+			\tau_-' := \exp\del{-\ii k' \frac L2}
+		\]
+		Damit werden die vier Gleichungen zu:
+	}
+	\alpha_+ \tau_- + \alpha_- \tau_+
+	&= \beta_+ \tau_-' + \beta_- \tau_+' \\
+	%
+	\beta_+ \tau_+' + \beta_- \tau_-'
+	&= \gamma_+ \tau_+ + \gamma_- \tau_- \\
+	%
+	\alpha_+ \tau_- - \alpha_- \tau_+
+	&= y \beta_+ \tau_-' -y \beta_- \tau_+' \\
+	%
+	- y\beta_+ \tau_+' + y\beta_- \tau_-'
+	&= - \gamma_+ \tau_+ +  \gamma_- \tau_- \\
+	\intertext{%
+		In dieser Aufgabe sollte dieser Schritt zwar noch nicht vollzogen
+		werden, damit ich dieses Gleichungssystem allerdings etwas einfacher
+		lösen kann, mache ich bereits hier die Annahme, dass die Welle von
+		rechts einläuft, also $\gamma_- = 0$. Außerdem lege ich $\alpha_+ = 1$
+		fest.
+	}
+	\tau_- + \alpha_- \tau_+
+	&= \beta_+ \tau_-' + \beta_- \tau_+' \\
+	%
+	\beta_+ \tau_+' + \beta_- \tau_-'
+	&= \gamma_+ \tau_+ \\
+	%
+	\tau_- - \alpha_- \tau_+
+	&= y \beta_+ \tau_-' -y \beta_- \tau_+' \\
+	%
+	- y\beta_+ \tau_+' + y\beta_- \tau_-'
+	&= - \gamma_+ \tau_+ \\
+	\intertext{%
+		Betrachte nun Erste plus Dritte, sowie Zweite plus Vierte.
+	}
+	2 \tau_- & = (1+y) \beta_+ \tau_-' + (1-y) \beta_- \tau_+' \\
+	(1-y) \beta_+ \tau_+' (1+y) \beta_- \tau_-' & = 0
+\end{align*}
+
+Dieses Gleichungssystem in $\beta_+$ und $\beta_-$ schreibe ich in Matrixform:
+\[
+	\underbrace{
+		\begin{pmatrix}
+			(1+y) \tau_-' & (1-y) \tau_+' \\
+			(1-y) \tau_+' & (1+y) \tau_-' 		
+		\end{pmatrix}
+	}_{\tens A}
+	\begin{pmatrix}
+		\beta_+ \\ \beta_-
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		2 \tau_-  \\ 0
+	\end{pmatrix}
+\]
+
+\newcommand\detA{\det{\tens A}}
+
+Dieses System löse ich mit der Cramer'schen Regel:
+\[
+	\detA = 2(1+y)^2 \tau_-^{\prime2} - (1-y)^2 \tau_+^{\prime 2}
+\]
+
+Die Lösungen sind:
+\begin{align*}
+	\beta_+ &= \frac1\detA 2 \tau_- \tau_-' (1+y) \\
+	\beta_- &= - \frac1\detA 2 \tau_- \tau_+' (1-y) \\
+\end{align*}
+
+Diese Ergebnisse bringe ich jetzt in folgendes System ein:
+\begin{align*}
+	\beta_+ \tau_+' + \beta_- \tau_-'
+	&= \gamma_+ \tau_+ + \gamma_- \tau_- \\
+	y\beta_+ \tau_+' - y\beta_- \tau_-'
+	&= \gamma_+ \tau_+ - \gamma_- \tau_-
+\end{align*}
+
+Nach Umformen erhalte ich:
+\[
+	\gamma_+ = \frac{4 \tau_-^2 y}\detA
+\]
+
+Laut \cite[Seite 270]{nolting-theo5} soll für $\alpha_-$ folgendes
+herauskommen, was ich selbst allerdings nicht erhalten konnte:
+\[
+	\alpha_- = - 2 \ii \sin\del{2 k' \frac L2} \frac{1-y^2}\detA \tau_-^2
+\]
+
+Meine $k$ und $k'$ waren so definiert, dass das Problem gleich dem
+Potentialtopf war:
+\[
+	k(E) = \frac{\sqrt{2Em}}\hbar
+	\eqnsep
+	k'(E) = - \ii \frac{\sqrt{2(V_0-E)m}}\hbar
+\]
+
+Um eine Interpretation für dieses Problem zu erlangen, führe ich $\bar k$ ein.
+Ich glaube, Paul hat $\bar k$ und $k'$ genau anders herum.
+\[
+	k(E) = \frac{\sqrt{2Em}}\hbar
+	\eqnsep
+	\bar k(E) := \frac{\sqrt{2(V_0-E)m}}\hbar
+\]
+
+Nun muss ich die Transformation $k' \mapsto - \ii \bar k$ überall vornehmen.
+Dadurch wird auch $y \mapsto -\ii y$. Die Determinante $\detA$ wird zu:
+\begin{align*}
+	\detA
+	&= 2 (1-\ii y)^2 \tau_-^{\prime2} - 2(1+\ii y)^2 \tau_+^{\prime2} \\
+	&= 2 \del{1 - 2\ii y - y^2} \exp\del{2 \bar k \frac L2} - 2 \del{1 + 2\ii y - y^2} \exp\del{- 2 \bar k \frac L2} \\
+	&= \del{1-y^2} \sinh\del{2 \bar k \frac L2} - 2 \ii y \cosh\del{2 \bar k \frac L2}
+\end{align*}
+
+\subsection{Von links einlaufendes Teilchen}
+
+Die Vereinfachung ist $\gamma_- = 0$. Diese hatte ich zur Reduktion des
+Rechenaufwands allerdings schon in der vorherigen Teilaufgabe vorgenommen, so
+dass ich hier nicht vergleichen kann.
+
+\subsection{Transmissions- und Reflexionskoeffizient}
+
+Der Reflexionskoeffizient:
+\begin{align*}
+	R
+	&= \abs{\alpha_-}^2 \\
+	&= \abs{-2 \ii \sin\del{2 k' \frac L2} \frac{1-y^2}{\detA} \tau_-^2}^2 \\
+	&= 2 \abs{\sin\del{2 k' \frac L2}}^2 \abs{\frac{1-y^2}{\detA}}^2 \underbrace{\abs{\tau_-^2}^2}_{=1} \\
+	\intertext{%
+		Hier wende ich die Transformation $y^2 \mapsto - y^2$ an.
+	}
+	&= 2 \sinh^2\del{2 \bar k \frac L2} \frac{\del{1+y^2}^2}{\abs{\detA}^2}
+\end{align*}
+
+Der Transmissionskoeffizient:
+\begin{align*}
+	T
+	&= \abs{\gamma_+}^2 \\
+	&= \abs{\frac{4y}\detA}^2 \\
+	&= 16 \frac{y^2}{\abs{\detA}^2}
+\end{align*}
+
+Und die transformierte Determinante $\del{\detA}^2$:
+\begin{align*}
+	\del\detA^2
+	&= \del{1-y^2}^2 \sinh^2\del\ldots + 4 y^2 \cosh^2\del\ldots \\
+	&= \del{1-2y^2+y^4} \sinh^2\del\ldots + 4 y^2 \cosh^2\del\ldots \\
+	&= \sinh^2\del\ldots - 2 y^2\sinh^2\del\ldots + y^4 \sinh^2\del\ldots + 4 y^2 + 4 y^2 \sinh^2\del\ldots \\
+	&= \del{1 + 2 y^2 + y^4} \sinh^2\del\ldots + 4 y^4 \\
+	&= \del{1 + y^2}^2 \sinh^2\del\ldots + 4 y^4
+\end{align*}
+
+Die Summe von $R$ und $T$ ist, wenn man einige Faktor $2$ in $R$ und $T$
+verteilt, gerade $1$. In \cite[Seite 283]{nolting-theo5} kommt es sehr ähnlich
+heraus, ich gehe davon aus, dass ich mich nur verrechnet habe.
+
+\subsection{Grenzfall der Koeffizienten}
+
+Laut \cite[Seite 283]{nolting-theo5} sind die Transmissions- und
+Reflexionskoeffizienten für die Potenzialbarriere mit
+\[
+	x := \frac{\bar k}{k} = \sqrt{\frac{V_0-E}E}
+\]
+gegeben als:
+\[
+	T(E) = \frac{4x^2}{4x^2 + \del{1+x^2}^2 \sinh^2\del{2 \bar k \frac L2}}
+	\eqnsep
+	R(E) = \frac{\del{1+x^2}^2 \sinh^2\del{2 \bar k \frac L2}}
+	{4x^2 + \del{1+x^2}^2 \sinh^2\del{2 \bar k \frac L2}}
+\]
+
+Der Grenzwert einer breiten und hohen Potenzialbarriere bedeutet, dass $V_0$
+und $L$ als groß anzusehen sind. Dabei strebt $T(E)$ gegen $0$ und $R(E)$ gegen
+1. Das Teilchen wir also ausschließlich reflektiert.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    Ende                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\IfFileExists{\bibliographyfile}{
+	\bibliography{\bibliographyfile}
+}{}
+
+\end{document}
+
+% vim: spell spelllang=de
