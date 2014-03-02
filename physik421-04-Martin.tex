@@ -1,0 +1,228 @@
+ % Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+%
+\input{header.tex}
+
+\usepackage{cancel}
+\usepackage{tikz}
+
+\newcommand{\themodul}{physik421}
+\newcommand{\thegruppe}{Gruppe 4 -- Franz Niecknig}
+\newcommand{\theuebung}{4}
+
+\ifoot{\footnotesize{Martin Ueding}}
+\ihead{\themodul{} -- Übung \theuebung}
+\ofoot{\footnotesize{\thegruppe}}
+
+\def\thesection{H \arabic{section}}
+\def\thesubsection{\thesection\alph{subsection}}
+
+\setcounter{section}{4}
+
+\title{\themodul{} -- Übung \theuebung}
+\subtitle{\thegruppe}
+\author{
+	Martin Ueding \footnote{\href{mailto:mu@uni-bonn.de}{mu@uni-bonn.de}}
+}
+
+\hypersetup{
+	pdftitle={\themodul{} - Übung \theuebung},
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\ccbysadetitle
+\end{center}
+
+\begin{Form}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l|c}
+		Aufgabe
+		& \ref 1 \\
+		\hline
+		Punkte
+		& \TextField[name=aufgabe1, width=1cm]{} / 20
+	\end{tabular}
+\end{table}
+\end{Form}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            Hermitesche Polynome                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Hermitesche Polynome}
+\label 1
+
+\subsection{Ableitung}
+\label{1a}
+
+Diesen Ansatz habe ich aus \cite[§§1,2,4]{koeppel-hermite_beiblatt}. Zuerst
+betrachte ich eine Funktion $f(x) = \ee^{-x^2}$, deren Ableitungen fast die
+Hermetischen Polynome ergeben:
+\begin{align*}
+	H_n(z)
+	&= \del-^n \ee^{x^2} \dod[n]{}x \ee^{-x^2} \\
+	&= \del-^n \ee^{x^2} \dod[n]{}x f(x) \\
+	&= \del-^n \ee^{x^2} f^{(n)}(x)
+\end{align*}
+
+Dann betrachte ich die Taylorentwicklung der Funktion $f(x - y)$ um den Punkt
+$y = 0$:
+\begin{align*}
+	f(x - y)
+	&= \ee^{-(x-y)^2} \\
+	&= \sum_{n=0}^\infty \del-^n \frac{f^{(n)}(x)}{n!} y^n \\
+	\intertext{%
+		Setze die obige Relation ein.
+	}
+	&= \sum_{n=0}^\infty \frac{y^n}{n!} H_n(x) \ee^{-x^2} \\
+	f(x-y) \ee^{x^2} 
+	&= \sum_{n=0}^\infty \frac{y^n}{n!} H_n(x)
+\end{align*}
+
+Die linke Seite ist die erzeugende Funktion, ich nenne sie $w(x, y)$:
+\[
+	w(x, y) := \ee^{2xy-y^2} = \sum_{n=0}^\infty \frac{y^n}{n!} H_n(x)
+\]
+
+Die partielle Ableitung nach $x$ liefert:
+\[
+	\dpd{w(x, y)}x = 2 y w(x, y)
+	= \sum_{n=0}^\infty \frac{y^n}{n!} \dod{}x H_n(z)
+\]
+
+Allerdings kann ich den Ausdruck $2 y w(x, y)$ auch erhalten, in dem ich
+folgendes rechne:
+\begin{align*}
+	2 w(x, y)
+	&= 2 \sum_{n=0}^\infty \frac{y^n}{n!} H_n(x) \\
+	2 y w(x, y)
+	&= 2 \sum_{n=0}^\infty \frac{y^{n+1}}{n!} H_n(x) \\
+	\intertext{%
+		Verschiebe die Indizes.
+	}
+	&= 2 \sum_{n=0}^\infty \frac{y^{n}}{(n-1)!} H_{n-1}(x) \\
+	&= 2 \sum_{n=0}^\infty \frac{y^{n}}{n!} n H_{n-1}(x)
+\end{align*}
+
+Ein Koeffizientenvergleich der beiden Ausdrücke liefert die gesuchte Relation:
+\[
+	\dod{}x H_n(x) = 2n H_{n-1}(x)
+\]
+
+\subsection{Orthogonalität}
+
+Hier habe ich den Ansatz mit der erzeugenden Funktion aus
+\cite[§5]{koeppel-hermite_beiblatt} übernommen. Ich führe einen
+Koeffizientenvergleich durch. Dazu beginne ich mit:
+\begin{align*}
+	\int_{-\infty}^\infty \dif x \, \ee^{-x^2}
+	w(x, y) w(x, z)
+	&= \int_{-\infty}^\infty \dif x \, \ee^{-x^2}
+	\ee^{2xy-y^2} \ee^{2xz-z^2} \\
+	&= \int_{-\infty}^\infty \dif x \,
+	\exp\del{-x^2 + 2xy-y^2 + 2xz-z^2} \\
+	\intertext{%
+		Führe eine quadratische Ergänzung im Argument durch.
+	}
+	&= \int_{-\infty}^\infty \dif x \,
+	\exp\del{-\del{x - (y+z)}^2 + 2yz} \\
+	&= \exp\del{2yz} \sqrt\piup \\
+	\intertext{%
+		Dies schreibe ich mit der Definition der Exponentialfunktion.
+	}
+	\sqrt\piup \sum_{n=0}^\infty \frac{(2yz)^n}{n!}
+\end{align*}
+
+Betrachte den gleichen Ausdruck noch einmal, allerdings setze ich jetzt die
+Hermiteschen Polynome ein.
+\begin{align*}
+	\int_{-\infty}^\infty \dif x \, \ee^{-x^2}
+	w(x, y) w(x, z)
+	&= \int_{-\infty}^\infty \dif x \, \ee^{-x^2}
+	\del{\sum_{m=0}^\infty \frac{y^m}{m!} H_m(x)}
+	\del{\sum_{n=0}^\infty \frac{z^n}{n!} H_n(x)} \\
+	&= \sum_{m=0}^\infty \sum_{n=0}^\infty \frac{y^m}{m!} \frac{z^n}{n!}
+	\int_{-\infty}^\infty \dif x \, \ee^{-x^2} H_m(x) H_n(x)
+\end{align*}
+
+Diese beiden Terme müssen gerade gleich sein. Also muss gelten:
+\begin{align*}
+	\sqrt\piup \sum_{n=0}^\infty \frac{(2yz)^n}{n!}
+	&= \sum_{m=0}^\infty \sum_{n=0}^\infty \frac{y^m}{m!} \frac{z^n}{n!}
+	\int_{-\infty}^\infty \dif x \, \ee^{-x^2} H_m(x) H_n(x) \\
+	\sqrt\piup \sum_{n=0}^\infty (2y)^n
+	&= \sum_{m=0}^\infty \sum_{n=0}^\infty \frac{y^m}{m!}
+	\int_{-\infty}^\infty \dif x \, \ee^{-x^2} H_m(x) H_n(x) \\
+	\intertext{%
+		Da auf einer Seite eine unendliche Summe steht, auf der anderen Seite
+		allerdings zwei davon, muss ich auf beiden Seite ein $\delta_{mn}$
+		einführen, damit das passt.
+	}
+	\sqrt\piup \sum_{n=0}^\infty (2y)^n \delta_{mn}
+	&= \delta_{mn} \sum_{m=0}^\infty \sum_{n=0}^\infty \frac{y^m}{m!}
+	\int_{-\infty}^\infty \dif x \, \ee^{-x^2} H_m(x) H_n(x) \\
+	%
+	\sqrt\piup \sum_{n=0}^\infty (2y)^n \delta_{mn}
+	&= \sum_{n=0}^\infty \frac{y^n}{n!}
+	\int_{-\infty}^\infty \dif x \, \ee^{-x^2} H_m(x) H_n(x) \\
+	%
+	\sqrt\piup 2^n \delta_{mn} n!
+	&= \int_{-\infty}^\infty \dif x \, \ee^{-x^2} H_m(x) H_n(x)
+\end{align*}
+
+\subsection{Eigenfunktionen}
+
+Der Ansatz aus der Vorlesung für die Eigenfunktionen $\ket{\psi_n}$ war:
+\[
+	\psi_n(x) = H_n(x) \exp\del{-\frac{x^2}2}
+\]
+
+Wenn ich jetzt $\braket{\psi_m}{\psi_n}$ bilde, wird die Exponentialfunktion
+gerade die $\ee^{-x^2}$, so dass die obige Orthogonalitätsrelation gilt.
+
+\subsection{Rekursionsbeziehung}
+
+\begin{align*}
+	\dod{}x H_n(x)
+	&= \del-^n \dod{}x \ee^{x^2} \dod[n]{}x \ee^{-x^2} \\
+	&= \del-^n 2x \ee^{x^2} \dod[n]{}x \ee^{-x^2} + \del-^n \ee^{x^2} \dod[n+1]{}x \ee^{-x^2} \\
+	&= 2x H_n(x) - H_{n+1}(x) \\
+	\intertext{%
+		Wende die Relation aus Aufgabe \ref{1a} an.
+	}
+	2n H_{n-1}(x)
+	&= 2x H_n(x) - H_{n+1}(x) \\
+	H_{n+1}(x)
+	&= 2x H_n(x) - 2n H_{n-1}(x)
+\end{align*}
+
+\subsection{Differentialgleichung}
+
+\begin{align*}
+	\del{\dod[2]{}x - 2x \dod{}x - \del{1-\epsilon_n}} H_n(x) &= 0 \\
+	4n(n-1) H_{n-2}(x) - 4xn H_{n-1}(x) - \del{1-\epsilon_n} H_n(x) &= 0 \\
+	\intertext{%
+		Substituiere $m := n - 1$.
+	}
+	4(m+1)m H_{m-1}(x) - 4x(m+1) H_{m}(x) - \del{1-\epsilon_{m+1}} H_{m+1}(x) &= 0 \\
+	\underbrace{2m H_{m-1}(x) - 2x H_{m}(x)}_{-H_{m+1}(x)} - \frac{1-\epsilon_{m+1}}{2(m+1)} H_{m+1}(x) &= 0 \\
+	\del{\frac{1-\epsilon_{m+1}}{2(m+1)} + 1} H_{m+1} &= 0 \\
+	\frac{1-\epsilon_n}{2n} + 1 &= 0 \\
+	\epsilon_n &= 2n + 1
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    Ende                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\IfFileExists{\bibliographyfile}{
+	\bibliography{\bibliographyfile}
+}{}
+
+\end{document}
+
+% vim: spell spelllang=de
