@@ -1,0 +1,342 @@
+% Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+%
+\input{header.tex}
+
+\usepackage{cancel}
+\usepackage{tikz}
+
+\newcommand{\themodul}{physik421}
+\newcommand{\thegruppe}{Gruppe 4 -- Franz Niecknig}
+\newcommand{\theuebung}{2}
+
+\ifoot{\footnotesize{Martin Ueding}}
+\ihead{\themodul{} -- Übung \theuebung}
+\ofoot{\footnotesize{\thegruppe}}
+
+\def\thesection{H \arabic{section}}
+\def\thesubsection{\thesection\alph{subsection}}
+
+\setcounter{section}{1}
+
+\title{\themodul{} -- Übung \theuebung}
+\subtitle{\thegruppe}
+\author{
+	Martin Ueding \footnote{\href{mailto:mu@uni-bonn.de}{mu@uni-bonn.de}}
+}
+
+\hypersetup{
+	pdftitle={\themodul{} - Übung \theuebung},
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\ccbysadetitle
+\end{center}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l|c|c|c|c}
+		Aufgabe
+		& \ref 1
+		& \ref 2
+		& $\sum$   \\
+		\hline
+		Punkte
+		& \punkte / 14
+		& \punkte / 6
+		& \punkte / 20
+	\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             Unschärferelation                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Unschärferelation}
+\label 1
+
+\subsection{Relation}
+
+\begin{align*}
+	\bracket{\del{y - \bracket{y}}^2}
+	&= \bracket{y^2 - 2 y \bracket y + \bracket y^2} \\
+	\intertext{%
+		Benutze Linearität.
+	}
+	&= \bracket{y^2} - \bracket{2 y \bracket y} + \bracket{\bracket y^2} \\
+	\intertext{%
+		Mittelung ist idempotent.
+	}
+	&= \bracket{y^2} - 2 \bracket y \bracket y + \bracket y^2 \\
+	&= \bracket{y^2} - \bracket y^2
+\end{align*}
+
+Wobei anscheinend $\braproket{\psi}{\hat O}{\psi}$ einfach als $\bracket{\hat
+O}$ geschrieben wird.
+
+\subsection{Erwartungswerte und Integral}
+
+Die Wahrscheinlichkeit, das Teilchen sich innerhalb vom Intervall $\intcc{y,
+z}$ aufhält, ist:
+\[
+	P(y < x < z) = \int_y^z \dif x \, \abs{\psi(x, t)}^2 \ket x
+\]
+
+Der Erwartungswert für die Position ist das Integral über alle $x$:
+\[
+	\bracket{\hat x} = \int\dif x \, \abs{\psi(x, t)}^2 x
+\]
+
+Der Mittelwert des Ortsquadrates ist analog, nur das $x$ durch $x^2$
+ausgetauscht wird:
+\[
+	\bracket{x^2} = \int\dif x \, \abs{\psi(x, t)}^2 x^2
+\]
+
+Die Abweichung $(\Deltaup x)^2$ kann ich auch schreiben als:
+\begin{align*}
+	(\Deltaup x)^2
+	&= \braproket{\psi}{\hat x^2}{\psi} - \braproket{\psi}{\hat x}{\psi}^2 \\
+	&= \int \dif x \, \psi^\dagger(x, t) x^2 \psi(x, t) - \del{\int \dif x \, \psi^\dagger(x, t) x \psi(x, t)}^2
+\end{align*}
+
+Für die Abweichung des Impulses gehe ich analog vor. Der Operator $\hat p$ ist
+$- \ii \hbar \pd{}x$.
+\begin{align*}
+	(\Deltaup p)^2
+	&= \braproket{\psi}{\hat p^2}{\psi} - \braproket{\psi}{\hat p}{\psi}^2 \\
+	&= - \hbar^2 \int \dif x \, \psi^\dagger(x, t) \dpd[2]{}x \psi(x, t) + \hbar^2 \del{\int \dif x \, \psi^\dagger(x, t) \dpd{}x \psi(x, t)}^2
+\end{align*}
+
+\subsection{Skalarprodukt und dessen Minimum}
+
+\subsubsection{Skalarprodukt herleiten}
+
+Gegeben ist:
+\[
+	\psi_\alpha(x, t) = \alpha \del{x - \bracket{\hat x}} \phi(x, t) + \frac\ii\hbar \del{\hat p - \bracket p} \phi(x, t)
+\]
+
+Das Skalarprodukt ist:
+\begin{align*}
+	\braket{\psi_\alpha}{\psi_\alpha}
+	&= \int_{-\infty}^\infty \dif x \, \psi_\alpha^\dagger \psi_\alpha^{} \\
+	&= \int_{-\infty}^\infty \dif x \, \abs{\alpha \del{x - \bracket{\hat x}} \phi(x, t) + \frac\ii\hbar \del{\hat p - \bracket p} \phi(x, t)}^2 \\
+	&= \int_{-\infty}^\infty \dif x \, \bigg(
+	\underbrace{
+		\alpha^2
+		\del{x - \bracket{\hat x}}^\dagger \phi^\dagger(x, t)
+		\del{x - \bracket{\hat x}} \phi(x, t)
+	}_{S_1} \\
+	&\quad
+	\underbrace{
+	- \frac{\ii \alpha}\hbar
+	\del{\hat p - \bracket{\hat p}}^\dagger \phi^\dagger(x, t)
+	\del{x - \bracket{\hat x}} \phi(x, t)
+	}_{S_2} \\
+	&\quad
+	\underbrace{
+	+ \frac{\ii \alpha}\hbar
+	\del{x - \bracket{\hat x}}^\dagger \phi^\dagger(x, t)
+	\del{\hat p - \bracket{\hat p}} \phi(x, t)
+	}_{S_3} \\
+	&\quad
+	\underbrace{
+	+ \frac{1}{\hbar^2}
+	\del{\hat p - \bracket{\hat p}}^\dagger \phi^\dagger(x, t)
+	\del{\hat p - \bracket{\hat p}} \phi(x, t)
+	}_{S_4}
+	\bigg)
+\end{align*}
+
+Betrachte die Summanden einzeln.
+
+\paragraph{Summand $S_1$}
+
+\begin{align*}
+	S_1
+	&= \int_{-\infty}^\infty \dif x \, \alpha^2 \del{x - \bracket{\hat x}}^\dagger \phi^\dagger(x, t) \del{x - \bracket{\hat x}} \phi(x, t) \\
+	&= \alpha^2 \int_{-\infty}^\infty \dif x \, \del{x - \bracket{\hat x}}^2  \abs{\phi(x, t)}^2 \\
+	&= \alpha^2 \braproket\phi{\del{x - \bracket{\hat x}}^2}\phi \\
+	&= \alpha^2 (\Deltaup x)^2
+\end{align*}
+
+\paragraph{Summanden $S_2$ und $S_3$}
+
+\begin{align*}
+	S_2 + S_3
+	&= \int_{-\infty}^\infty \dif x \, \bigg(
+	- \frac{\ii \alpha}{\hbar} \del{\hat p^\dagger - \bracket{\hat p}} \phi^\dagger(x, t) \del{x - \bracket{\hat x}} \phi(x, t) \\
+	&\quad + \frac{\ii \alpha}{\hbar} \del{x - \bracket{\hat x}}^\dagger \phi^\dagger(x, t) \del{\hat p - \bracket{\hat p}} \phi(x, t)
+	\bigg) \\
+	&= \frac{\ii \alpha}{\hbar} \int_{-\infty}^\infty \dif x \, \bigg(
+	\ii \hbar \dpd{}x \phi^\dagger(x, t) x \phi(x, t) + \ii \hbar \dpd{}x \phi^\dagger(x, t) \bracket{\hat x} \phi(x, t) + \bracket{\hat p} \phi^\dagger(x, t) x \phi(x, t) \\
+	&\quad - \cancel{\bracket{\hat p} \bracket{x} \phi^\dagger(x, t) \phi(x, t)}
+	%
+	- x \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi(x, t) - x \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t) \\
+	&\quad + \bracket{\hat x} \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi(x, t) + \cancel{\bracket{\hat x} \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t)}
+	\bigg) \\
+	&= \frac{\ii \alpha}{\hbar} \int_{-\infty}^\infty \dif x \, \bigg(
+	- \ii \hbar \phi^\dagger(x, t) \phi(x, t) + \bracket{\hat x} \bracket{\hat p} + \bracket{\hat x} \bracket{\hat p} + \ii \hbar \phi^\dagger(x, t) \phi(x, t) - \bracket{\hat x} \bracket{\hat p}
+	\bigg) \\
+	&= - \alpha + \frac{\ii \alpha}{\hbar} \bracket{\hat x} \bracket{\hat p} + \alpha \\
+	&= \frac{\ii \alpha}{\hbar} \bracket{\hat x} \bracket{\hat p}
+\end{align*}
+
+Hier sollte eigentlich gerade $-\alpha$ herauskommen, damit es weiter unten
+passt.
+
+\paragraph{Summand $S_4$}
+
+\begin{align*}
+	S_4
+	&= \int_{-\infty}^\infty \dif x \, \frac{1}{\hbar^2} \del{\hat p - \bracket{\hat p}}^\dagger \phi^\dagger(x, t) \del{\hat p - \bracket{\hat p}} \phi(x, t) \\
+	&= \int_{-\infty}^\infty \dif x \, \frac{1}{\hbar^2} \Bigg(
+	\underbrace{
+		\ii \hbar \dpd{}x \phi^\dagger(x, t) \del{- \ii \hbar \dpd{}x} \phi(x, t)
+}_{S_{4a}}
+	\underbrace{
+	+
+	\bracket{\hat p} \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi(x, t)
+}_{S_{4b}} \\
+&\quad \underbrace{
+	-
+	\ii \hbar \dpd{}x \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t)
+}_{S_{4c}}
+	+ \underbrace{\bracket{\hat p}^2 \phi^\dagger(x, t) \phi(x, t)}_{\bracket{\hat p}^2}
+	\Bigg)
+\end{align*}
+
+Betrachte Summanden $S_{4a}$ und führe eine partielle Integration aus, um den
+Impulsoperator auf die zweite Funktion umzuwälzen:
+\begin{align*}
+	S_{4a}
+	&= \int_{-\infty}^\infty \dif x \, \frac{1}{\hbar^2} \ii \hbar \dpd{}x \phi^\dagger(x, t) \del{- \ii \hbar \dpd{}x} \phi \\
+	&= \frac{1}{\hbar^2} \int_{-\infty}^\infty \dif x \, \phi^\dagger(x, t) \del{- \ii \hbar \dpd{}x}^2 \phi \\
+	&= \frac{1}{\hbar^2} \bracket{\hat p^2}
+\end{align*}
+
+Betrachte den Summanden $S_{4b}$:
+\begin{align*}
+	S_{4b}
+	&= \frac{1}{\hbar^2} \int_{-\infty}^\infty \dif x \, \bracket{\hat p} \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi \\
+	&= \frac{1}{\hbar^2} \bracket{\hat p} \int_{-\infty}^\infty \dif x \, \phi^\dagger(x, t) \ii \hbar \dpd{}x \phi \\
+	&= - \frac{1}{\hbar^2} \bracket{\hat p} \braproket\phi{\hat p}\phi \\
+	&= - \frac{1}{\hbar^2} \bracket{\hat p}^2
+\end{align*}
+
+Betrachte den Summanden $S_{4c}$:
+\begin{align*}
+	S_{4c}
+	&= - \frac{1}{\hbar^2} \int_{-\infty}^\infty \dif x \, \ii \hbar \dpd{}x \phi^\dagger(x, t) \bracket{\hat p} \phi(x, t) \\
+	&= - \frac{1}{\hbar^2} \bracket{\hat p} \int_{-\infty}^\infty \dif x \, \phi^\dagger(x, t) \del{- \ii \hbar \dpd{}x} \phi(x, t) \\
+	&= - \frac{1}{\hbar^2} \bracket{\hat p}^2
+\end{align*}
+
+Zusammen ist der Summand $S_4$ also:
+\[
+	S_4 = \frac{1}{\hbar^2} (\Deltaup p)^2 
+\]
+
+\paragraph{Summanden zusammen}
+
+Mit allen Summanden zusammen:
+\[
+	\braket{\psi_\alpha}{\psi_\alpha}
+	= \alpha^2 \del{\Deltaup x}^2 - \alpha + \frac{1}{\hbar^2} \del{\Delta p}^2
+\]
+
+\subsubsection{Minimum bestimmen}
+
+\begin{align*}
+	\braket{\psi_\alpha}{\psi_\alpha}
+	&= \alpha^2 \del{\Deltaup x}^2 - \alpha + \frac{1}{\hbar^2} \del{\Delta p}^2 \\
+	\intertext{%
+		Quadratische Ergänzung in $\alpha$:
+	}
+	&= \del{\alpha \Deltaup x - \frac{1}{2\Deltaup x}}^2 + \frac{1}{\hbar^2} \del{\Delta p}^2 - \frac{1}{4 (\Deltaup x)^2} \\
+	\intertext{%
+		Das Minimum ist erreicht, wenn der quadratische Term 0 ist. Also setze
+		$\alpha := \frac{1}{2(\Deltaup x)}$. Da es sich hier um ein
+		Skalarprodukt handelt, das per Definition positiv-definit sein muss,
+		muss der Ausdruck großer gleich 0 sein.
+	}
+	&= \frac{1}{\hbar^2} \del{\Delta p}^2 - \frac{1}{4 (\Deltaup x)^2} \geq 0
+\end{align*}
+
+Diesen Ausdruck stelle ich um und ziehe die Wurzel. Heraus kommt die gesuchte
+Relation:
+\[
+	\Deltaup x \Deltaup p \geq \half \hbar
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                Kommutatoren                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Kommutatoren}
+\label 2
+
+Gegeben sind die folgenden Operatoren:
+\begin{gather*}
+	\hat A \psi(x) = x \dpd{}x \phi(x) \\
+	\hat B \psi(x) = \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'}
+\end{gather*}
+
+\subsection{Kommutator bestimmen}
+
+\begin{align*}
+	\hat A \hat B \psi(x)
+	&= x \dpd{}x \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'} \\
+	\intertext{%
+		Hier wende ich die Formel für die Ableitung von Integralen an:
+		\[
+			\dod{}x \int_{g(x)}^{h(x)} \dif y \, f(y)
+			= \dpd hx(x) f\del{h(x)} - \dpd gx(x) f\del{g(x)}
+		\]
+	}
+	&= x^2 \psi(x) \\
+	\hat B \hat A \psi(x)
+	&= \int_{-\infty}^x \dif{x'} \, x'^2 \dpd{}{x'} \psi\del{x'} \\
+	&= \eval{x'^2 \psi\del{x'}}_{-\infty}^x - 2 \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'} \\
+	&= x^2 \psi\del{x} - 2 \int_{-\infty}^x \dif{x'} \, x' \psi\del{x'}
+\end{align*}
+
+Der Kommutator ist:
+\[
+	\sbr{\hat A, \hat B}
+	=
+	2 \hat B
+\]
+
+
+\subsection{Lösung des Eigenwertproblems}
+
+\begin{align*}
+	\hat B \psi(x) &= \lambda \psi(x) \\
+	\int_{-\infty}^x \dif{x'} \, x' \psi\del{x'} &= \lambda \psi(x) \\
+	x \psi(x) &= \lambda \dod\psi x(x) \\
+	\dif x \, x &= \lambda \frac{\dif \psi}{\psi} \\
+	\int \dif x \, x &= \lambda \int \frac{\dif \psi}{\psi} \\
+	\half x^2 + C &= \lambda \ln\del{\psi(x)} \\
+	\exp\del{\frac{1}{2\lambda} x^2 + C} &= \psi(x)
+\end{align*}
+
+Als Einschränkung muss $\lambda \neq 0$ gelten, damit nicht durch 0 geteilt
+wird. Falls $\psi$ eine $L^2$ Funktion sein soll, muss $\lambda < 0$ gelten,
+damit die Funktion quadratintegrabel ist.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    Ende                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\IfFileExists{\bibliographyfile}{
+	%\bibliography{\bibliographyfile}
+}{}
+
+\end{document}
+
+% vim: spell spelllang=de
