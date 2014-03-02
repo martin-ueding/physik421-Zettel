@@ -1,0 +1,362 @@
+ % Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+%
+\input{header.tex}
+
+\usepackage{cancel}
+\usepackage{tikz}
+
+\newcommand{\themodul}{physik421}
+\newcommand{\thegruppe}{Gruppe 4 -- Franz Niecknig}
+\newcommand{\theuebung}{8}
+
+\ifoot{\footnotesize{Martin Ueding}}
+\ihead{\themodul{} -- Übung \theuebung}
+\ofoot{\footnotesize{\thegruppe}}
+
+\def\thesection{H \arabic{section}}
+\def\thesubsection{\thesection\alph{subsection}}
+
+\setcounter{section}{11}
+
+\title{\themodul{} -- Übung \theuebung}
+\subtitle{\thegruppe}
+\author{
+	Martin Ueding \footnote{\href{mailto:mu@uni-bonn.de}{mu@uni-bonn.de}}
+}
+
+\hypersetup{
+	pdftitle={\themodul{} - Übung \theuebung},
+}
+
+\setcounter{secnumdepth}{2}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\ccbysadetitle
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                        Nachtrag zum Wasserstoffatom                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Nachtrag zum Wasserstoffatom}
+
+\subsection{Ansatz}
+
+\newcommand\er{\ee^{-\rho}}
+\newcommand\omr{\omega(\rho)}
+
+\begin{gather*}
+	\del{\dpd[2]{}\rho - \frac{l(l+1)}{\rho^2} + \frac{\rho_0}\rho - 1}
+	\rho^{l+1} \ee^{-\rho} \omega(\rho) = 0 \\
+	%
+	\begin{split}
+		\dpd{}\rho \del{l(l+1) \rho^l \ee^{-\rho} \omega(\rho)
+		- \rho^{l+1} \ee^{-\rho} \omega(\rho)
+	+ \rho^{l+1} \ee^{-\rho} \omega'(\rho)}
+	- l(l+1) \rho^{l-1} \ee^{-\rho} \omega(\rho) & \\
+		+ \rho_0 \rho^l \ee^{-\rho} \omega(\rho)
+		- \rho^{l+1} \ee^{-\rho} \omega(\rho)
+		&= 0
+	\end{split} \\
+	%
+	\intertext{%
+		Führe an dieser Stelle Farben ein, um das Termmemory zu erleichtern.
+	}
+	%
+	\begin{split}
+		\textcolor{blue}{ l(l+1) \rho^{l-1} \er \omr }
+		- \textcolor{gray}{ (l+1) \rho^l \er \omr }
+		+ \textcolor{red}{ (l+1) \rho^l \er \omega'(\rho) }
+		+ \textcolor{gray}{ (l+1) \rho^l \er \omr } & \\
+		+ \textcolor{ForestGreen}{ \rho^{l+1} \er \omr }
+		- \textcolor{orange}{ \rho^{l+1} \er \omega'(\rho) }
+		+ \textcolor{red}{ (l+1) \rho^l \er \omr }
+		- \textcolor{orange}{ \rho^{l+1} \er \omega'(\rho) } & \\
+		+ \textcolor{cyan}{ \rho^{l+1} \er \omega''(\rho) }
+		- \textcolor{blue}{ l(l+1) \rho^{l-1} \er \omr }
+		+ \textcolor{green}{ \rho_0 \rho^l \er \omr }
+		- \textcolor{ForestGreen}{ \rho^{l+1} \er \omr }
+		&= 0
+	\end{split}
+	%
+	\intertext{%
+		Nach Umsortieren bleiben:
+	}
+	%
+	\begin{split}
+		- 2 \textcolor{gray}{ (l+1) \rho^l \er \omr }
+		+ 2 \textcolor{red}{ (l+1) \rho^l \er \omega'(\rho) }
+		- 2 \textcolor{orange}{ \rho^{l+1} \er \omega'(\rho) }
+		+ \textcolor{cyan}{ \rho^{l+1} \er \omega''(\rho) } & \\
+		+ \textcolor{green}{ \rho_0 \rho^l \er \omr }
+		&= 0
+	\end{split}
+	%
+	\intertext{%
+		Entferne die $\er$ komplett, und im nächsten Schritt teile ich durch
+		$\rho^l$.
+	}
+	%
+	- 2  (l+1) \rho^l \omr
+	+ 2  (l+1) \rho^l \omega'(\rho)
+	- 2  \rho^{l+1} \omega'(\rho)
+	+  \rho^{l+1} \omega''(\rho) 
+	+ \rho_0 \rho^l \omr
+	= 0 \\
+	%
+	- 2  (l+1) \omr
+	+ 2  (l+1) \omega'(\rho)
+	- 2  \rho \omega'(\rho)
+	+  \rho \omega''(\rho) 
+	+ \rho_0 \omr
+	= 0
+	%
+	\intertext{%
+		Umstellen und Gruppieren gibt die gewünschte Differentialgleichung.
+	}
+	%
+	\rho \omega''(\rho) + 2(l+1-\rho) \omega'(\rho) + \del{\rho_0 - 2(l+1)} \omega(\rho) = 0
+\end{gather*}
+
+\subsection{Potenzreihenansatz}
+
+Setze an mit:
+\[
+	\omega(\rho) = \sum_k a_k \rho^k
+\]
+
+Setze dies in die Differentialgleichung ein:
+\[
+	\sum_k \del{k(k-1) a_k \rho^{k-1} + 2(l+1-\rho) k a_k \rho^{k-1} + \del{\rho_0 - 2(l+1)} a_k \rho^k} = 0
+\]
+
+Dies ist auf jeden Fall erfüllt, wenn jeder Summand null ist. Also:
+\begin{align*}
+	(k+1) k a_{k+1} \rho^k + 2(l+1)(k+1) a_{k+1} \rho^k
+	- 2(k+1) a_{k+1} \rho^{k+1} + \del{\rho_0 - 2(l+1)} a_k \rho^k &= 0 \\
+	%
+	(k+1) k a_{k+1} + 2(l+1)(k+1) a_{k+1} - 2k a_k
+	+ \del{\rho_0 - 2(l+1)} a_k &= 0 \\
+	%
+	\del{(k+1) k + 2(l+1)(k+1) } a_{k+1}
+	+ \del{\rho_0 - 2(l+1) - 2k} a_k &= 0
+\end{align*}
+
+Erhalte die gesuchte Rekursionsbeziehung:
+\[
+	a_{k+1} = \frac{2(l+1) + 2k - \rho_0}{(k+1)(k+2l+2)} a_k
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                     Erwartungswerte zum Wasserstoffatom                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Erwartungswerte zum Wasserstoffatom}
+
+\subsection{Reskalierung}
+
+Beginne mit:
+\begin{align*}
+	\del{\dod[2]{}\rho - \frac{l(l+1)}{\rho^2} + \frac{\rho_0}\rho - 1} u_l(\rho) &= 0 \\
+	\intertext{
+		Substituiere $\bar\rho := \rho n$ mit $\rho = \bar\rho / n$. Nach der
+		Kettenregel:
+		\[
+			\dod{\bar\rho}\rho \dod{}{\bar\rho}
+			= n \dod{}{\bar\rho}
+			\leadsto
+			n^2 \dod[2]{}{\bar\rho}
+		\]
+		Damit folgt:
+	}
+	\del{n^2 \dod[2]{}{\bar\rho} - n^2 \frac{l(l+1)}{\bar\rho^2} + n \frac{\rho_0}{\bar\rho} - 1} u_l(\rho) &= 0 \\
+	\del{\frac{l(l+1)}{\bar\rho^2} - \frac{\rho_0}{n\bar\rho} + \frac{1}{n^2}} u_l(\rho) &= u''_l(\rho)
+\end{align*}
+
+Das kommt allerdings nicht hin, da $\rho_0/n \neq 2$ ist.
+
+\subsection{Integration der Differentialgleichung}
+
+\subsubsection{Rechte Seite}
+
+\begin{align*}
+	\text{RS}
+	&= \del{\frac 1{n^2} - \frac{2}{\bar\rho} + \frac{l(l+1)}{\bar\rho^2}} u_l^2 \del{\bar\rho} \bar\rho^q \\
+	&\leadsto \int_0^\infty \dif{\bar\rho} \, \del{\frac 1{n^2} - \frac{2}{\bar\rho} + \frac{l(l+1)}{\bar\rho^2}} u_l^2 \del{\bar\rho} \bar\rho^q \\
+	\intertext{%
+		Mit der Definition
+		\[
+			\bracket q := \int_0^\infty \dif{\bar\rho} \,
+			u_l^2 \del{\bar\rho} \bar\rho^q
+		\]
+		folgt:
+	}
+	&= \frac1{n^2} \bracket q - 2 \bracket{q-1} + l(l+1) \bracket{q-2}
+\end{align*}
+
+\subsubsection{Linke Seite}
+
+\begin{align*}
+	\text{LS}
+	&= u_l''(\bar\rho) u_l\del{\bar\rho} \bar\rho^q \\
+	&\leadsto \int_0^\infty \dif{\bar\rho} \, u_l''(\bar\rho) u_l\del{\bar\rho} \bar\rho^q \\
+\end{align*}
+
+\fehlt
+
+\subsubsection{Einsetzen in Differentialgleichung}
+
+Beginne mit
+\begin{align*}
+	\frac{\bracket q}n - 2 \bracket{q-1} + l(l+1) \bracket{q-2}
+	&= \half q (q-1) \bracket{q-2} + \int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1} 2 u''_l(\bar\rho) u'_l(\bar\rho) \\
+	\intertext{%
+		Setze die Differentialgleichung ein.
+	}
+	\frac{\bracket q}n - 2 \bracket{q-1} + l(l+1) \bracket{q-2}
+	&= \half q (q-1) \bracket{q-2}
+	+ \int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1} 2 \del{\frac1{n^2} - \frac2{\bar\rho} + \frac{l(l+1)}{\bar\rho^2}} u_l(\bar\rho) u'_l(\bar\rho) \\
+\end{align*}
+
+Betrachte nun nur das Integral und zerlege es in Summanden:
+\begin{gather*}
+	\int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1} 2 \del{\frac1{n^2} - \frac2{\bar\rho}
+	+ \frac{l(l+1)}{\bar\rho^2}} u_l(\bar\rho) u'_l(\bar\rho) \\
+	=
+	\int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1} 2
+	\frac1{n^2}
+	u_l(\bar\rho) u'_l(\bar\rho)
+	-
+	\int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1} 2
+	\frac2{\bar\rho}
+	u_l(\bar\rho) u'_l(\bar\rho)
+	+
+	\int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1} 2
+	\frac{l(l+1)}{\bar\rho^2}
+	u_l(\bar\rho) u'_l(\bar\rho)
+\end{gather*}
+
+Wende Trick an:
+\[
+	2 u u' = \del{u^2}'
+\]
+
+Das erste Integral, ohne Randterme:
+\begin{align*}
+	\int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{q+1}
+	\frac1{n^2}
+	\dod{}{\bar\rho} u_l(\bar\rho)
+	&= 
+	-
+	\int_0^\infty \dif \bar\rho \,
+	\frac{\bar\rho^{q+1}}{n^2}
+	u_l(\bar\rho) \\
+	&= - \frac{1}{n^2} \bracket q
+\end{align*}
+
+Zweites Integral, gleiche Vorgehensweise:
+\[
+	\frac{q}{q+1} \bracket{q-1}
+\]
+
+Drittes Integral:
+\[
+	- l(l+1) \frac{q-1}{q+1} \bracket{q-2}
+\]
+
+Setze dies mit den restlichen Termen wieder zusammen:
+\begin{gather*}
+	\frac{\bracket q}n - 2 \bracket{q-1} + l(l+1) \bracket{q-2} \\
+	= \half q (q-1) \bracket{q-2}
+	- \frac{1}{n^2} \bracket q
+	+ \frac{q}{q+1} \bracket{q-1}
+	- l(l+1) \frac{q-1}{q+1} \bracket{q-2}
+\end{gather*}
+
+Multipliziere mit $2n^2(q+1)$, um alle Nenner zu entfernen:
+\begin{gather*}
+	2 (q+1) \bracket q
+	- 4 n^2 (q+1) \bracket{q-1}
+	+ 2 l(l+1) n^2 (q+1) \bracket{q-2} \\
+	= q n^2 (q+1) (q-1) \bracket{q-2}
+	- 2 (q+1) \bracket q
+	+ 2 q n^2 \bracket{q-1}
+	- 2 l(l+1) n^2 (q+1) (q-1) \bracket{q-2}
+\end{gather*}
+
+Die Terme fasse ich nach den $\bracket{q-i}$ zusammen und erhalte:
+\begin{gather*}
+	\bracket q
+	\del{
+		2(q+1) + 2(q+1)
+	} \\
+	+
+	\bracket{q-1}
+	\del{
+		-4n^2 (q+1) - 2n^2 q
+	} \\
+	+
+	\bracket{q-2}
+	\del{
+		2l(l+1)n^2(q+1) - q (q-1) n^2 (q+1) + 2 n^2 l(l+1) (q-1)
+	}
+	= 0
+\end{gather*}
+
+Mit folgender Nebenrechnung für den $\bracket{q-2}$ Term
+\begin{align*}
+		2l(l+1)n^2(q+1) - q (q-1) n^2 (q+1) + 2 n^2 l(l+1) (q-1)
+		&= 4n^2 q l(l+1) - q(q+1)(q-1) n^2 \\
+		&= n^2 q \del{4l^2 + 4l - \del{q^2 - 1}} \\
+		&= n^2 q \del{(2l+1)^2 - 1 - q^2 + 1} \\
+		&= n^2 q \del{(2l+1)^2 - q^2} \\
+\end{align*}
+folgt, zusammen mit anderen Umformungen:
+\begin{gather*}
+	\bracket q
+	\del{
+		4(q+1)
+	} \\
+	+
+	\bracket{q-1}
+	\del{
+		-n^2 (2q+1)
+	} \\
+	+
+	\bracket{q-2}
+	n^2 q
+	\del{
+		(2l+1)^2 - q^2
+	}
+	= 0
+\end{gather*}
+
+Bis auf einen Faktor 4, der in der Aufgabenstellung mehr ist, stimmt dies mit
+der gesuchten Gleichung überein.
+
+\subsection{Matrixelemente}
+
+\fehlt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    Ende                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\IfFileExists{\bibliographyfile}{
+	%\bibliography{\bibliographyfile}
+}{}
+
+\end{document}
+
+% vim: spell spelllang=de
