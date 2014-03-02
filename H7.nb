@@ -1,0 +1,197 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5775,        188]
+NotebookOptionsPosition[      5039,        156]
+NotebookOutlinePosition[      5549,        178]
+CellTagsIndexPosition[      5465,        173]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"?", "FourierTransform"}]], "Input",
+ CellChangeTimes->{{3.577613148012278*^9, 3.577613153508418*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"FourierTransform\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"t\\\", \\\
+\"TI\\\"], \\\",\\\", \\\"\[Omega]\\\"}], \\\"]\\\"}]\) gives the symbolic \
+Fourier transform of \!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"FourierTransform\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"t\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"t\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", RowBox[{SubscriptBox[\
+\\\"\[Omega]\\\", StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", \
+SubscriptBox[\\\"\[Omega]\\\", StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", \
+StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) \
+gives the multidimensional Fourier transform of \!\(\*StyleBox[\\\"expr\\\", \
+\\\"TI\\\"]\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/FourierTransform"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.577613156204136*^9},
+ CellTags->"Info3577620355-1856790"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FourierTransform", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"1", "/", 
+     RowBox[{"Sqrt", "[", 
+      RowBox[{"Pi", " ", 
+       RowBox[{"sigma", "^", "2"}]}], "]"}]}], " ", 
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"x", "-", "x0"}], ")"}], "^", "2"}]}], "/", 
+      RowBox[{"(", 
+       RowBox[{"2", 
+        RowBox[{"sigma", "^", "2"}]}], ")"}]}], "]"}], 
+    RowBox[{"Exp", "[", 
+     RowBox[{"I", " ", "k0", " ", "x"}], "]"}]}], ",", "x", ",", "k"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.57761315737236*^9, 3.577613234870122*^9}, {
+  3.577623220923273*^9, 3.577623225847928*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "2"]}], " ", 
+     RowBox[{"(", 
+      RowBox[{"k", "+", "k0"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"k", " ", 
+        SuperscriptBox["sigma", "2"]}], "+", 
+       RowBox[{"k0", " ", 
+        SuperscriptBox["sigma", "2"]}], "-", 
+       RowBox[{"2", " ", "\[ImaginaryI]", " ", "x0"}]}], ")"}]}]], " ", 
+   SqrtBox[
+    FractionBox["1", 
+     SuperscriptBox["sigma", "2"]]], " ", 
+   SqrtBox[
+    SuperscriptBox["sigma", "2"]]}], 
+  SqrtBox["\[Pi]"]]], "Output",
+ CellChangeTimes->{{3.57761322025451*^9, 3.577613235959399*^9}, 
+   3.577623226314682*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FourierTransform", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"1", "/", 
+     RowBox[{"Sqrt", "[", 
+      RowBox[{
+       RowBox[{"sigma", "^", "2"}], " ", "Pi"}], "]"}]}], " ", 
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"x", "-", "x0"}], ")"}], "^", "2"}]}], "/", 
+      RowBox[{"(", 
+       RowBox[{"2", 
+        RowBox[{"sigma", "^", "2"}]}], ")"}]}], "]"}], 
+    RowBox[{"Exp", "[", 
+     RowBox[{"I", " ", "k0", " ", "x"}], "]"}]}], ",", "x", ",", "k", ",", 
+   RowBox[{"FourierParameters", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", 
+      RowBox[{"-", "1"}]}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.577613363764042*^9, 3.577613371934125*^9}, {
+  3.57761359876145*^9, 3.577613608577756*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SqrtBox["2"], " ", 
+  SuperscriptBox["\[ExponentialE]", 
+   RowBox[{
+    RowBox[{"-", 
+     FractionBox["1", "2"]}], " ", 
+    RowBox[{"(", 
+     RowBox[{"k", "-", "k0"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"k", " ", 
+       SuperscriptBox["sigma", "2"]}], "-", 
+      RowBox[{"k0", " ", 
+       SuperscriptBox["sigma", "2"]}], "+", 
+      RowBox[{"2", " ", "\[ImaginaryI]", " ", "x0"}]}], ")"}]}]], " ", 
+  SqrtBox[
+   FractionBox["1", 
+    SuperscriptBox["sigma", "2"]]], " ", 
+  SqrtBox[
+   SuperscriptBox["sigma", "2"]]}]], "Output",
+ CellChangeTimes->{3.577613380208969*^9, 3.577613609384472*^9, 
+  3.577623231470346*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 867},
+WindowMargins->{{Automatic, 114}, {85, Automatic}},
+ShowSelection->True,
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info3577620355-1856790"->{
+  Cell[707, 26, 1349, 23, 82, "Print",
+   CellTags->"Info3577620355-1856790"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info3577620355-1856790", 5362, 167}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 125, 2, 32, "Input"],
+Cell[707, 26, 1349, 23, 82, "Print",
+ CellTags->"Info3577620355-1856790"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2093, 54, 687, 21, 55, "Input"],
+Cell[2783, 77, 711, 23, 85, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3531, 105, 813, 24, 55, "Input"],
+Cell[4347, 131, 676, 22, 61, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
